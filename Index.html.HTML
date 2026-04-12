@@ -1,0 +1,1548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Tools Comparison 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --bg:#f0f2f7; --bg2:#ffffff; --bg3:#f5f6fa; --bg4:#eceef5;
+  --border:rgba(0,0,0,0.07); --border2:rgba(0,0,0,0.12);
+  --text:#1a1d2e; --text2:#4a5068; --text3:#8b93a8;
+  --accent:#5254d4; --accent2:#6366f1;
+  --green:#1a9e6a; --red:#d94040; --amber:#c47a0a;
+  --teal:#0e9a90; --blue:#2c7be5; --purple:#7c4fdb; --pink:#c94fa0;
+  --shadow:0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-md:0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.05);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);font-size:13px;line-height:1.55;}
+
+/* ── HEADER ── */
+header{
+  position:sticky;top:0;z-index:200;
+  background:rgba(255,255,255,0.97);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border2);
+  box-shadow:var(--shadow);
+  padding:12px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+}
+header h1{
+  font-size:15px;font-weight:700;white-space:nowrap;
+  background:linear-gradient(130deg,#5254d4,#1a9e6a);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.search-box{
+  flex:1;min-width:160px;max-width:320px;
+  background:#f5f6fa;border:1px solid var(--border2);
+  border-radius:8px;padding:7px 12px;
+  color:var(--text);font-family:inherit;font-size:12px;outline:none;
+}
+.search-box:focus{border-color:var(--accent);background:#fff;}
+.search-box::placeholder{color:var(--text3);}
+.filter-wrap{display:flex;gap:5px;flex-wrap:wrap;}
+.fb{
+  padding:4px 11px;border-radius:20px;border:1px solid var(--border2);
+  background:#fff;color:var(--text3);cursor:pointer;
+  font-family:inherit;font-size:11px;font-weight:500;transition:all .15s;
+}
+.fb:hover{color:var(--accent2);border-color:var(--accent);background:#f0f0ff;}
+.fb.on{background:var(--accent);border-color:var(--accent);color:#fff;}
+
+/* ── MAIN ── */
+.main{padding:18px 20px;max-width:1680px;margin:0 auto;}
+
+.stat-row{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+  gap:8px;margin-bottom:18px;
+}
+.stat{
+  background:#fff;border:1px solid var(--border);
+  border-radius:10px;padding:10px 14px;text-align:center;
+  box-shadow:var(--shadow);
+}
+.stat .n{font-size:20px;font-weight:700;}
+.stat .l{font-size:10px;color:var(--text3);margin-top:2px;text-transform:uppercase;letter-spacing:.05em;}
+
+.sec-head{
+  display:flex;align-items:center;gap:10px;margin:22px 0 10px;
+}
+.sec-head h2{font-size:12px;font-weight:600;color:var(--text2);white-space:nowrap;}
+.sec-head::after{content:'';flex:1;height:1px;background:var(--border2);}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(360px,1fr));
+  gap:10px;margin-bottom:6px;
+}
+
+/* ── TOOL CARD ── */
+.card{
+  background:#fff;border:1px solid var(--border);
+  border-radius:12px;overflow:hidden;
+  transition:border-color .15s, box-shadow .15s;
+  box-shadow:var(--shadow);
+}
+.card:hover{border-color:rgba(82,84,212,0.3);box-shadow:var(--shadow-md);}
+.card.hide{display:none;}
+
+/* head row */
+.ch{
+  padding:13px 14px 0;
+  display:flex;align-items:flex-start;gap:11px;
+  cursor:pointer;user-select:none;
+}
+.icon{
+  width:34px;height:34px;border-radius:8px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:10px;font-weight:700;font-family:'JetBrains Mono',monospace;
+  letter-spacing:-.5px;
+}
+.ctitle{flex:1;min-width:0;}
+.ctitle h3{font-size:13px;font-weight:600;line-height:1.3;}
+.ctitle .sub{font-size:11px;color:var(--text3);margin-top:1px;}
+.ctitle .tag{font-size:11px;color:var(--text2);margin-top:4px;line-height:1.4;}
+.xbtn{
+  width:22px;height:22px;border-radius:6px;border:1px solid var(--border2);
+  background:#f5f6fa;cursor:pointer;color:var(--text3);
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;flex-shrink:0;transition:all .15s;margin-top:2px;
+}
+.xbtn:hover{background:var(--bg4);color:var(--accent);border-color:var(--accent);}
+
+/* badge row */
+.badges{display:flex;gap:4px;flex-wrap:wrap;padding:7px 14px 0;}
+.bdg{
+  font-size:10px;padding:2px 7px;border-radius:10px;
+  font-weight:500;border:1px solid;white-space:nowrap;
+}
+
+/* quick metrics */
+.qrow{
+  display:grid;grid-template-columns:1fr 1fr 1fr;
+  gap:6px;padding:10px 14px;
+}
+.qcell{background:#f5f6fa;border-radius:7px;padding:7px 9px;border:1px solid var(--border);}
+.ql{font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:.04em;margin-bottom:2px;}
+.qv{font-size:12px;font-weight:600;}
+.qv.g{color:var(--green);}
+.qv.a{color:var(--amber);}
+.qv.b{color:var(--blue);}
+.qv.r{color:var(--red);}
+
+/* expandable detail */
+.det{display:none;padding:0 14px 14px;border-top:1px solid var(--border);padding-top:12px;margin-top:2px;background:#fafbfd;}
+.det.open{display:block;}
+
+/* detail sections */
+.dsec{background:#fff;border-radius:8px;padding:10px 11px;margin-bottom:8px;border:1px solid var(--border);}
+.dsec h4{font-size:10px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:7px;}
+
+/* use case tags */
+.utags{display:flex;gap:4px;flex-wrap:wrap;}
+.ut{font-size:10px;background:#f0f2f7;color:var(--text2);padding:3px 8px;border-radius:6px;border:1px solid var(--border);}
+
+/* feature list */
+.flist{list-style:none;padding:0;}
+.flist li{font-size:11px;color:var(--text2);padding:2px 0 2px 13px;position:relative;}
+.flist li::before{content:'›';position:absolute;left:0;color:var(--text3);}
+.flist li.pro::before{content:'+';color:var(--green);font-weight:700;}
+.flist li.con::before{content:'−';color:var(--red);font-weight:700;}
+.flist li.warn::before{content:'!';color:var(--amber);font-weight:700;}
+
+/* ── PRICING PLAN CARDS ── */
+.plans-wrap{display:flex;flex-direction:column;gap:6px;}
+.plan-card{
+  background:#f8f9fc;border-radius:8px;
+  border:1px solid var(--border);
+  padding:8px 10px;
+}
+.plan-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:4px;}
+.plan-name{font-size:11px;font-weight:600;color:var(--text);}
+.plan-price{
+  font-size:11px;font-weight:700;color:var(--green);
+  background:rgba(26,158,106,.08);border:1px solid rgba(26,158,106,.2);
+  border-radius:5px;padding:1px 7px;white-space:nowrap;flex-shrink:0;
+}
+.plan-desc{font-size:11px;color:var(--text2);line-height:1.45;}
+
+/* limits grid */
+.lims{display:flex;flex-direction:column;gap:4px;}
+.lim{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;padding:3px 0;border-bottom:1px solid var(--border);}
+.lim:last-child{border-bottom:none;}
+.lk{font-size:10px;color:var(--text3);flex-shrink:0;max-width:45%;}
+.lv{font-size:10px;color:var(--text2);font-weight:500;text-align:right;}
+
+/* ratings */
+.rrow{display:flex;align-items:center;gap:8px;margin:3px 0;}
+.rl{font-size:10px;color:var(--text3);width:88px;flex-shrink:0;}
+.rbar{flex:1;height:3px;background:#e8eaf0;border-radius:2px;overflow:hidden;}
+.rfill{height:100%;border-radius:2px;}
+.rpct{font-size:10px;color:var(--text3);min-width:28px;text-align:right;}
+
+/* reddit quotes */
+.rq{
+  background:#f5f6fa;border-left:2px solid var(--accent);
+  border-radius:0 6px 6px 0;padding:7px 10px;margin:4px 0;
+  font-size:11px;color:var(--text2);font-style:italic;line-height:1.5;
+}
+
+/* two-col inside detail */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;}
+@media(max-width:500px){.two{grid-template-columns:1fr;}}
+
+/* scroll top */
+.stbtn{
+  position:fixed;bottom:18px;right:18px;
+  background:var(--accent);color:#fff;border:none;
+  border-radius:50%;width:38px;height:38px;cursor:pointer;
+  font-size:16px;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 14px rgba(82,84,212,.35);z-index:999;
+}
+
+@media(max-width:600px){
+  .grid{grid-template-columns:1fr;}
+  .qrow{grid-template-columns:1fr 1fr;}
+  header{padding:10px 14px;}
+  .main{padding:12px 14px;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>⬡ AI Tools 2026</h1>
+  <input class="search-box" id="srch" type="text" placeholder="Search tools, features, pricing..." oninput="doFilter()">
+  <div class="filter-wrap" id="fbar"></div>
+</header>
+
+<div class="main">
+  <div class="stat-row">
+    <div class="stat"><div class="n" style="color:var(--accent2)">50+</div><div class="l">Tools</div></div>
+    <div class="stat"><div class="n" style="color:var(--green)">Apr 2026</div><div class="l">Updated</div></div>
+    <div class="stat"><div class="n" style="color:var(--teal)">15+</div><div class="l">Parameters</div></div>
+    <div class="stat"><div class="n" style="color:var(--amber)">8</div><div class="l">Categories</div></div>
+    <div class="stat"><div class="n" style="color:var(--pink)">Real</div><div class="l">User Reviews</div></div>
+  </div>
+  <div id="root"></div>
+</div>
+
+<button class="stbtn" onclick="scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+const CATS={
+  general:{label:'General AI',c:'#6366f1'},
+  content:{label:'Content Creation',c:'#f472b6'},
+  coding:{label:'App Development',c:'#2ecc8a'},
+  webapp:{label:'Web / App Builder',c:'#5ba4f5'},
+  gtm:{label:'GTM & Presentations',c:'#f5a623'},
+  research:{label:'Deep Research',c:'#26c6b8'},
+  dashboard:{label:'Dashboard & Data',c:'#9b6ef5'},
+  image:{label:'Image Generation',c:'#fb923c'},
+  video:{label:'Video Generation',c:'#f16060'},
+  audio:{label:'Audio & Voice',c:'#818cf8'},
+  automation:{label:'Productivity & Automation',c:'#4ade80'},
+  design:{label:'Design & UI/UX',c:'#e879f9'},
+};
+
+const T=[
+  // ═══════════ GENERAL AI ═══════════
+  {id:'chatgpt',cat:'general',name:'ChatGPT',maker:'OpenAI',
+   icon:'GPT',ic:'#10a37f',
+   tag:'World\'s most-used AI — text, vision, code, voice, deep research & agents',
+   badges:['Best All-Rounder','Largest Ecosystem','60+ App Integrations'],
+   uses:['Marketing content & copywriting','Coding & debugging','Data analysis & charts','Deep Research with citations','Image generation (DALL-E)','Voice conversations','GTM docs & presentations (Canvas)','Agentic tasks','Custom GPT creation','Prospect research'],
+   feats:['GPT-5.4 flagship model','Deep Research (multi-step, cited)','DALL-E 3 image generation','Code Interpreter / data analysis','Advanced Voice Mode','Codex coding agent','Agent Mode (computer use)','Memory across chats','Canvas editor for long docs','60+ app integrations (Slack, GitHub, Drive)','Custom GPTs marketplace','Web browsing built-in'],
+   free:['GPT-5.3 access with tight limits','Limited Deep Research (few runs/mo)','Limited image generation','Ads shown in US','Slower during peak hours','No Advanced Voice Mode','No persistent memory'],
+   plans:[
+     {n:'Plus',p:'$20 / mo',d:'Full GPT-5.4, 10 Deep Research/mo, DALL-E, Sora (limited), Codex, Agent Mode, 256K context, ad-free'},
+     {n:'Pro',p:'$200 / mo',d:'250 Deep Research/mo, GPT-5.4 Pro, 400K context, unlimited premium models, priority access'},
+     {n:'Business (Team)',p:'$25/user/mo annual · $30 monthly',d:'Min 2 users. SAML SSO, SOC 2, no training on data, admin console, 60+ integrations, ~40 pages context'},
+     {n:'Enterprise',p:'~$60/user/mo · 150-seat min · annual',d:'Private hosting, ~250 pages context, SCIM, custom retention, dedicated CSM, audit logs, HIPAA option, unlimited GPT-5.3 Instant msgs'},
+   ],
+   limits:{
+     'Context — Plus / Business':'256K tokens (~192K words)',
+     'Context — Enterprise':'256K tokens',
+     'Context — Pro':'400K tokens',
+     'Deep Research — Plus':'10 runs / month',
+     'Deep Research — Pro':'250 runs / month',
+     'File upload':'Up to 10 files/msg · 20MB each on Plus',
+     'Business min seats':'2 seats',
+     'Enterprise min seats':'150 seats',
+     'Rate limits (peak)':'Free throttled first · paid get priority',
+     'Message cap':'Soft limit per 3-hr window on Plus',
+   },
+   pros:['Widest feature coverage in one subscription','Best integrations (60+ apps on Business)','DALL-E image gen + Code Interpreter + Deep Research all included','Most polished voice mode','3M+ custom GPT store','Strong brand recognition = easy team adoption'],
+   cons:['$60/user Enterprise too costly for SMBs','150-seat minimum excludes mid-size orgs','Free plan has ads in US','Deep Research only 10 runs/mo on Plus','Context smaller than Claude','Rate limits hit Plus users during peak hours','No free image generation'],
+   reddit:['"Plus is great but you hit the cap fast if you push it. I switch to Claude for long docs." — r/ChatGPT','"Business plan worth it for the data privacy alone. No training on prompts." — r/OpenAI','"$200 Pro plan pays for itself if you do daily Deep Research. Otherwise stick to Plus." — r/artificial'],
+   rat:{output:88,speed:85,value:75,ent:82}},
+
+  {id:'claude',cat:'general',name:'Claude',maker:'Anthropic',
+   icon:'ANT',ic:'#d4765b',
+   tag:'Safest frontier AI — longest context, best coding & deep solutioning',
+   badges:['Best Context Window','Top SWE-bench Coder','Safest Outputs'],
+   uses:['Long-document synthesis & analysis','Advanced coding — SWE-bench leader','Technical solutioning documents','Capability & proposal writing','Agentic computer use','Multi-agent orchestration','Legal & compliance review','GTM content drafting'],
+   feats:['Claude Opus 4.6 (1M token context via API)','Claude Code — terminal & IDE agent','Extended Thinking / deep reasoning','Persistent memory (Max / Enterprise)','Google Workspace integration','GitHub, Slack, M365 connectors','Computer Use agent mode','Multi-agent orchestration','Artifacts — live code, HTML, React','Cowork desktop automation'],
+   free:['~20 messages/day estimate','Sonnet 4.6 access only','No Extended Thinking','No persistent memory','No file creation','No Claude Code','5-hr window reset on daily cap','No Google Workspace integration'],
+   plans:[
+     {n:'Pro',p:'$20/mo · $17 annual',d:'5× usage vs free, all models incl. Opus 4.6, Extended Thinking, Claude Code, Google Workspace, file creation, unlimited projects'},
+     {n:'Max 5×',p:'$100 / mo',d:'5× more than Pro, persistent memory, early feature access, priority during peak — ideal for heavy daily writing'},
+     {n:'Max 20×',p:'$200 / mo',d:'20× more than Pro — rate limits essentially disappear for all-day intensive use'},
+     {n:'Team Standard',p:'$25/seat/mo annual · $30 monthly · min 5',d:'200K context, shared projects, central billing, collaboration, priority access, early features'},
+     {n:'Team Premium',p:'$100/seat/mo annual · min 5',d:'Max-level usage + full Claude Code for every developer on the team'},
+     {n:'Enterprise',p:'~$30/seat/mo + API usage billing · annual',d:'500K+ context, HIPAA BAA, SSO/SCIM, audit logs, custom data retention, dedicated support, Cowork, no usage caps'},
+   ],
+   limits:{
+     'Context — Team':'200K tokens',
+     'Context — Enterprise':'500K tokens',
+     'Context — Opus 4.6 API':'1M tokens',
+     'Pro daily usage':'5× free tier (~5 hrs heavy use/day)',
+     'Max 5× usage':'~25 hrs heavy use/day',
+     'File upload':'10 files/msg · up to ~30MB per file',
+     'Team min seats':'5 seats',
+     'Enterprise billing':'Per-seat fee + API rates on top',
+     'Message cap':'Sliding 5-hr window; Max has highest priority',
+     'Image generation':'None — Claude has no image gen capability',
+   },
+   pros:['Largest context (1M tokens API) — holds entire codebases or books','#1/#2 SWE-bench coding benchmarks','Lowest hallucination risk — most cautious factual outputs','Best for long solutioning docs & proposal writing','Extended Thinking for multi-step complex reasoning','No training on user data by default'],
+   cons:['Zero image generation — major gap vs ChatGPT','Pro plan message cap frustrates heavy users (5-hr reset)','No real-time web research on base Pro plan','Fewer third-party integrations than ChatGPT','No voice mode','No Code Interpreter / data analytics execution environment'],
+   reddit:['"Claude is just better for long documents and coding. ChatGPT for everything else." — r/LocalLLaMA','"Hit the Pro message cap every day. Either upgrade to Max or use the API." — r/ClaudeAI','"Opus 4.6 on coding tasks is genuinely scary good. Team plan is worth it for a dev team." — r/programming'],
+   rat:{output:91,speed:82,value:80,ent:85}},
+
+  {id:'gemini',cat:'general',name:'Google Gemini',maker:'Google',
+   icon:'GEM',ic:'#4285f4',
+   tag:'Google\'s AI — 1M context, deepest Google ecosystem & Workspace integration',
+   badges:['Best Google Ecosystem','Deep Research','1M Context'],
+   uses:['Gmail, Docs, Sheets AI assistance','Multimodal analysis (image, video, audio)','Real-time web research','Code generation (Gemini Code Assist)','YouTube video analysis','Google Meet summaries','Long document processing','Data analysis in Sheets'],
+   feats:['Gemini 3.1 Pro (consumer)','Deep Research (multi-source reports)','Gemini in Gmail, Docs, Sheets, Meet, Slides','NotebookLM integration','Google Search AI Mode','2TB Google One storage (Pro plan)','Gems (custom AI personas)','Video generation (Veo)','Image generation (Nano Banana / Imagen)','2M token context via Gemini API'],
+   free:['Limited Gemini 3.1 Pro access','Limited Deep Research runs','No Workspace AI integration','15GB Google storage only','No premium models','API rate limited'],
+   plans:[
+     {n:'Google AI Pro (consumer)',p:'$19.99 / mo',d:'Full Gemini 3.1 Pro & Deep Research, Gemini in Gmail/Docs (proofreading level), 2TB storage, more NotebookLM access'},
+     {n:'Google AI Ultra (consumer)',p:'$249.99 / mo',d:'Highest Gemini 3.1 Pro + Deep Think reasoning, highest Deep Research, Gemini Agent (US), highest video/image gen, 30TB storage, YouTube Premium included'},
+     {n:'Gemini Business (Workspace add-on)',p:'$20/user/mo + $6–12 Workspace base',d:'Full AI in Gmail, Docs, Sheets, Meet, Slides; Workspace Studio; team AI agents; no training on data. Total: ~$26–32/user/mo'},
+     {n:'Gemini Enterprise (Workspace add-on)',p:'$30/user/mo + Workspace base · volume discounts 1000+ seats',d:'Everything in Business + AI Meetings & Messaging, advanced compliance, Vertex AI integration, SCIM, full audit. Total: ~$36–48/user/mo'},
+   ],
+   limits:{
+     'Context (consumer)':'Up to 1M tokens via Gemini API',
+     'Deep Research (Pro)':'More access — exact limit not published',
+     'File upload':'Up to 1M tokens via API file upload; consumer varies',
+     'Workspace add-on requirement':'Needs Business Standard or higher',
+     'Total cost (Enterprise)':'$36–54/user/mo all-in (add-on + Workspace)',
+     'Volume discounts':'1000+ users: ~10–20% off list price',
+     'Cannot selectively assign':'AI bundled for all users on a plan',
+   },
+   pros:['Deepest Google ecosystem integration (Gmail, Docs, Meet)','Gemini 3.1 Pro with 1M context is highly capable','NotebookLM integration is unique','Deep Research generates multi-source reports','Consumer Pro includes 2TB storage — great value','Workspace AI assigned per-user (not org-wide mandate)'],
+   cons:['Workspace AI requires Workspace subscription — total cost $26–54/user/mo','Business and Enterprise are add-ons, not standalone — confusing','Cannot give AI to some users only on a plan','Ultra plan at $249.99 vastly overpriced vs alternatives','Consumer and Workspace products are separate — not one subscription','Vertex AI for enterprise is separate billing again'],
+   reddit:['"Gemini in Docs is great for drafting but it\'s buried in menus. Not as intuitive as ChatGPT." — r/gsuite','"The Deep Research feature is genuinely impressive. Multi-source synthesis is solid." — r/Gemini','"Having to pay for Workspace AND the add-on is frustrating. Google should just bundle it." — r/google'],
+   rat:{output:85,speed:88,value:72,ent:78}},
+
+  {id:'m365',cat:'general',name:'Microsoft 365 Copilot',maker:'Microsoft',
+   icon:'M365',ic:'#0078d4',
+   tag:'AI in Word, Excel, PowerPoint, Teams & Outlook — enterprise at scale',
+   badges:['Best M365 Integration','Enterprise-Native','Requires M365 License'],
+   uses:['Word document drafting & editing','Excel formula generation & data analysis','PowerPoint presentation creation','Outlook email summarization & drafting','Teams meeting summaries & action items','SharePoint document search','Copilot Studio custom agents','Business intelligence with Analyst agent'],
+   feats:['Copilot in Word, Excel, PPT, Outlook, Teams','Microsoft Graph grounding (your org data)','Copilot Chat (web + work data)','Researcher & Analyst deep-reasoning agents','Copilot Studio (custom agent builder)','Work IQ (understands your work patterns)','Agent Mode in Word & Excel','Security Copilot (E5 plans)','Power BI Copilot integration','SharePoint AI-powered search'],
+   free:['Copilot Chat free for M365 users','Web data only — no org data','No Copilot in Word/Excel/PPT/Teams','No Microsoft Graph grounding','Effectively only for initial exploration'],
+   plans:[
+     {n:'Copilot Business',p:'$18/user/mo promo to Jun 2026 · then $21 annual · $25.20 monthly',d:'Requires M365 Business Standard or Premium. Copilot in all M365 apps, Microsoft Graph, Copilot Chat, basic agents. Max 300 users.'},
+     {n:'M365 Copilot (Enterprise)',p:'$30/user/mo annual · no seat minimum',d:'Requires M365 E3/E5. Full Copilot + Researcher & Analyst agents + Copilot Tuning + role-based AI + Work IQ + audit + SCIM. All-in cost: $66–87/user/mo with base license.'},
+     {n:'Copilot Studio',p:'$200/tenant/mo · 25K messages incl.',d:'Custom AI agent builder. Additional messages at $0.01 each. Separate from Copilot license.'},
+   ],
+   limits:{
+     'Not standalone':'Cannot buy without an existing M365 subscription',
+     'All-in cost (Enterprise)':'M365 E3 ($36) + Copilot ($30) = $66/user/mo',
+     'All-in cost (E5)':'M365 E5 ($57) + Copilot ($30) = $87/user/mo',
+     'Context (Teams)':'~2 hours of meeting transcript',
+     'File size':'Up to 512MB documents in Copilot',
+     'Data governance risk':'Copilot sees everything user has access to — overshared SharePoint = data exposure',
+     'No free trial':'No trial for the paid Copilot tier',
+     'Seat minimum':'None as of 2026',
+   },
+   pros:['Deepest M365 integration — works where your team already works','Microsoft Graph grounding gives highly org-relevant answers','Teams meeting summaries are genuinely excellent','Copilot Studio enables no-code custom agents','Security Copilot included with E5 — strong for security teams','No seat minimum as of 2026'],
+   cons:['Very expensive: $66–87/user/mo all-in with base license','Not standalone — locked to existing M365 subscription','Permissions problem: Copilot surfaces overshared SharePoint content','No free trial for paid Copilot tier','Quality varies by app — best in Teams, weaker in Excel for complex tasks','Copilot Studio priced separately again'],
+   reddit:['"Copilot for Teams meeting summaries is genuinely magical. Saves 30 min after every meeting." — r/Office365','"The $30/user add-on on top of E3 is a tough ROI conversation with finance." — r/sysadmin','"Fix your SharePoint permissions BEFORE enabling Copilot. It WILL surface overshared content." — r/microsoft365'],
+   rat:{output:78,speed:80,value:65,ent:90}},
+
+  // ═══════════ CONTENT CREATION ═══════════
+  {id:'jasper',cat:'content',name:'Jasper AI',maker:'Jasper.ai',
+   icon:'JSP',ic:'#ff6b35',
+   tag:'Enterprise marketing AI — brand voice, SEO, campaign workflows',
+   badges:['Best Brand Voice','Marketing-Focused','Enterprise Content'],
+   uses:['SEO-optimized blog posts','Marketing campaign copy','Social media content','Email sequences','Ad copy (Google, Meta, LinkedIn)','Brand voice consistency at scale','Product descriptions'],
+   feats:['Brand Voice training (upload style guides)','Knowledge Base (company facts)','Jasper Canvas (multi-doc editor)','70+ Marketing Templates','Jasper Chat (AI assistant)','AI Image Generation','Surfer SEO integration','Grammarly integration','Plagiarism check (Copyscape)','Autonomous AI Agents','API access (Business)','30+ language support'],
+   free:['7-day free trial only','No permanent free plan','Trial: 2 brand voices, 5 knowledge assets'],
+   plans:[
+     {n:'Creator',p:'$39/mo · $31 annual',d:'1 seat, 1 brand voice, basic templates, AI image generation, Jasper Chat'},
+     {n:'Pro',p:'$59/mo · $49 annual',d:'1 seat, 3 brand voices, 10 knowledge assets, Canvas, all templates, SEO mode, collaborative docs — extra users $49/seat'},
+     {n:'Business',p:'Custom · contact sales · ~$500+/mo for teams',d:'Unlimited brand voices & knowledge, AI agents, no-code App Builder, API, dedicated support, SSO, compliance, custom workflows'},
+   ],
+   limits:{
+     'Brand voices':'Creator: 1 · Pro: 3 · Business: unlimited',
+     'Knowledge assets':'Creator: 0 · Pro: 10 · Business: unlimited',
+     'Seats':'Pro: add users at $49/seat · Business: custom',
+     'API access':'Business plan only',
+     'No free plan':'7-day trial only — must pay to continue',
+     'Hidden costs':'Surfer SEO, Grammarly, Copyscape integrations may cost extra',
+     'Seat expansion':'Mid-contract additions billed at list price',
+   },
+   pros:['Best brand voice consistency in the market','Marketing-specific templates save hours','Strong Surfer SEO integration for content ranking','Knowledge Base ensures factual brand accuracy','AI agents for autonomous content workflows'],
+   cons:['No free plan — 7-day trial only','Creator $39/mo, Pro $59/mo per user is expensive','Business requires sales call — no self-serve','No URL browsing in Jasper Chat','Steep learning curve for agents & Knowledge Base','Not ideal for non-marketing use cases'],
+   reddit:['"Jasper is expensive but brand voice consistency is unmatched if it truly matters to your company." — r/marketing','"Pro plan works for a solo marketer. Business pricing is absurd for small teams." — r/contentmarketing'],
+   rat:{output:80,speed:82,value:65,ent:78}},
+
+  {id:'writesonic',cat:'content',name:'Writesonic',maker:'Writesonic',
+   icon:'WS',ic:'#7c3aed',
+   tag:'AI writing + SEO + GEO — rank on Google AND in AI search results',
+   badges:['SEO + GEO Focus','Content at Scale','Affordable'],
+   uses:['SEO blog articles','Generative Engine Optimization (GEO)','Social media posts','Ad copy','Product descriptions','Email newsletters','Paraphrasing & rewriting'],
+   feats:['Article Writer (long-form)','Chatsonic (web-connected AI)','Brand Voice training','Bulk article generation','GEO tracking (AI search visibility)','SEO optimization built-in','API access','WordPress, Shopify, Zapier integrations'],
+   free:['Limited free credits (trial period)','Very restricted word generation'],
+   plans:[
+     {n:'Lite',p:'$49/mo · $39 annual',d:'1 user, 15 articles/month, basic SEO, brand voice'},
+     {n:'Standard',p:'$99/mo · $79 annual',d:'1 user, 30 articles/month, full SEO suite, basic GEO features'},
+     {n:'Professional',p:'$249/mo · $199 annual',d:'2 users, 100 articles/month, GEO tracking for 100 AI prompts, sentiment analysis'},
+     {n:'Advanced',p:'$499/mo · $399 annual',d:'5 users, 200 articles/month, advanced GEO with sentiment analysis'},
+     {n:'Enterprise',p:'Custom',d:'Unlimited articles/prompts, full GEO, custom API, dedicated support'},
+   ],
+   limits:{
+     'Article limit':'15 to 200 articles/month based on plan',
+     'Users':'1–5 based on plan · Enterprise: unlimited',
+     'GEO tracking':'Professional+ ($199/mo) only',
+     'API':'Higher plans only',
+   },
+   pros:['Unique SEO + GEO combination in one platform','Bulk article generation speeds up content teams','More affordable than Jasper for similar volume','Chatsonic has real-time web access'],
+   cons:['Per-article pricing feels restrictive for large teams','Advanced GEO locked behind $199+/mo','Brand voice less polished than Jasper','Less focused on marketing workflows'],
+   reddit:['"Writesonic is my go-to for bulk SEO content. Cheaper than Jasper and good enough quality." — r/SEO','"The GEO feature is genuinely useful for tracking if your brand shows up in ChatGPT answers." — r/digitalmarketing'],
+   rat:{output:75,speed:85,value:75,ent:70}},
+
+  {id:'copyai',cat:'content',name:'Copy.ai',maker:'Copy.ai',
+   icon:'COP',ic:'#5b21b6',
+   tag:'GTM AI platform — sales & marketing automation, not just writing',
+   badges:['GTM Workflows','Sales Automation','Enterprise-Focused'],
+   uses:['Go-to-market content workflows','Sales outreach sequences','Marketing campaign copy','LinkedIn & social content','CRM data enrichment','Competitive intelligence','SDR automation'],
+   feats:['Workflow automation (visual builder)','GTM playbooks','CRM integrations (Salesforce, HubSpot)','Brand Voice & Knowledge Base','Infobase (company knowledge)','API access','Team collaboration','Multiple AI model access'],
+   free:['Unlimited words for chat-based writing','No workflow automation on free','Workflow credits start at $1,000/mo'],
+   plans:[
+     {n:'Pro',p:'$49/seat/mo · $36 annual',d:'1 seat, 2 brand voices, 5 knowledge assets, basic workflows'},
+     {n:'Growth',p:'Custom · team-focused',d:'Multiple seats, more knowledge assets, advanced workflows, API'},
+     {n:'Business / Enterprise',p:'Custom · $1,000+/mo for workflow automation',d:'Unlimited brand/knowledge, full workflow automation, enterprise integrations, SOC 2, SSO, dedicated support'},
+   ],
+   limits:{
+     'Free tier':'Unlimited chat writing · workflow credits NOT included',
+     'Workflow automation':'Enterprise only — $1,000/mo minimum barrier',
+     'Brand voices':'Pro: 2 · Enterprise: unlimited',
+     'Knowledge assets':'Pro: 5 · Enterprise: unlimited',
+     'API':'Business/Enterprise only',
+   },
+   pros:['Best for GTM teams combining marketing + sales workflows','Free tier generously allows unlimited writing','Deep CRM integrations (Salesforce, HubSpot)','Workflow automation goes beyond just writing'],
+   cons:['Workflow automation starts at $1,000+/mo — prohibitive for SMBs','Pivoted to enterprise — not ideal for solo creators','Pro at $49/seat is pricey for limited features','No image generation'],
+   reddit:['"Copy.ai has gotten very expensive. Clearly targeting enterprise now, not indie marketers." — r/Entrepreneur','"The workflow automation is powerful for GTM but the price is a real barrier." — r/sales'],
+   rat:{output:78,speed:80,value:60,ent:80}},
+
+  {id:'grammarly',cat:'content',name:'Grammarly',maker:'Grammarly',
+   icon:'GRM',ic:'#15c39a',
+   tag:'AI writing assistant — grammar, clarity, tone enforcement everywhere',
+   badges:['Works Everywhere','Best Grammar Check','Business Writing'],
+   uses:['Grammar & spelling correction','Clarity & readability improvement','Tone adjustment for context','Email drafting & replies','Document writing assistance','Plagiarism detection (Business)','Brand tone consistency'],
+   feats:['Grammar, spelling, punctuation','Clarity & conciseness suggestions','Tone detection & adjustment','AI generative prompts','Browser extension (Chrome, Firefox, Edge)','Desktop & mobile apps','Microsoft Word & Google Docs add-in','Plagiarism checker (Business)','Brand tone guidelines (Business)','Style guide enforcement (Business)','Team performance analytics'],
+   free:['Basic grammar & spelling only','No advanced style suggestions','No AI generative features','No plagiarism checker','Limited tone detection'],
+   plans:[
+     {n:'Premium (individual)',p:'$12/mo annual · $30 monthly',d:'Full suggestions, tone rewrite, clarity, word choice, plagiarism checker, full AI generative writing'},
+     {n:'Business (team)',p:'$15/user/mo annual · min 3 users',d:'Everything in Premium + brand tone guidelines, style guide, snippets, analytics, SSO, priority support, centralized billing'},
+     {n:'Enterprise',p:'Custom',d:'Business features + SAML SSO, advanced security, dedicated account manager, SLA, SCIM, granular permissions'},
+   ],
+   limits:{
+     'Plagiarism checker':'Premium & Business only',
+     'AI generation':'Premium & Business · limited on free',
+     'Team minimum':'3 users for Business plan',
+     'Style guide':'Business plan only',
+     'Context':'Works on current document/email — no cross-document memory',
+     'Non-writing tasks':'Not useful outside of writing contexts',
+   },
+   pros:['Works across EVERY platform without workflow change','Easiest enterprise-wide deployment','Business Brand Tone useful for consistency','Plagiarism detection is comprehensive','Low price ($12–15/user) makes ROI easy to justify'],
+   cons:['Not a creative AI — weak at writing content from scratch','AI generation feels bolted-on vs Jasper/Claude','Limited document purpose context awareness','Premium monthly at $30 steep vs annual','Not useful for non-writing tasks'],
+   reddit:['"Grammarly Business is the easiest AI to get approved by IT. Low price, clear value." — r/writing','"I use Grammarly for polish and Claude for generation. They complement perfectly." — r/productivity'],
+   rat:{output:72,speed:92,value:82,ent:78}},
+
+  {id:'notionai',cat:'content',name:'Notion AI',maker:'Notion',
+   icon:'NOT',ic:'#191919',
+   tag:'AI assistant in your Notion workspace — write, summarize, search connected tools',
+   badges:['Workspace-Native','Context-Aware','Best for Notion Teams'],
+   uses:['Meeting note summarization','Project update drafting','Action item extraction','Workspace Q&A','Wiki and knowledge base writing','Connector search (Slack, Drive, Jira)'],
+   feats:['AI writing in any Notion page','AI search across workspace','Summarize documents & databases','Q&A from workspace knowledge','Connectors: Slack, Google Drive, Jira, GitHub, Confluence, Linear','Smart summaries for databases','AI autofill for database properties','Translation (50+ languages)','Action item extraction'],
+   free:['20 free Notion AI uses on free plan','Must upgrade for more','Limited connectors on free'],
+   plans:[
+     {n:'Notion AI add-on',p:'$10/user/mo annual · $16 monthly',d:'Added to any paid Notion plan. Unlimited AI uses, all connectors, AI search across workspace'},
+     {n:'Notion Plus + AI',p:'$16 + $10 = $26/user/mo total',d:'Best for individuals and small teams needing collaboration'},
+     {n:'Notion Business + AI',p:'$15 + $10 = $25/user/mo total',d:'SSO, advanced permissions, unlimited blocks + AI add-on'},
+     {n:'Enterprise + AI',p:'Custom + ~$8–10 AI add-on',d:'SAML/SCIM, audit logs, advanced security, dedicated CSM'},
+   ],
+   limits:{
+     'AI uses':'Unlimited on paid AI add-on',
+     'Context':'Within your Notion pages and databases only',
+     'File upload':'Images/PDFs up to 5MB free · 25MB+ paid',
+     'Connector depth':'Limited to what your connected apps expose',
+     'Web search':'Not included — only searches your Notion + connectors',
+   },
+   pros:['Deeply integrated where Notion teams already work','Connectors bring Slack, Drive, Jira context into AI search','Autofill database properties saves data entry time','Reasonable $10/user add-on pricing'],
+   cons:['Only useful if your team uses Notion — not standalone','AI quality below Claude or ChatGPT','Context limited to Notion workspace + connected apps','Cannot browse web or generate complex analysis'],
+   reddit:['"Notion AI is not as smart as Claude but it\'s right there in my workspace. Good for quick summaries." — r/Notion','"The connectors feature is what makes it worth it — Slack + Drive context is genuinely useful." — r/productivity'],
+   rat:{output:70,speed:85,value:72,ent:70}},
+
+  {id:'canva',cat:'content',name:'Canva Magic Studio',maker:'Canva',
+   icon:'CNV',ic:'#00c4cc',
+   tag:'AI-powered design platform — create any visual asset in minutes',
+   badges:['Best for Non-Designers','Brand Kits','All-in-One Visual AI'],
+   uses:['Social media graphics & posts','Presentations & slide decks','Marketing brochures & mailers','Video editing & AI clips','Website & landing pages','Email templates','Product mockups','Logo creation','Infographics & capability decks'],
+   feats:['Magic Design (AI template generation)','Magic Write (AI copywriting)','Magic Edit / Erase / Expand','Dream Lab (AI image gen via Leonardo Phoenix)','Magic Switch (repurpose across formats)','Brand Kit (colors, fonts, logos)','Text-to-video AI','Background Remover','Resize & Translate (100+ languages)','100M+ templates & assets','Real-time team collaboration'],
+   free:['Limited AI generation credits/month','No Brand Kit','Canva branding on some exports','Limited premium templates','Only 10 free text-to-image gen/month'],
+   plans:[
+     {n:'Pro (individual)',p:'$15/mo · $120/year',d:'Unlimited AI credits (fair use), full Brand Kit, background remover, 1TB storage, premium assets, social scheduling'},
+     {n:'Teams',p:'$14.99/user/mo · min 3 users · annual',d:'Everything in Pro + team Brand Kit, shared folders, admin controls, unlimited workspace storage, bulk export'},
+     {n:'Enterprise',p:'Custom',d:'Teams features + SSO, advanced brand management, dedicated onboarding, SLA, Canva for Salesforce integration'},
+   ],
+   limits:{
+     'AI credits (Pro)':'Unlimited "fair use" — heavy use may throttle',
+     'Storage (Pro)':'1TB',
+     'Team minimum':'3 users for Teams plan',
+     'Video export':'Up to 1080p on Pro',
+     'File upload':'100MB/file free · 1GB on Pro',
+     'Brand Kits':'1 on Pro · unlimited on Teams/Enterprise',
+     'Price hike':'2024 shift to per-seat Teams caused ~300% increase for some teams',
+   },
+   pros:['Best non-designer design tool — anyone creates professional visuals','Dream Lab AI image gen now rival-quality for design use cases','Magic Switch for repurposing content across formats is unique','Brand Kit enforcement ensures consistency at scale','Massive template library — brochures, mailers, decks all covered'],
+   cons:['2024 pricing restructure caused 300% increase for some teams','AI image quality still below Midjourney for artistic work','No offline mode — fully browser-dependent','Magic Write produces generic copy — not brand-voice quality','AI credit "fair use" cap is vague'],
+   reddit:['"Dream Lab update finally makes Canva viable for AI image gen. Still not Midjourney level but close enough." — r/graphic_design','"The Teams price hike is infuriating. 3× increase moving to per-seat pricing." — r/Canva'],
+   rat:{output:82,speed:88,value:74,ent:75}},
+
+  // ═══════════ APP DEVELOPMENT ═══════════
+  {id:'ghcopilot',cat:'coding',name:'GitHub Copilot',maker:'Microsoft/GitHub',
+   icon:'GHC',ic:'#24292f',
+   tag:'Most adopted AI coding assistant — works in every major IDE',
+   badges:['Best IDE Coverage','Most Adopted','Best Value at $10/mo'],
+   uses:['Inline code completion','Code explanation & docs','Unit test generation','Bug fixing & debugging','PR review automation','CLI shell commands','Code refactoring','GitHub Issues → autonomous code'],
+   feats:['Works in VS Code, JetBrains, Neovim, Xcode, Visual Studio','Multi-model: GPT-5.4, Claude Sonnet 4.6, Gemini 2.5 Pro','Copilot Chat (inline + panel)','Copilot Coding Agent (autonomous from Issues)','Copilot CLI (terminal commands)','PR reviews & summaries','Code security scanning','Knowledge base (Enterprise — fine-tune on org code)','IP indemnity (Business+)','SAML SSO, SCIM, audit logs (Enterprise)'],
+   free:['2,000 code completions/month','50 chat requests/month','No agent mode','No multi-model choice','No admin controls'],
+   plans:[
+     {n:'Individual',p:'$10/mo · $100/year',d:'300 premium requests/mo, unlimited completions, all IDEs, agent mode, Claude Opus 4.6 & Copilot CLI'},
+     {n:'Pro+',p:'$39 / mo',d:'Everything in Individual + higher premium requests, Opus 4, o3 access for complex reasoning tasks'},
+     {n:'Business',p:'$19/user/mo · no minimum',d:'Org controls, centralized license mgmt, audit logs, SAML SSO, IP indemnity, policy controls'},
+     {n:'Enterprise',p:'$39/user/mo · requires GitHub Enterprise Cloud at $21/user/mo · total ~$60/user/mo',d:'Business + fine-tuning on private codebase, knowledge base, advanced security & compliance'},
+   ],
+   limits:{
+     'Premium requests (Individual)':'300/mo · $0.04 each overage',
+     'Completions':'Unlimited on all paid plans',
+     'Context (inline)':'~8,000 tokens',
+     'Enterprise requirement':'Needs GitHub Enterprise Cloud ($21/user/mo additional)',
+     'Seat minimum':'None for Business',
+     'Languages':'All major · strongest Python, JS/TS, Java, C#',
+   },
+   pros:['Works in ALL major IDEs — biggest advantage over Cursor','Best value: $10/mo for Individual','Deep GitHub integration (issues, PRs, reviews)','IP indemnity on Business/Enterprise','Agent mode handles autonomous issue resolution'],
+   cons:['Context window (~8K tokens) small for large codebases','Multi-file refactoring weaker than Cursor Composer','Enterprise requires GitHub Enterprise Cloud ($21/user extra)','Premium request limits can hit heavy users ($0.04 overage)'],
+   reddit:['"Copilot at $10 vs Cursor at $20: Copilot wins for everyday coding, Cursor wins for large refactors." — r/programming','"We deployed Copilot Business to 200 engineers. 80% adoption in 2 months." — r/devops'],
+   rat:{output:84,speed:90,value:92,ent:82}},
+
+  {id:'cursor',cat:'coding',name:'Cursor',maker:'Anysphere',
+   icon:'CUR',ic:'#2563eb',
+   tag:'AI-native IDE — best multi-file editing, deepest codebase understanding',
+   badges:['Best Multi-File AI','AI-Native IDE','$50B Valuation'],
+   uses:['Multi-file code refactoring','Full feature implementation','Codebase-wide search','Architecture design','Code review with full context','Bug hunting across modules','Large-scale migrations'],
+   feats:['Composer Mode (multi-file edits in one prompt)','Supermaven autocomplete (72% acceptance rate)','Full codebase indexing & semantic search','Multi-model: GPT-5.4, Claude Opus 4.6, Gemini 3 Pro, Grok','Cursor Background Agent (async task runner)','BugBot (automated PR review)','Team plugin marketplace (Mar 2026)','Privacy mode (no code stored)','VS Code fork — all VS Code extensions work'],
+   free:['Limited free tier','Basic autocomplete only','No agent mode','No multi-model choice','No team features'],
+   plans:[
+     {n:'Pro',p:'$20 / mo',d:'Unlimited autocomplete, 500 premium model requests/mo (Opus 4.6, GPT-5.4), unlimited background agent queries, Composer mode, BugBot'},
+     {n:'Pro+',p:'$60 / mo',d:'500 premium requests + 500 more with higher-cost models — for heavy daily use'},
+     {n:'Ultra',p:'$200 / mo',d:'Maximum usage — for teams where rate limits are a bottleneck'},
+     {n:'Teams',p:'$40/user/mo · min 3 users',d:'All Pro features + centralized billing, RBAC, SAML/OIDC SSO, usage analytics, pooled usage, admin controls, audit logs, team plugin marketplace'},
+     {n:'Enterprise',p:'Custom',d:'Teams features + custom model endpoints, advanced security review, SLA, dedicated support, compliance tooling'},
+   ],
+   limits:{
+     'Premium requests (Pro)':'500/month',
+     'Context':'Full codebase indexed · active context ~200K tokens',
+     'Composer max':'10–50 files per single operation (Mar 2026)',
+     'IDE coverage':'VS Code fork only — no JetBrains, Xcode',
+     'Team minimum':'3 users for Teams plan',
+     'Privacy mode':'All plans — code not stored when enabled',
+   },
+   pros:['Best multi-file editing — Composer is unmatched','Full codebase semantic search','Model flexibility — choose per task','VS Code fork means no new learning curve','30% faster than Copilot on benchmarks'],
+   cons:['$20/mo vs Copilot\'s $10/mo — twice the cost','Only VS Code fork — no JetBrains or Xcode','500 premium requests/mo on Pro runs out for heavy users','Not deeply integrated into GitHub platform','Enterprise pricing not transparent'],
+   reddit:['"Cursor\'s Composer changed how I code. Tell it what you want, it edits 10 files at once." — r/cursor','"I pay $20 for Cursor and $10 for Copilot. Cursor for big tasks, Copilot for daily grind." — r/programming'],
+   rat:{output:92,speed:88,value:78,ent:80}},
+
+  {id:'claudecode',cat:'coding',name:'Claude Code',maker:'Anthropic',
+   icon:'CC',ic:'#d4765b',
+   tag:'Terminal-based agentic coding — autonomous repository management',
+   badges:['Top SWE-bench','Best Agentic Coding','Terminal-Native'],
+   uses:['Full repository understanding','Autonomous feature implementation','Refactoring large codebases','Test writing & debugging','Documentation generation','CI/CD pipeline management'],
+   feats:['CLI tool (runs in terminal)','Full codebase context (500K tokens Enterprise)','Opus 4.6 powered (SWE-bench 77.2%)','Multi-agent orchestration','Plan Mode (shows plan before coding)','GitHub & GitLab integration','Bash, Python, JS execution','Computer Use (GUI control)','MCP tool connections','Works in Cursor, VS Code, Claude.ai web'],
+   free:['No free Claude Code — requires Pro ($20/mo) or API credits','Pro plan: token budget for focused sessions only'],
+   plans:[
+     {n:'Pro',p:'$20 / mo',d:'Claude Code in terminal + web + desktop, Sonnet 4.6 + Opus 4.6, token budget for focused sessions'},
+     {n:'Max 5×',p:'$100 / mo',d:'Full Claude Code with 5× usage, agent teams, computer use, priority access'},
+     {n:'Max 20×',p:'$200 / mo',d:'Full Claude Code without rate limit concerns for all-day development'},
+     {n:'Team Premium',p:'$100/seat/mo annual · min 5',d:'Max-level Claude Code for every developer on the team'},
+     {n:'Enterprise',p:'API rates + ~$30/seat/mo seat fee · annual',d:'500K context, HIPAA-ready BAA, SCIM/SSO, audit logs, usage-based billing with no usage caps'},
+     {n:'API (pay-as-you-go)',p:'Sonnet 4.6: $3/$15/MTok · Opus 4.6: $5/$25/MTok',d:'No monthly fee. 50% Batch API discount. Best for automation & variable workloads.'},
+   ],
+   limits:{
+     'Context (Team)':'200K tokens',
+     'Context (Enterprise)':'500K tokens',
+     'Context (API)':'1M tokens (Opus 4.6)',
+     'Pro token budget':'Focused sessions · not all-day heavy coding',
+     'Agent mode':'Max / Enterprise for full agent teams',
+     'API price jump':'Input over 200K tokens doubles price: $3 → $6',
+   },
+   pros:['#1/#2 SWE-bench coding benchmarks globally','Best terminal/CLI agent for automated pipelines','Largest context for codebase understanding','Agent teams split complex tasks automatically','Pay-as-you-go API for cost-effective automation'],
+   cons:['No free tier — $20/mo minimum','Pro plan rate-limited for heavy daily use','Terminal-based — less approachable than Copilot or Cursor','Cannot run natively in JetBrains','Cost unpredictable on API when crossing 200K token threshold'],
+   reddit:['"Claude Code in the terminal is how I do all my agentic work. Tell it the task, come back in 20 min." — r/LocalLLaMA','"Enterprise tier with 500K context is a game changer for complex infrastructure work." — r/devops'],
+   rat:{output:94,speed:80,value:78,ent:88}},
+
+  {id:'tabnine',cat:'coding',name:'Tabnine',maker:'Tabnine',
+   icon:'TAB',ic:'#0f172a',
+   tag:'Privacy-first AI coding — on-premises deployment, zero data retention',
+   badges:['Best for Privacy','On-Premises','No Data Retention'],
+   uses:['Code completion in any IDE','Air-gapped environment coding','Regulated industry code generation','Enterprise codebase personalization','Secure code suggestion without data leaving org'],
+   feats:['Code completion across all languages','AI chat for code Q&A','Test generation','Code explanation & docs','Private code training (Enterprise)','Self-hosted / on-premises deployment','Zero data retention on Enterprise','All major IDEs supported','SOC 2 Type II, GDPR, ISO 27001'],
+   free:['No free tier — annual commitment required','Must contact sales for all pricing'],
+   plans:[
+     {n:'Developer',p:'~$15/user/mo annual',d:'Individual code completion, chat, test generation, all IDEs'},
+     {n:'Business',p:'$39/user/mo annual',d:'Team features, codebase personalization, admin controls, basic security'},
+     {n:'Enterprise',p:'$59/user/mo annual',d:'On-premises deployment, private code training, zero data retention, dedicated support, SOC 2, ISO 27001, SCIM, SSO, air-gapped option'},
+   ],
+   limits:{
+     'Free tier':'None — paid only, annual commitment required',
+     'On-premises':'Enterprise plan only',
+     'Data retention':'Enterprise: zero · lower plans may retain for training',
+     'Codebase training':'Enterprise only',
+   },
+   pros:['Only major AI coding tool with true on-premises deployment','Zero data retention on Enterprise — critical for regulated industries','SOC 2 & ISO 27001 compliance','Works in air-gapped environments'],
+   cons:['Most expensive code completion at $39–59/user/mo','No free tier — high evaluation barrier','Annual commitment required','Output quality below Cursor or Claude Code for complex tasks'],
+   reddit:['"Tabnine is expensive but it\'s the only option for our air-gapped environment." — r/netsec'],
+   rat:{output:75,speed:88,value:55,ent:88}},
+
+  {id:'replit',cat:'coding',name:'Replit Ghostwriter',maker:'Replit',
+   icon:'RPL',ic:'#f26207',
+   tag:'Browser-based coding IDE — instant deployment, zero setup',
+   badges:['Browser-Based IDE','Instant Deploy','Education-Friendly'],
+   uses:['Rapid prototyping in browser','Teaching programming','Hosting small apps instantly','Collaborative coding','Hackathon projects'],
+   feats:['Browser-based IDE (no local setup)','Ghostwriter AI completion','Ghostwriter Chat','AI code generation from prompts','One-click deployment','Real-time collaborative coding','Built-in database & storage','50+ languages','Replit Agent (autonomous app building)'],
+   free:['Basic coding with limited AI','Very slow compute','Public repls only','Limited Ghostwriter usage'],
+   plans:[
+     {n:'Core (individual)',p:'$25/mo · $20 annual',d:'Full Ghostwriter, private repls, 50GB storage, custom domains, Replit Agent'},
+     {n:'Teams',p:'$40/user/mo',d:'All Core features + team collaboration, shared projects, admin controls, SSO'},
+     {n:'Enterprise',p:'Custom',d:'Everything in Teams + custom security, audit logs, SCIM, dedicated support, private deployment'},
+   ],
+   limits:{
+     'Compute (free)':'Very limited — slow execution',
+     'Storage (Core)':'50GB',
+     'Private repls':'Core+ only',
+     'Deployment hosting':'Replit Hosting priced separately',
+   },
+   pros:['Zero setup — code in browser instantly','Best for education and learning','All-in-one: IDE + AI + hosting','Collaborative coding built-in'],
+   cons:['Not for production-grade workloads','Compute limits make complex apps slow','High Teams price ($40/user) vs functionality','Ghostwriter quality below Cursor or Claude Code'],
+   reddit:['"Replit is amazing for learning and hackathons. For real work I use Cursor." — r/programming'],
+   rat:{output:70,speed:72,value:65,ent:60}},
+
+  {id:'codeium',cat:'coding',name:'Codeium (Windsurf)',maker:'Codeium',
+   icon:'COD',ic:'#09b6a2',
+   tag:'Free AI coding + Windsurf IDE — fast, generous, self-hosted option',
+   badges:['Most Generous Free','Fast Autocomplete','Windsurf IDE'],
+   uses:['Free code completion for individuals','AI coding in VS Code, JetBrains, Vim','Windsurf IDE for AI-first coding','Fast autocomplete at scale'],
+   feats:['Windsurf IDE (AI-native, like Cursor)','Free unlimited code completions','AI chat in IDE','Cascade multi-file agent mode','Codeium plugin for 40+ IDEs','Fast inference speeds','Self-hosted Enterprise option'],
+   free:['Unlimited completions (with fair use)','Limited AI chat credits','No agent mode','No team features'],
+   plans:[
+     {n:'Windsurf Pro',p:'$15 / mo',d:'Unlimited completions, 500 premium AI credits/mo, agent mode (Cascade), multi-model access'},
+     {n:'Windsurf Teams',p:'$35/user/mo',d:'All Pro features + SSO, usage analytics, centralized billing, admin controls'},
+     {n:'Enterprise (Codeium)',p:'Custom',d:'On-premises or VPC deployment, private model training, advanced security, SOC 2, SCIM, dedicated support'},
+   ],
+   limits:{
+     'Free completions':'Unlimited (fair use)',
+     'Free chat':'Limited credits',
+     'Windsurf Pro credits':'500/month',
+     'Self-hosted':'Enterprise option available — rare in AI coding tools',
+   },
+   pros:['Most generous free tier (unlimited completions)','Windsurf IDE is a strong Cursor alternative at lower price','Fast inference speeds','Self-hosted Enterprise for security-conscious orgs','40+ IDE/editor plugins'],
+   cons:['Smaller community than Copilot or Cursor','500 credits/mo Pro limit runs out','Agent mode less mature than Cursor Composer','Less GitHub ecosystem integration'],
+   reddit:['"Codeium free tier is insane value. Unlimited completions, no credit card." — r/programming','"Windsurf is basically Cursor but cheaper." — r/ClaudeAI'],
+   rat:{output:80,speed:90,value:88,ent:72}},
+
+  {id:'autogen',cat:'coding',name:'AutoGen / Magentic-One',maker:'Microsoft',
+   icon:'AGN',ic:'#0078d4',
+   tag:'Open-source multi-agent framework — complex AI task orchestration',
+   badges:['Open Source','Multi-Agent','Developer Framework'],
+   uses:['Multi-agent AI pipeline building','Automated research workflows','Code review pipelines','Complex task decomposition','Custom agent orchestration','Enterprise AI automation'],
+   feats:['Multi-agent conversation framework','AutoGen Studio (low-code agent builder)','Magentic-One (general-purpose multi-agent)','Code execution sandboxing','Human-in-the-loop workflows','Group chat between agents','Tool integration (web, code, APIs)','Python & .NET support','Azure AI integration','Open source (MIT license)'],
+   free:['Fully free and open source (MIT)','Requires own API keys','No managed cloud hosting by Microsoft'],
+   plans:[
+     {n:'Open Source (self-hosted)',p:'Free (MIT license)',d:'Full framework, self-deploy anywhere; you pay only for model API calls (OpenAI, Anthropic, etc.)'},
+     {n:'Azure AI Foundry (managed)',p:'Azure consumption pricing',d:'Managed hosting on Azure, integrates with Azure AI services, enterprise security, no self-hosting required'},
+   ],
+   limits:{
+     'Rate limits':'Only limited by underlying model API limits','Scalability':'Scales with your infrastructure / Azure capacity',
+     'Technical requirement':'Requires developer expertise to deploy & maintain',
+     'Support':'Community only for open source · Microsoft via Azure',
+   },
+   pros:['Free, open source — no subscription cost','Most flexible multi-agent framework available','Microsoft backing ensures active development','Azure integration for enterprise deployments'],
+   cons:['Requires developer expertise — not for non-technical users','No managed cloud service without Azure','Complex setup vs SaaS tools','Debugging multi-agent workflows is challenging'],
+   reddit:['"AutoGen is the best framework for building multi-agent pipelines. But you need to be technical." — r/LocalLLaMA'],
+   rat:{output:82,speed:75,value:95,ent:75}},
+
+  // ═══════════ WEB / APP BUILDERS ═══════════
+  {id:'v0',cat:'webapp',name:'v0 by Vercel',maker:'Vercel',
+   icon:'V0',ic:'#000000',
+   tag:'AI React/Next.js UI generator — describe it, deploy to Vercel instantly',
+   badges:['Best Frontend UI Gen','Vercel-Native','6M+ Developers'],
+   uses:['React component generation','Landing page creation','Dashboard UI scaffolding','Design-to-code (Figma imports)','UI prototyping for developers','Next.js app scaffolding'],
+   feats:['Text-to-React UI (Tailwind CSS + shadcn/ui)','Three AI model tiers: Mini, Pro, Max','Git integration & VS Code-style editor (Feb 2026)','Sandbox runtime for full-stack apps','Database integrations (Snowflake, AWS)','GitHub sync & PR creation from chat','Vercel env variable import','Figma import (Premium+)','One-click deploy to Vercel','API access (Premium+)'],
+   free:['$5/month in AI credits (token-based)','Up to 200 projects','No Figma import','No API access'],
+   plans:[
+     {n:'Premium',p:'$20 / mo',d:'$20/month in credits, Figma imports, API access, unlimited projects, all model tiers'},
+     {n:'Team',p:'$30/user/mo',d:'Shared credits across team, collaboration features, admin controls'},
+     {n:'Business',p:'$100/user/mo',d:'Data opt-out for AI training, higher limits, SSO, advanced security'},
+     {n:'Enterprise',p:'Custom',d:'Custom SLA, enterprise security review, dedicated support, compliance'},
+   ],
+   limits:{
+     'Token costs':'Complex apps burn credits MUCH faster than simple components',
+     'Frontend only':'No native backend — need external APIs',
+     'Hosting':'Separate Vercel hosting costs on top of v0 subscription',
+     'Collaboration':'Single-player on Free/Premium — no real-time team editing',
+     'Data training':'Free–Business: prompts may be used for AI training · Business+ opt-out',
+   },
+   pros:['Best-quality React/Next.js UI generation in the market','Seamless Vercel deployment (one-click)','VS Code-style editor since Feb 2026','Component quality rivals hand-coded output'],
+   cons:['Token pricing unpredictable — complex prompts burn credits fast','Frontend only — no native backend, auth, or database','Strong Vercel lock-in','No real-time team collaboration','Separate Vercel hosting cost adds up'],
+   reddit:['"v0 is my first stop for any new UI. Build it there, copy to my codebase. Saves hours." — r/webdev','"Generated a dashboard and used $8 in one session. Credit burn is alarming." — r/nextjs'],
+   rat:{output:88,speed:85,value:78,ent:70}},
+
+  {id:'lovable',cat:'webapp',name:'Lovable AI',maker:'Lovable',
+   icon:'LOV',ic:'#ff4d6d',
+   tag:'Full-stack AI app builder — prompt to deployed app, no code needed',
+   badges:['Best for Non-Developers','Full-Stack','500K+ Users'],
+   uses:['MVP / prototype building without code','Full-stack web app creation','Startup validation apps','Internal tools & dashboards','SaaS prototyping','Agency rapid delivery','Investor demo apps'],
+   feats:['Full-stack generation (React + Supabase backend)','Agentic mode (2026)','Plan Mode (shows plan before coding)','Voice Mode (dictate changes)','GitHub export & sync','Supabase integration (DB, auth, storage)','Stripe & payment integration','Custom domain deployment','Figma import','AI debugging mode','Design templates','Team collaboration'],
+   free:['5 AI credits/day (resets daily)','Unlimited projects','5 lovable.app subdomains','Unlimited collaborators (view only)'],
+   plans:[
+     {n:'Starter',p:'$25/mo monthly · $20/mo annual',d:'500 AI credits/month (~83 messages), private projects, 3 custom domains, basic cloud hosting'},
+     {n:'Pro',p:'$100/mo monthly · $80/mo annual',d:'2,000 AI credits/month, 10 custom domains, advanced AI modes, deployment logs, up to 10 seats'},
+     {n:'Business',p:'~$50/user/mo',d:'SSO/SAML, data training opt-out, restricted projects, design templates, per-user credit limits, admin controls'},
+     {n:'Enterprise',p:'Custom · 5-figure annual minimum',d:'Unlimited seats, custom AI quotas, dedicated success manager, SLA, compliance'},
+   ],
+   limits:{
+     'AI credits':'Complex requests cost more · styling change ~0.5 credit · full feature ~2+ credits',
+     'Context degradation':'Beyond 15–20 components AI loses architecture context',
+     'Cloud hosting':'Billed separately based on traffic/requests',
+     'Backend':'Supabase only — limited backend flexibility',
+     'Code quality':'First 60–70% of app is excellent · complex logic needs developer',
+   },
+   pros:['Best non-technical founder tool — full apps from prompts','Supabase backend seamlessly integrated','GitHub export gives code ownership','Plan Mode prevents costly AI mistakes','Daily free credits give ongoing casual access'],
+   cons:['Context degradation after 15–20 components is significant','30–40% of app (complex logic, edge cases) still needs developer','Cloud hosting costs grow with traffic','Backend limited to Supabase only','Credit system is variable and confusing'],
+   reddit:['"Built my first SaaS MVP in 3 days with Lovable. Would have taken 3 months otherwise." — r/SaaS','"Lovable is amazing until you hit complex logic. Then you need Cursor to clean it up." — r/vibecoding','"5 credits on a complicated feature is 25% of my monthly Starter allowance." — r/nocode'],
+   rat:{output:82,speed:80,value:78,ent:65}},
+
+  {id:'bubble',cat:'webapp',name:'Bubble',maker:'Bubble Group',
+   icon:'BUB',ic:'#0049ff',
+   tag:'Mature no-code platform — production apps with full backend',
+   badges:['Most Mature No-Code','Full Backend','Large Ecosystem'],
+   uses:['Production SaaS applications','Marketplace platforms','CRM & internal tools','Complex workflow apps','Regulated industry apps','Multi-sided platforms'],
+   feats:['Visual drag-and-drop editor','Built-in relational database','Workflows & logic builder','API connector & 1,000+ integrations','User auth & permissions','AI plugin ecosystem','Hosting included','Custom domain','SOC 2 (Professional+)'],
+   free:['Bubble branding on app','No custom domain','Limited storage & bandwidth','Very limited for production use'],
+   plans:[
+     {n:'Starter',p:'$32/mo annual · $29/mo monthly',d:'Custom domain, no Bubble branding, 2 app admins, basic hosting'},
+     {n:'Growth',p:'$119/mo annual',d:'More capacity, API connector, version control, 2 internal users'},
+     {n:'Team',p:'$349/mo annual',d:'Dedicated server, 5 app admins, higher capacity, SOC 2 available'},
+     {n:'Enterprise',p:'Custom',d:'Custom capacity, SOC 2 Type II, SLA, dedicated support, HIPAA option'},
+   ],
+   limits:{
+     'AI features':'Via plugins only — no built-in AI','Scalability':'Dedicated server on Team+ for high traffic',
+     'Learning curve':'Steeper than Lovable for beginners',
+   },
+   pros:['Most mature no-code platform with years of production track record','Complex apps possible — marketplaces, CRMs, SaaS','Huge plugin ecosystem (1,000+)','SOC 2 & HIPAA for regulated industries'],
+   cons:['Steeper learning curve than newer AI builders','No native AI generation — plugins only','Team plan at $349/mo is expensive','Slower iteration for quick prototypes vs Lovable'],
+   reddit:['"Bubble is the only no-code platform I\'d trust for real production SaaS. Lovable is for prototypes." — r/nocode'],
+   rat:{output:78,speed:65,value:70,ent:82}},
+
+  {id:'softr',cat:'webapp',name:'Softr',maker:'Softr',
+   icon:'SFT',ic:'#5865f2',
+   tag:'Build apps & portals from Airtable / Google Sheets — no code',
+   badges:['Airtable-Native','Client Portals','Quick Deploy'],
+   uses:['Client portals from Airtable data','Internal tools from spreadsheets','Member directories','Job boards','CRM dashboards','Booking systems'],
+   feats:['Airtable & Google Sheets native integration','Pre-built templates','User authentication','Stripe payment integration','Custom domains','Conditional visibility rules','Forms & data collection'],
+   free:['Softr branding on app','Max 5 app users','No custom domain'],
+   plans:[
+     {n:'Basic',p:'$49/mo annual',d:'Custom domain, no Softr branding, 25 signed-in users, 100 app users'},
+     {n:'Professional',p:'$99/mo annual',d:'500 signed-in users, white-label option, advanced SEO, custom code'},
+     {n:'Business',p:'$159/mo annual',d:'5,000 signed-in users, priority support, advanced integrations'},
+     {n:'Enterprise',p:'Custom',d:'Unlimited users, SSO, SLA, dedicated support, advanced security'},
+   ],
+   limits:{
+     'Data source':'Best with Airtable and Google Sheets only',
+     'Complexity':'Not for complex SaaS apps — better for portals and internal tools',
+   },
+   pros:['Fastest way to turn Airtable data into a web app','Great for client portals and internal tools','Simple enough for non-developers'],
+   cons:['Limited to simpler apps — not for complex SaaS','Dependent on Airtable/Sheets — adds cost','AI features minimal compared to Lovable'],
+   reddit:['"Softr is perfect for turning our Airtable base into a client portal." — r/airtable'],
+   rat:{output:70,speed:78,value:72,ent:65}},
+
+  {id:'durable',cat:'webapp',name:'Durable',maker:'Durable',
+   icon:'DUR',ic:'#6e40c9',
+   tag:'AI website builder for small businesses — built in 30 seconds',
+   badges:['Fastest Website','AI-First','Small Business Focused'],
+   uses:['Small business website creation','Service-based landing pages','AI-generated copy & images','Local business online presence','Quick portfolio sites'],
+   feats:['AI website generation from description','AI copy, images & branding','CRM for small business','Invoicing built-in','AI blog post generation','Custom domain','SEO tools','Forms & booking'],
+   free:['Generated but not published on free','No custom domain','Very limited functionality'],
+   plans:[
+     {n:'Starter',p:'$15/mo annual',d:'Publish website, custom domain, basic AI features'},
+     {n:'Business',p:'$25/mo annual',d:'CRM, invoicing, unlimited AI generations, SEO, analytics'},
+     {n:'Premium',p:'$40/mo annual',d:'Priority support, advanced features, higher limits'},
+   ],
+   limits:{
+     'Complexity':'Simple service sites only — not for complex web apps',
+     'Customization':'Limited compared to Webflow or Softr',
+   },
+   pros:['Generates complete small business website in 30 seconds','All-in-one: website + CRM + invoicing','Very affordable','Best for non-technical small business owners'],
+   cons:['Not suitable for complex web apps','Limited design customization','AI copy is often generic and needs editing'],
+   reddit:['"Durable got my business online in under an hour. For a simple site, it\'s perfect." — r/smallbusiness'],
+   rat:{output:68,speed:92,value:78,ent:30}},
+
+  // ═══════════ GTM & PRESENTATIONS ═══════════
+  {id:'gamma',cat:'gtm',name:'Gamma',maker:'Gamma Tech',
+   icon:'GAM',ic:'#7c3aed',
+   tag:'AI presentation & doc builder — polished decks from a single prompt in 60 sec',
+   badges:['Fastest Decks','70M Users','$2.1B Valuation'],
+   uses:['Sales presentations & pitch decks','Marketing one-pagers','GTM strategy documents','Investor updates','Training materials','Company wikis & documents','Website pages from prompts','Social content creation'],
+   feats:['Text-to-presentation in 60 seconds','Gamma Agent (conversational AI editing)','Card-based scrollable format','Import PDF / PPTX / Word / URLs → Gamma','AI image generation (Nano Banana Pro/HD)','Embed: Figma, Miro, Airtable, Power BI, YouTube','Real-time analytics (view counts, engagement)','Custom branding & brand kits','Team workspace & collaboration','Remix (adapt deck for new audience)','Generate API (GA Jan 2026)','PowerPoint & PDF export','SOC 2 Type II (Oct 2025)'],
+   free:['400 one-time AI credits — do NOT renew monthly','Gamma branding on all outputs','PDF export only (no PowerPoint)','Personal workspace only','Basic analytics only'],
+   plans:[
+     {n:'Plus',p:'$8/mo annual · $10 monthly',d:'~1,000 monthly AI credits, no Gamma branding, PowerPoint export, custom fonts, basic analytics'},
+     {n:'Pro',p:'$15/mo annual · $30 monthly',d:'Unlimited AI generation (fair use), custom branding, advanced analytics, team workspace, custom domain, priority support, API access'},
+     {n:'Team',p:'$20/user/mo annual',d:'Pro features + shared team workspace, team templates, admin controls, workspace analytics'},
+     {n:'Business',p:'$40/user/mo annual',d:'Team features + advanced admin, enterprise SSO, compliance, priority support, data controls'},
+     {n:'Enterprise',p:'Custom · 100+ seats contact sales',d:'Everything in Business + SLA, custom data retention, dedicated success, SCIM, advanced compliance'},
+   ],
+   limits:{
+     'Free credits':'400 one-time ONLY — does not renew monthly','Plus credits':'~1,000/month · 3–5 presentations/week','Pro generation':'"Unlimited fair use" — heavy daily use may throttle',
+     'PowerPoint export':'Plus and above · formatting issues on export are common',
+     'Advanced AI credits':'Agent, premium models, API consume credits even on Pro',
+     'Offline':'No — fully browser-based, requires internet connection',
+   },
+   pros:['Fastest AI presentation generator — 60 seconds from prompt to deck','Best-looking output for modern/digital presentations','Generous free tier (400 credits) to evaluate before buying','Import any existing content (PDF, PPTX, URL) and transform it','Analytics show who viewed which sections — useful for sales follow-up'],
+   cons:['Free credits are one-time only — not monthly recurring (misleading)','PowerPoint export has formatting issues (fonts, layouts break)','Card format less appropriate for formal boardroom presentations','Enterprise template enforcement weaker than PowerPoint + Copilot','"Fair use" Pro limit vague — power users report throttling','No offline mode'],
+   reddit:['"Gamma is the best AI presentation tool. 2 min to generate, 10 min to refine." — r/productivity','"The PowerPoint export is terrible. Fonts get replaced, layouts shift. Use PDF for external decks." — r/Gamma','"Free credits don\'t renew. Upgrade to Plus immediately if you use it regularly." — r/AItools'],
+   rat:{output:88,speed:95,value:85,ent:72}},
+
+  {id:'beautifulai',cat:'gtm',name:'Beautiful.ai',maker:'Beautiful.ai',
+   icon:'BAI',ic:'#0096ff',
+   tag:'Smart presentation builder — design-locked templates that always look polished',
+   badges:['Best Templates','Design Enforcement','PPT-Compatible'],
+   uses:['Professional slide decks','Sales decks with consistent branding','Business presentations requiring PPT compatibility','Company template standardization'],
+   feats:['Smart templates (auto-layout)','Presenter Studio (record + share)','Brand controls & enforcement','Real-time collaboration','Presenter notes & insights','PowerPoint import/export','Team template library','Analytics'],
+   free:['Very limited — watermark on exports','Basic features only'],
+   plans:[
+     {n:'Pro',p:'$12/mo annual',d:'Custom themes, export (PPT, PDF), no watermark, unlimited slides'},
+     {n:'Team',p:'$40/user/mo annual',d:'Shared templates, brand controls, admin management, SSO, analytics'},
+     {n:'Enterprise',p:'Custom',d:'Custom security, SLA, dedicated support, advanced admin, SCIM'},
+   ],
+   limits:{
+     'AI generation':'Less AI-generative than Gamma — template-driven smart builder','Team min':'Contact sales for large teams'},
+   pros:['Templates always look polished — hard to make ugly slides','Better PowerPoint compatibility than Gamma','Brand enforcement for team consistency','Presenter Studio for video sharing is unique'],
+   cons:['Less AI-generative than Gamma — templates over AI-from-scratch','Team plan at $40/user is expensive','Less dynamic than Gamma\'s interactive format'],
+   reddit:['"Beautiful.ai looks professional but Gamma is faster. For PPT output, Beautiful.ai wins." — r/productivity'],
+   rat:{output:78,speed:80,value:70,ent:72}},
+
+  {id:'tome',cat:'gtm',name:'Tome',maker:'Magical Tome',
+   icon:'TOM',ic:'#1a1a1a',
+   tag:'AI-first narrative presentation — storytelling for modern pitches',
+   badges:['Story-Driven','Narrative AI','Pitch-Focused'],
+   uses:['Investor pitch decks','Narrative sales presentations','Company storytelling','GTM strategy docs','Product updates'],
+   feats:['AI narrative generation','Dark/light themes','Embed web content, video, live data','AI image generation','Collaborative editing','Analytics','Presentation sharing'],
+   free:['Limited pages on free','Tome branding'],
+   plans:[
+     {n:'Pro',p:'$16/mo annual',d:'Unlimited pages, no branding, custom domain, advanced AI, analytics'},
+     {n:'Business',p:'Custom',d:'Team features, brand controls, SSO, advanced admin'},
+   ],
+   limits:{'Page limits':'Free: very limited · Pro: unlimited'},
+   pros:['Beautiful narrative format ideal for investor pitches','Dark aesthetic stands out vs typical corporate slides','Strong AI narrative generation'],
+   cons:['Less widely adopted than Gamma or Beautiful.ai','Format unconventional for traditional business audiences','Limited enterprise features'],
+   reddit:['"Tome is gorgeous for investor pitch decks. Too unconventional for internal business presentations." — r/startups'],
+   rat:{output:78,speed:80,value:72,ent:60}},
+
+  // ═══════════ DEEP RESEARCH ═══════════
+  {id:'perplexity',cat:'research',name:'Perplexity AI',maker:'Perplexity',
+   icon:'PPX',ic:'#20b2aa',
+   tag:'AI research engine — instant cited answers from real-time web',
+   badges:['Best Web Research','Real-Time Citations','Source Grounded'],
+   uses:['Real-time research & fact-checking','Market & competitive intelligence','Product research with citations','Academic research summaries','News synthesis','Deep Research reports'],
+   feats:['Pro Search (multi-step web research)','Deep Research (comprehensive cited reports)','Spaces (collaborative knowledge hubs)','Multi-model: GPT-5 Thinking, Opus 4.6, o3-pro','File uploads (PDF, audio, video)','Create Files & Apps (reports, dashboards)','Comet Assistant (agentic — Enterprise Max)','Personal file repository','API (Sonar models)','Enterprise admin & audit logs','Video generation (Enterprise Max)'],
+   free:['5–10 Pro Searches/day','Standard model only (no GPT-4/Claude)','Limited file uploads','No Deep Research','No team features','No Spaces'],
+   plans:[
+     {n:'Pro',p:'$20/mo · $200/year',d:'Unlimited Pro Searches, 20 Deep Research/day, GPT-5 Thinking / Opus 4.6 / Mistral Large access, file uploads, image gen, API'},
+     {n:'Max',p:'$200 / mo',d:'Unlimited Pro Searches + unlimited Labs, highest Deep Research, Sora 2 Pro video, Comet Assistant, 5,000 files/Space, priority access to all frontier models'},
+     {n:'Enterprise Pro',p:'$40/user/mo · $400/user/year',d:'Pro features + Spaces, shared repos, admin controls, SSO, 500 deep research/day, SOC 2, GDPR, audit logs (requires 50+ users for some features)'},
+     {n:'Enterprise Max',p:'$325/user/mo · $3,250/user/year',d:'Unlimited everything, highest models (o3-pro, Opus 4.6), 10,000-file repo, 5,000/Space, 15 videos/mo, SCIM, Comet, priority support'},
+   ],
+   limits:{
+     'Free Pro Searches':'5–10/day (varies by server load)','Pro Deep Research':'20/day',
+     'Audit logs / SCIM':'Only with 50+ members OR 1 Enterprise Max user',
+     'Team features':'Not on individual Pro — need Enterprise Pro ($40/user)',
+     'Video gen':'Enterprise Max only (15 videos/mo, 8 sec, audio)','API billing':'Separate from subscription · $5/1,000 requests Sonar',
+     'Peak throttling':'Free users significantly throttled during high traffic',
+   },
+   pros:['Best real-time web research with citations','Multi-model access (choose GPT, Claude, or Sonar)','Deep Research generates comprehensive multi-source reports','Always current information — no knowledge cutoff issue','Spaces for team knowledge management unique feature'],
+   cons:['Not useful for creative writing, coding, or non-research tasks','Enterprise Pro at $40/user pricey just for research','Enterprise Max at $325/user is extremely expensive','Audit logs need 50+ users — too high threshold for SMBs','Citations sometimes include low-quality sources'],
+   reddit:['"Perplexity Pro is the best $20/month I spend. Research that took 2 hours takes 5 minutes." — r/productivity','"Enterprise Max at $325/user is absurd. Our team uses Pro individually for $20 each." — r/ChatGPT'],
+   rat:{output:88,speed:92,value:85,ent:75}},
+
+  {id:'notebooklm',cat:'research',name:'NotebookLM',maker:'Google',
+   icon:'NLM',ic:'#4285f4',
+   tag:'AI research assistant — synthesize YOUR documents with cited AI answers',
+   badges:['Source-Grounded','Audio Overviews','Completely Free'],
+   uses:['Research paper synthesis','Document Q&A with citations','Audio Overview podcasts','Study guide creation','Meeting note synthesis','Report preparation from multiple sources'],
+   feats:['Source-grounded AI (answers only from your documents)','Audio Overview (podcast-style summaries — unique)','Mind maps & concept visualization','Data table extraction','Custom AI personas','Q&A with source citations','PDF, Docs, YouTube, websites, audio support','50 sources per notebook','Gemini 1.5 Pro powered'],
+   free:['All core features completely free','50 sources per notebook','Up to 500K words per source','Rate limited during heavy use','No team/org features on free'],
+   plans:[
+     {n:'NotebookLM Plus',p:'$20/mo via Google One AI Pro or Ultra',d:'5× more notebooks, 5× more audio overviews, higher limits, analytics, enhanced privacy controls'},
+     {n:'Workspace (enterprise)',p:'Via Google Workspace + Gemini add-on pricing',d:'Access for org users, admin controls, data stays within Workspace, compliance controls'},
+   ],
+   limits:{
+     'Source limit':'50 sources per notebook (free)','Source size':'Up to 500K words per source',
+     'Notebooks':'200+ per account (free)','Audio overviews':'Limited on free · 5× more on Plus',
+     'Web search':'Not included — only processes uploaded sources',
+     'Real-time info':'Not available — only knows what you upload',
+   },
+   pros:['Completely free with genuinely useful limits','Unique Audio Overview podcast feature — no competitor matches it','Source citations prevent hallucinations on your documents','Works with PDFs, YouTube videos, audio files, websites','Best for synthesizing your own document collection'],
+   cons:['Only knows what you upload — no real-time web access','No deep research from scratch (use Perplexity for that)','Free usage limits frustrate during heavy research sessions','No team collaboration on free tier'],
+   reddit:['"NotebookLM changed how I do research. Upload 20 papers, ask questions, get cited answers." — r/PhD','"The podcast feature is mind-blowing. Generated an audio summary of my thesis for my parents." — r/GradSchool'],
+   rat:{output:85,speed:80,value:98,ent:60}},
+
+  {id:'elicit',cat:'research',name:'Elicit',maker:'Ought',
+   icon:'ELC',ic:'#7c3aed',
+   tag:'AI systematic literature review — extract data from 125M+ academic papers',
+   badges:['Academic Research','Literature Reviews','125M Papers'],
+   uses:['Systematic literature reviews','Evidence synthesis','Clinical trial data extraction','Academic paper screening','Structured evidence tables'],
+   feats:['Paper Chat (ask questions from papers)','Data extraction from research papers','Structured evidence tables across studies','Access to 125M+ academic papers','Abstract screening automation','Citation export (BibTeX, RIS)','PDF upload for Q&A','Summarize multiple papers'],
+   free:['12 queries/month (very restrictive)','Limited abstracts in evidence synthesis','Basic data extraction only'],
+   plans:[
+     {n:'Plus',p:'$12 / mo',d:'100 queries/month, more data extraction columns, bulk upload up to 500 papers'},
+     {n:'Pro',p:'$49 / mo',d:'Unlimited queries, full data extraction, advanced synthesis, team collaboration lite'},
+     {n:'Team',p:'$79/user/mo',d:'Full features, team collaboration, shared workflows, admin controls, priority support'},
+   ],
+   limits:{
+     'Free queries':'12/month — very restrictive for serious researchers',
+     'Paper coverage':'125M+ papers · strongest PubMed, arXiv, Semantic Scholar',
+     'Non-academic use':'Designed specifically for academic/evidence-based research',
+   },
+   pros:['Best tool for academic systematic reviews — purpose-built','Data extraction across hundreds of papers automatically','Evidence tables save weeks of manual work','Citation export for academic writing'],
+   cons:['Very limited free tier (12 queries/month)','Not useful for business research or current events','Team plan at $79/user is expensive','Primarily academic/healthcare use case only'],
+   reddit:['"Elicit cut my literature review from 3 months to 2 weeks." — r/PhD','"The data extraction feature is worth every penny." — r/academia'],
+   rat:{output:90,speed:80,value:75,ent:65}},
+
+  {id:'consensus',cat:'research',name:'Consensus',maker:'Consensus',
+   icon:'CON',ic:'#0ea5e9',
+   tag:'Evidence-based AI answers from 200M+ peer-reviewed papers',
+   badges:['Science-Backed','200M Papers','Evidence AI'],
+   uses:['Quick evidence-based research answers','Scientific claim validation','Health & medical research','Policy research with citations','Background research for reports'],
+   feats:['Search 200M+ peer-reviewed papers','Consensus Meter (agreement level across studies)','Study Snapshot (key findings)','Concept Library','PDF chat','Citation export','Daily research limits by plan'],
+   free:['Limited searches/day','No GPT-4 analysis','No advanced filters','No citation export'],
+   plans:[
+     {n:'Premium',p:'$11.99/mo annual · $16.99 monthly',d:'Unlimited searches, GPT-4 analysis, advanced filters, Consensus Meter, citation export'},
+     {n:'Teams',p:'$12.99/user/mo annual',d:'Premium features + team admin, shared searches, volume pricing'},
+   ],
+   limits:{
+     'Paper database':'200M+ peer-reviewed papers',
+     'Real-time data':'No — indexed papers only, not very recent preprints',
+   },
+   pros:['Most affordable research tool ($11.99/mo)','Consensus Meter unique — shows agreement across studies','200M paper database very comprehensive','Great for quick evidence-backed answers','Affordable Teams plan ($12.99/user)'],
+   cons:['Less powerful data extraction than Elicit for systematic reviews','Cannot process your own uploaded documents','No real-time web research — pair with Perplexity','Best for quick answers, not deep synthesis'],
+   reddit:['"Consensus gives me research consensus on any health topic in 30 seconds." — r/medicine'],
+   rat:{output:82,speed:88,value:90,ent:60}},
+
+  // ═══════════ DASHBOARD & DATA ═══════════
+  {id:'powerbi',cat:'dashboard',name:'Power BI Copilot',maker:'Microsoft',
+   icon:'PBI',ic:'#f2c811',
+   tag:'AI-powered BI in Microsoft ecosystem — Copilot for DAX, reports & insights',
+   badges:['Best M365 BI','Copilot-Powered','Most Affordable Enterprise BI'],
+   uses:['Business intelligence dashboards','KPI monitoring & reporting','Sales & finance analytics','AI-generated DAX formulas','Natural language data queries','Executive reporting','Data storytelling'],
+   feats:['Copilot (AI for DAX, report creation, narrative summaries)','Natural language Q&A (retiring Dec 2026 → Copilot)','300+ data connectors','Real-time streaming dashboards','Row-level security','Embedded analytics','Power Query (ETL)','Python & R integration','Paginated reports','Mobile app','Microsoft Fabric integration','Azure AI integration'],
+   free:['Power BI Desktop: FREE (full authoring, no sharing)','No web publishing without Pro license','No Copilot on free/Pro','Copilot requires PPU ($20/user) or Fabric F64 capacity'],
+   plans:[
+     {n:'Power BI Pro',p:'$14/user/mo after Apr 2025 price increase',d:'Share reports & dashboards, collaborate, 10GB storage, 8 refreshes/day — NO Copilot included'},
+     {n:'Power BI Premium Per User (PPU)',p:'$20/user/mo',d:'Pro features + Copilot, large datasets, AutoML, 48 refreshes/day, paginated reports, deployment pipelines'},
+     {n:'Fabric F2 Capacity (smallest with Copilot)',p:'~$360/mo flat',d:'Entry point for Copilot; minimum for some Copilot features; shared across all users in tenant'},
+     {n:'Fabric F64 Capacity (full enterprise)',p:'$5,258.88/mo flat',d:'All Premium features + OneLake + full Fabric workloads; cost shared across unlimited users'},
+   ],
+   limits:{
+     'Copilot requirement':'Needs PPU ($20/user) OR Fabric F64 ($5,258/mo) — NOT included in basic Pro',
+     'Dataset size (Pro)':'1GB per dataset',
+     'Dataset size (PPU)':'400GB per dataset',
+     'Refreshes (Pro)':'8/day',
+     'Refreshes (PPU)':'48/day',
+     'Sharing':'Recipients must also have Pro license to view shared reports',
+     'Rate limits':'API calls limited per capacity tier',
+   },
+   pros:['Best value BI tool for M365 shops ($14–20/user vs Tableau $42–75)','Copilot generates DAX, visuals & narrative summaries automatically','Deep Microsoft integration (Excel, Teams, SharePoint, Azure)','Power Query ETL is powerful — included free in Desktop','Most BI analysts already know Excel — low learning curve'],
+   cons:['Copilot NOT in basic Pro — requires $20/user PPU or expensive Fabric capacity','Confusing licensing: Pro vs PPU vs Fabric','Q&A feature being retired Dec 2026','Large datasets require Premium/Fabric — significant added cost','Fabric F64 at $5,258/mo is expensive for Copilot at full enterprise scale'],
+   reddit:['"Power BI Copilot is amazing for generating DAX formulas. Saves hours of debugging." — r/PowerBI','"The PPU requirement for Copilot is hidden. Had to upgrade from $10 to $20/user for AI features." — r/PowerBI'],
+   rat:{output:85,speed:82,value:88,ent:84}},
+
+  {id:'tableau',cat:'dashboard',name:'Tableau Pulse',maker:'Salesforce',
+   icon:'TAU',ic:'#e97626',
+   tag:'AI-driven proactive analytics — metric alerts and insights in your workflow',
+   badges:['Best Visualization','Proactive Insights','Salesforce-Native'],
+   uses:['Advanced data visualization','Executive analytics dashboards','Proactive metric monitoring','Sales & Salesforce analytics','Anomaly detection','Large enterprise BI'],
+   feats:['Tableau Pulse (proactive metric alerts, AI-summarized insights)','Einstein AI (predictive analytics)','Advanced visualization capabilities','Tableau Prep (ETL)','Tableau Server / Tableau Cloud','Salesforce Data Cloud integration','Ask Data (natural language)','Embedded analytics','Data governance & certification'],
+   free:['Tableau Public: free for public visualizations only','No private data','No Pulse, no enterprise features'],
+   plans:[
+     {n:'Tableau Viewer',p:'$15/user/mo annual',d:'View & interact with published dashboards only — no creation capability'},
+     {n:'Tableau Explorer',p:'$42/user/mo annual',d:'Create and edit dashboards, basic Prep, standard support'},
+     {n:'Tableau Creator',p:'$75/user/mo annual',d:'Full authoring, Tableau Prep, Tableau Desktop/Cloud, all features'},
+     {n:'Tableau+ (with Pulse & GenAI)',p:'Custom · typically +50% over standard',d:'Everything in Creator + Tableau Pulse AI, Einstein GenAI, Salesforce Data Cloud replication required'},
+   ],
+   limits:{
+     'Tableau Pulse full GenAI':'Requires Tableau+ AND Salesforce Data Cloud replication — significant added complexity & cost',
+     'Cost vs Power BI':'Creator ($75) vs PPU ($20) — Tableau 3–4× more expensive',
+     'For 100 users':'Tableau ~$7,500–$10,000/mo vs Power BI ~$1,000–$2,000/mo',
+     'Salesforce dependency':'Full Pulse GenAI locks you into Salesforce Data Cloud',
+   },
+   pros:['Best-in-class visualization capabilities — most beautiful charts','Tableau Pulse proactive alerts — insights come to you automatically','Best choice for Salesforce-heavy orgs','Strongest community of data viz professionals','Most flexible data storytelling'],
+   cons:['Very expensive: Explorer $42, Creator $75/user/mo','Tableau Pulse GenAI requires Salesforce Data Cloud — adds major cost','3–4× more expensive than Power BI for comparable features','Salesforce dependency limits versatility for non-Salesforce orgs'],
+   reddit:['"Tableau visualizations are unmatched. But for our Microsoft shop, Power BI is 1/4 the price." — r/businessintelligence','"Tableau Pulse is genuinely magical for executives — insights arrive in email without logging in." — r/tableau'],
+   rat:{output:92,speed:80,value:60,ent:85}},
+
+  {id:'rowsai',cat:'dashboard',name:'Rows AI',maker:'Rows',
+   icon:'RWS',ic:'#00d084',
+   tag:'AI-powered spreadsheet — analyze data, generate charts, ask questions naturally',
+   badges:['AI Spreadsheet','Affordable','Chat with Data'],
+   uses:['Business reporting in spreadsheet format','Quick data analysis with AI','Marketing & sales dashboards','Financial modeling','Sharing interactive reports'],
+   feats:['AI Analyst (chat with your data)','AI-generated formulas','Live data integrations (Google Ads, Stripe, HubSpot, Shopify, etc.)','Charts & visualization','Automated reports','Shareable public views','50+ native integrations'],
+   free:['Very limited rows/data on free','Basic features only','No team features'],
+   plans:[
+     {n:'Plus',p:'$59/mo annual',d:'Unlimited rows, AI Analyst, all integrations, basic team features'},
+     {n:'Business',p:'$149/mo annual',d:'More team seats, advanced admin, priority support'},
+     {n:'Enterprise',p:'Custom',d:'SSO, SLA, custom integrations, dedicated support'},
+   ],
+   limits:{
+     'Data limits':'Varies by plan · heavy data may require Enterprise',
+     'Complexity':'Less powerful than BI tools for complex modeling',
+   },
+   pros:['Combines familiarity of spreadsheets with AI analysis','Great marketing/sales tool integrations','AI formulas reduce spreadsheet complexity','More accessible than Power BI or Tableau'],
+   cons:['Not a replacement for full BI tools on complex enterprise analytics','Less data modeling depth than Power BI','Less advanced visualization than Tableau','Smaller ecosystem'],
+   reddit:['"Rows AI is perfect for marketing teams who live in spreadsheets." — r/analytics'],
+   rat:{output:75,speed:80,value:78,ent:60}},
+
+  // ═══════════ IMAGE GENERATION ═══════════
+  {id:'midjourney',cat:'image',name:'Midjourney',maker:'Midjourney Inc.',
+   icon:'MJ',ic:'#000000',
+   tag:'Most artistic AI image generator — unmatched aesthetic quality',
+   badges:['Best Image Quality','Most Artistic','No Free Tier'],
+   uses:['Artistic & creative image generation','Concept art & illustration','Brand visual ideation','Marketing creative assets','Product visualization','Architecture & design concepts'],
+   feats:['Midjourney V7 (latest model)','Text-to-image generation','Image-to-image transformations','Inpainting & outpainting','Style tuning & personalization','Video generation (limited)','Stealth Mode (private)','Batch generation','Commercial rights on all paid plans','Web interface (midjourney.com)'],
+   free:['No free tier since March 2023 — must subscribe to any paid plan'],
+   plans:[
+     {n:'Basic',p:'$10/mo · $96/year',d:'~3.3 fast GPU hours/month, no Relax Mode, no Stealth Mode, commercial use rights'},
+     {n:'Standard',p:'$30/mo · $288/year',d:'~15 fast GPU hours + unlimited Relax Mode, commercial use — best value plan'},
+     {n:'Pro',p:'$60/mo · $576/year',d:'~30 fast GPU hours, unlimited Relax, Stealth Mode (private generations), 12 concurrent jobs'},
+     {n:'Mega',p:'$120/mo · $1,152/year',d:'~60 fast GPU hours, all Pro features, maximum concurrency for agencies'},
+   ],
+   limits:{
+     'Fast hours':'GPU time: Basic 3.3hrs · Standard 15hrs · Pro 30hrs · Mega 60hrs',
+     'Relax Mode':'Unlimited on Standard+ · 10–15 min queue vs <1 min fast',
+     'Stealth Mode':'Pro+ only — generations hidden from public gallery',
+     'No enterprise billing':'Everyone needs their own individual account',
+     'No API':'No programmatic access for non-enterprise users',
+     'Peak throttling':'Relax Mode queue extends significantly during peak hours',
+   },
+   pros:['Best pure image quality in the market — unique artistic style','Standard ($30) excellent value with unlimited Relax Mode','Commercial rights on all paid plans','Active community (19M+ Discord users)','Continuous model improvements (V6 → V7)'],
+   cons:['No free tier — must pay to try','No enterprise/team billing — everyone pays individually','GPU hour model is confusing (not images per month)','No API for programmatic access on non-enterprise','Cannot generate photorealistic real people\'s faces'],
+   reddit:['"Midjourney Standard at $30/mo is the best creative tool I pay for." — r/midjourney','"The lack of enterprise billing is frustrating. 20 team members all paying individually." — r/marketing'],
+   rat:{output:96,speed:78,value:82,ent:40}},
+
+  {id:'dalle',cat:'image',name:'DALL-E (OpenAI)',maker:'OpenAI',
+   icon:'DLE',ic:'#10a37f',
+   tag:'Integrated OpenAI image generation — best text rendering, ChatGPT-native',
+   badges:['ChatGPT-Native','Best Text-in-Image','Versatile'],
+   uses:['Quick image generation within ChatGPT','Marketing visuals','Concept illustrations','Text-in-image generation','Product mockups'],
+   feats:['DALL-E 3 model','Integrated into ChatGPT (all paid plans)','Best text rendering in images of any AI generator','Inpainting','API access for developers','Consistent with ChatGPT conversation context'],
+   free:['Very limited image gen on free ChatGPT','Paid ChatGPT plans required for meaningful use'],
+   plans:[
+     {n:'Via ChatGPT Plus',p:'$20/mo (included in Plus)',d:'Generous DALL-E 3 image generation included in ChatGPT Plus subscription — no extra cost'},
+     {n:'API',p:'$0.040 – $0.120 per image',d:'Standard 1024×1024 to HD 1024×1792; no monthly subscription needed for API'},
+   ],
+   limits:{
+     'Daily limit':'Included in ChatGPT Plus but soft daily caps apply',
+     'API':'Per-image pricing · no monthly subscription needed',
+     'Content policy':'Tighter restrictions than Midjourney',
+   },
+   pros:['Seamlessly integrated into ChatGPT workflows — no extra subscription','Best text rendering in images of any AI generator','API pricing very reasonable for developers','No extra subscription if you have ChatGPT Plus'],
+   cons:['Artistic quality below Midjourney for creative work','Limited standalone experience outside ChatGPT','Content restrictions are tighter than Midjourney'],
+   reddit:['"DALL-E is great for marketing mockups where I need text in the image. Midjourney can\'t do that as well." — r/ChatGPT'],
+   rat:{output:82,speed:88,value:85,ent:65}},
+
+  {id:'firefly',cat:'image',name:'Adobe Firefly',maker:'Adobe',
+   icon:'FFY',ic:'#ff0000',
+   tag:'Commercially safe AI image generation — trained on licensed content only',
+   badges:['Commercial Safe','Adobe CC Integration','IP Indemnified'],
+   uses:['Commercially safe brand visuals','Creative Cloud workflow integration','Product photography enhancement','Generative Fill in Photoshop','Marketing asset creation'],
+   feats:['Text-to-image (commercially safe training)','Generative Fill (Photoshop)','Generative Expand','Vector generation (Illustrator)','Structure Reference','Style Reference','Recolor Artwork','Commercial IP indemnification on Enterprise'],
+   free:['25 generative credits/month on free CC','Firefly watermark on free outputs','Limited feature access'],
+   plans:[
+     {n:'Creative Cloud (individual)',p:'$59.99 / mo',d:'Generous Firefly credits, all Creative Cloud apps, no watermark, commercial rights'},
+     {n:'Creative Cloud (teams)',p:'$89.99/user/mo',d:'All individual features + admin console, team storage, license management'},
+     {n:'Firefly Premium (standalone)',p:'$4.99/mo or bundled',d:'100 credits/month for users who don\'t need full Creative Cloud'},
+     {n:'Enterprise',p:'Custom (Creative Cloud Enterprise pricing)',d:'IP indemnification, SSO, advanced admin, SLA, dedicated support'},
+   ],
+   limits:{
+     'Generative credits':'25/mo free · 100/mo Firefly Premium · generous on CC plans',
+     'IP indemnification':'Fully covered only on Enterprise plans',
+     'Standalone use':'Most useful within Photoshop/Illustrator — less so standalone',
+   },
+   pros:['Only major AI image tool trained exclusively on licensed commercially safe content','Deep Photoshop & Illustrator integration — generative fill is revolutionary','Commercial IP indemnification on Enterprise','Best for teams in Adobe Creative Cloud'],
+   cons:['Artistic quality below Midjourney','Requires Creative Cloud subscription ($59.99/mo all-apps)','Full IP indemnification only on Enterprise','Most value in Photoshop — less as standalone tool'],
+   reddit:['"Firefly generative fill in Photoshop is the best AI feature in any creative tool." — r/PhotoshopDesign','"For commercial work where IP matters, Firefly is the only responsible choice." — r/CreativeMarket'],
+   rat:{output:82,speed:85,value:70,ent:82}},
+
+  {id:'leonardo',cat:'image',name:'Leonardo AI',maker:'Leonardo Interactive',
+   icon:'LNR',ic:'#d4af37',
+   tag:'AI image platform for game developers & creative professionals',
+   badges:['Best for Games/3D','Fine-Tunable Models','Creator Community'],
+   uses:['Game asset generation','Character design','Concept art','Texture generation','Marketing visuals','Product design concepts'],
+   feats:['Multiple fine-tuned models','Custom model training (Alchemy fine-tuning)','Phoenix model (high quality)','Real-time generation canvas','Image guidance & ControlNet','Motion features (video gen)','Team workspaces','API access'],
+   free:['150 free tokens/day','Access to limited models','Watermark-free on free tier','No team features'],
+   plans:[
+     {n:'Apprentice',p:'$12/mo annual',d:'8,500 tokens/month, priority access, all models'},
+     {n:'Artisan',p:'$30/mo annual',d:'25,000 tokens/month, private generations, API access, custom model training'},
+     {n:'Maestro',p:'$60/mo annual',d:'60,000 tokens/month, maximum features, highest priority'},
+     {n:'Enterprise',p:'Custom',d:'Custom tokens, SSO, private deployment, dedicated support, compliance'},
+   ],
+   limits:{
+     'Token system':'1 token ≈ 1 standard image · fine-tuned models cost more tokens',
+     'Custom models':'Artisan+ only',
+   },
+   pros:['Strong for game development and character consistency','Free tier with daily token refresh is genuinely usable','Custom model training unique for game/creator market','Real-time canvas is excellent for iteration'],
+   cons:['Less versatile than Midjourney for general creative work','Custom model training has learning curve','Token depletion fast on complex generations'],
+   reddit:['"Leonardo is the best for game developers making consistent character art." — r/gamedev'],
+   rat:{output:87,speed:82,value:80,ent:65}},
+
+  // ═══════════ VIDEO GENERATION ═══════════
+  {id:'runway',cat:'video',name:'Runway',maker:'Runway ML',
+   icon:'RWY',ic:'#000000',
+   tag:'Professional AI video generation — cinematic quality with director controls',
+   badges:['Best Video Quality','Character Consistency','4K Export'],
+   uses:['Marketing & brand video content','Short film production','Product visualization','Social media video','Motion graphics','Cinematic concepts'],
+   feats:['Gen-4 Turbo model','Director Mode (camera controls)','Motion Brush (selective motion)','Act-Two (motion capture)','Text-to-video & image-to-video','Aleph (extended editing)','4K upscaling','Lip Sync (Pro+)','Custom voice creation (Pro+)','Team workspace (up to 10 users)','API access'],
+   free:['~3 video generation trials','Watermarked output','720p maximum','No commercial use rights — effectively an extended trial'],
+   plans:[
+     {n:'Standard',p:'$12/mo annual',d:'625 monthly credits (~52s Gen-4 or 125s Gen-4 Turbo), no watermark, 4K upscaling, 100GB storage, up to 5 users'},
+     {n:'Pro',p:'$28/mo annual',d:'2,250 credits, custom voice creation, Lip Sync, 500GB storage, up to 10 users'},
+     {n:'Unlimited',p:'$76/mo annual',d:'Unlimited generations (fair use), all features, priority queue'},
+     {n:'Enterprise',p:'Custom',d:'Custom credits, SSO, SLA, dedicated support, IP compliance, API'},
+   ],
+   limits:{
+     'Gen-4 credit cost':'12 credits/second','Gen-4 Turbo cost':'5 credits/second (more efficient)',
+     'Max video length':'Up to 40 seconds per generation',
+     'Generation speed':'1–3 minutes per clip (vs Pika <2 min)',
+     'Free tier':'~3 generations only — effectively useless for production',
+   },
+   pros:['Best character consistency across shots','Most professional output quality','4K export capability','Director Mode for precise camera control','Standard at $12/mo is an excellent entry point'],
+   cons:['Free tier is ~3 trials — essentially useless','Slower generation than Pika (1–3 min vs <2 min)','Unlimited plan at $76/mo expensive for casual users','No audio generation natively'],
+   reddit:['"Runway is the professional standard for marketing videos. Character consistency is unmatched." — r/videoproduction','"For social media, Pika is faster and cheaper. Runway for client work." — r/aitools'],
+   rat:{output:90,speed:72,value:78,ent:70}},
+
+  {id:'synthesia',cat:'video',name:'Synthesia',maker:'Synthesia',
+   icon:'SYN',ic:'#0052cc',
+   tag:'AI avatar videos for corporate training — 230+ avatars, 140+ languages',
+   badges:['Best Corporate Video','Avatar-Led','Fortune 100 Trusted'],
+   uses:['Corporate training videos','HR & onboarding content','Product tutorials','Internal communications','Marketing spokesperson videos','Localized content (140+ languages)'],
+   feats:['230+ AI avatars','140+ languages with lip sync','Custom avatar creation','Script-to-video generation','SCORM export (LMS integration)','Brand kit & templates','Screen recording integration','Team collaboration','Analytics','API access'],
+   free:['Very limited — 1 video credit on free trial','No commercial use','No custom avatar'],
+   plans:[
+     {n:'Starter',p:'$22/mo annual',d:'~15 minutes/month video content, basic avatars, basic templates'},
+     {n:'Creator',p:'$67/mo annual',d:'Extended monthly video, all avatars, custom avatars, API, more templates, SCORM export'},
+     {n:'Enterprise',p:'Custom · typically $50K+/year',d:'Unlimited video, SCORM, SSO, SLA, dedicated CSM, security, IP compliance — used by 90%+ Fortune 100'},
+   ],
+   limits:{
+     'Video length':'Depends on plan · Enterprise: unlimited',
+     'Languages':'140+ with accurate lip sync',
+     'LMS integration':'SCORM export on Creator+ plans',
+     'Custom avatars':'Creator+ · requires consent workflow',
+   },
+   pros:['Industry standard for corporate training videos','Most language support (140+) with accurate lip sync','SCORM export for LMS integration — unique','Trusted by 90%+ of Fortune 100','Scale multilingual content from one script'],
+   cons:['Expensive: $67/mo Creator, $50K+ Enterprise','Clearly AI avatar — not suitable for external brand marketing','Less creative/cinematic than Runway','Limited outside corporate training use case'],
+   reddit:['"Synthesia transformed our training video production. 2 weeks → 2 hours." — r/eLearning'],
+   rat:{output:80,speed:85,value:68,ent:88}},
+
+  {id:'pika',cat:'video',name:'Pika Labs',maker:'Pika Labs',
+   icon:'PIK',ic:'#ff4088',
+   tag:'Fast AI video for social media — viral effects, fastest generation',
+   badges:['Fastest Generation','Most Generous Free','Social Media Focused'],
+   uses:['Short-form social media videos','Viral content effects','Quick video prototypes','Creative animations','Instagram Reels / TikToks / YouTube Shorts'],
+   feats:['Pika 2.5 model','Pikaffects (Squish, Melt, Explode, Inflate — viral)','Pikaframes (keyframe animation)','Pikascenes (multi-scene)','Pikadditions (add characters/objects)','Pikaswaps (transform objects)','Text-to-video & image-to-video','Commercial use (paid plans)','1080p output (paid)'],
+   free:['Daily credit refresh (generous)','Watermarked output','720p maximum','No commercial use on free'],
+   plans:[
+     {n:'Standard',p:'$8/mo annual',d:'700 credits/mo (~140 short videos), no watermark, 1080p, commercial use, all Pikaffects'},
+     {n:'Pro',p:'$35/mo annual',d:'2,300 credits, faster generation, priority queue, all features'},
+     {n:'Unlimited (Fancy)',p:'$70/mo annual',d:'6,000 credits, fastest priority, maximum features — for agencies & heavy creators'},
+   ],
+   limits:{
+     'Clip length':'3–10 seconds per generation',
+     'Resolution':'Up to 1080p on paid · 720p on free',
+     'Generation speed':'<2 minutes (fastest in market)',
+     'Commercial use':'Paid plans only',
+   },
+   pros:['Fastest generation in market (<2 minutes)','Most generous free tier with daily credit refresh','Pikaffects are unique — viral effects no competitor offers','Most affordable entry: $8/mo Standard'],
+   cons:['Clips limited to 3–10 seconds — not for long-form','Resolution capped at 1080p (vs Runway 4K)','Less character consistency than Runway','Physics/motion quality below Runway for complex scenes'],
+   reddit:['"Pika\'s Squish It effect went viral. 2M views. Worth every cent." — r/TikTok','"For fast social content, Pika at $8/mo is a steal. Runway for client work." — r/aitools'],
+   rat:{output:80,speed:96,value:92,ent:45}},
+
+  // ═══════════ AUDIO & VOICE ═══════════
+  {id:'elevenlabs',cat:'audio',name:'ElevenLabs',maker:'ElevenLabs',
+   icon:'E11',ic:'#e0532a',
+   tag:'Most realistic AI voices — voice cloning, multilingual, production-grade API',
+   badges:['Best Voice Quality','Voice Cloning','Most Realistic'],
+   uses:['Voiceovers for videos & podcasts','Audiobook narration','AI voice assistants','Dubbing & localization','Interactive agent voices','Text-to-speech for content'],
+   feats:['1,000+ voices in 32 languages','Instant Voice Cloning (IVC)','Professional Voice Cloning (PVC — highest realism)','Voice Design tool','Projects (long-form audio production)','Dubbing studio (video translation)','Speech-to-speech','Low-latency streaming TTS API','Conversational AI voice agents','Studio workspace (team)'],
+   free:['10,000 characters/month (~10 min audio)','3 custom voices max','No PVC','No API','Some features watermarked'],
+   plans:[
+     {n:'Starter',p:'$5 / mo',d:'30,000 chars/mo (~30 min), 10 custom voices, API access, commercial rights'},
+     {n:'Creator',p:'$22 / mo',d:'100,000 chars/mo (~100 min), 30 voices, Professional Voice Cloning, extended features'},
+     {n:'Pro',p:'$99 / mo',d:'500,000 chars/mo (~500 min), 160 voices, PVC, API, priority processing, usage analytics'},
+     {n:'Scale',p:'$330 / mo',d:'2,000,000 chars/mo, multiple workspace seats, team collaboration, high volume API'},
+     {n:'Business',p:'$1,320 / mo',d:'11,000,000 chars/mo, highest volume, enterprise support, advanced API'},
+     {n:'Enterprise',p:'Custom · avg ~$11K–12K/year',d:'Custom chars, SSO, SLA, dedicated support, custom models, HIPAA option'},
+   ],
+   limits:{
+     'Character math':'1,000 chars ≈ 1 min audio · Creator (100K) = ~100 min/mo',
+     'PVC':'Creator+ only · requires consented quality voice sample',
+     'API rate limits':'Vary by plan · Enterprise gets dedicated concurrency',
+     'Languages':'32 languages with voice cloning support',
+     'Scale plan':'$330/mo — significant jump from $99 Pro',
+   },
+   pros:['Industry-leading voice quality — most natural AI TTS','PVC is exceptionally realistic — clients often cannot tell it\'s AI','Low latency API for real-time voice agents','Starter at $5/mo is outstanding value','Dubbing studio for multilingual video translation'],
+   cons:['Characters deplete fast for long-form audio — 100K Creator runs out quickly','Scale ($330) and Business ($1,320) plans are very expensive','PVC requires quality recording setup','Rate limits affect high-volume production workflows'],
+   reddit:['"ElevenLabs PVC is so realistic my clients can\'t tell it\'s AI. Game changer." — r/ContentCreation','"Starter at $5/mo is the best AI deal for solo creators." — r/podcasting'],
+   rat:{output:95,speed:88,value:90,ent:78}},
+
+  {id:'murf',cat:'audio',name:'Murf AI',maker:'Murf Inc.',
+   icon:'MRF',ic:'#5c6bc0',
+   tag:'Studio-quality AI voices for business — e-learning, presentations, marketing',
+   badges:['Business-Focused','Studio Controls','Best for E-Learning'],
+   uses:['E-learning voiceovers','Presentation narration','Marketing videos','Corporate training','Podcast creation'],
+   feats:['200+ voices, 20+ languages','Voice changer','AI voice cloning','Pronunciation editor','Background music','Video + voiceover sync','Team collaboration','Studio editor (pause, emphasis, pitch)','API access'],
+   free:['10 minutes/month voice generation','No download on free','No commercial rights'],
+   plans:[
+     {n:'Creator',p:'$29/mo annual',d:'2 hours voice/month, 60 voices, commercial rights, downloads, no watermark'},
+     {n:'Business',p:'$99/mo for up to 3 users',d:'Unlimited voice, all 200+ voices, voice cloning, collaboration, API'},
+     {n:'Enterprise',p:'Custom',d:'Custom users, SSO, SLA, dedicated support, custom voice models'},
+   ],
+   limits:{
+     'Voice minutes':'Creator: 2 hrs/mo · Business: unlimited (fair use)',
+     'Voice cloning':'Business plan only',
+   },
+   pros:['Best studio controls for fine-tuning voice delivery','Built-in video+voice sync workflow','Pronunciation editor is unique','Background music integration'],
+   cons:['Voice quality below ElevenLabs','Creator plan at 2 hrs/mo limits high-volume production','Less API capability than ElevenLabs'],
+   reddit:['"Murf has the best studio controls for pacing and emphasis. ElevenLabs sounds better." — r/podcasting'],
+   rat:{output:80,speed:82,value:75,ent:68}},
+
+  {id:'descript',cat:'audio',name:'Descript',maker:'Descript',
+   icon:'DSC',ic:'#36cfb9',
+   tag:'Edit audio & video by editing the text — remove filler words, clone your voice',
+   badges:['Edit by Text','Overdub Voice Clone','Podcast/Video Editor'],
+   uses:['Podcast editing','Video editing by transcript','Overdub voice correction','Filler word removal','Screen recording','Social media clip creation'],
+   feats:['Text-based video & audio editing','AI Overdub (clone your voice to fix lines)','Filler word removal (um, uh)','Transcription (99%+ accuracy)','Speaker detection','Green screen (AI)','Screen recording','Remote recording','Social clip creation','Multi-track editing'],
+   free:['1 hour transcript/month','Watermark on exports','No Overdub','No AI features beyond basic transcription'],
+   plans:[
+     {n:'Hobbyist',p:'$24/mo annual',d:'10 transcription hrs/mo, basic AI tools, 3 editor exports'},
+     {n:'Creator',p:'$40/mo annual',d:'Unlimited transcription, Overdub voice clone, all AI tools, unlimited exports'},
+     {n:'Business',p:'$75/user/mo',d:'Team workspace, centralized billing, SSO, priority support, advanced admin'},
+     {n:'Enterprise',p:'Custom',d:'Custom seats, SLA, compliance, dedicated support, advanced security'},
+   ],
+   limits:{
+     'Overdub':'Creator+ only · requires consented voice recording',
+     'Business cost':'$75/user is expensive for what it offers',
+     'Transcription accuracy':'Best-in-class for English · other languages less reliable',
+   },
+   pros:['Unique text-based editing — changes audio by editing transcript','Overdub to fix recording mistakes is revolutionary','Filler word removal saves hours','Best-in-class transcription accuracy','All-in-one: record, edit, transcribe, publish'],
+   cons:['Business at $75/user is expensive','Creator at $40/mo adds up for small teams','Video editing less powerful than Premiere or DaVinci Resolve'],
+   reddit:['"Descript changed how I edit podcasts. Edit the transcript, the audio updates." — r/podcasting'],
+   rat:{output:88,speed:85,value:78,ent:70}},
+
+  // ═══════════ PRODUCTIVITY & AUTOMATION ═══════════
+  {id:'zapier',cat:'automation',name:'Zapier AI',maker:'Zapier',
+   icon:'ZAP',ic:'#ff4a00',
+   tag:'AI-powered automation connecting 7,000+ apps — no code required',
+   badges:['7,000+ Integrations','No-Code Automation','AI Zap Builder'],
+   uses:['Automating repetitive business workflows','CRM data syncing','Lead notification & routing','Email follow-up sequences','AI content in workflows','Report generation automation'],
+   feats:['7,000+ app integrations','AI Zap builder (describe workflow → AI creates it)','AI Actions (use AI models in Zaps)','Multi-step Zaps','Conditional logic (Paths)','Tables (built-in database)','Interfaces (no-code app builder)','Canvas (visual workflow designer)','Webhooks & custom API'],
+   free:['100 tasks/month','5 Zaps max','Single-step Zaps only','No AI features','No conditional logic'],
+   plans:[
+     {n:'Starter',p:'$29.99/mo annual',d:'750 tasks/mo, 20 Zaps, multi-step Zaps, basic filters'},
+     {n:'Professional',p:'$73.50/mo annual',d:'Unlimited Zaps, custom logic, Paths, premium apps, 2,000 tasks/mo'},
+     {n:'Team',p:'$103.50/mo annual',d:'Up to 25 users, shared workspace, SSO, 50,000 tasks/mo, 5 Zap editors'},
+     {n:'Enterprise',p:'Custom',d:'Unlimited users, advanced security, SSO/SAML/SCIM, audit logs, SLA, dedicated support, unlimited tasks (negotiated)'},
+   ],
+   limits:{
+     'Tasks':'Every action in a Zap = 1 task · heavy workflows deplete fast',
+     'Polling delay':'Free/Starter: 15 min · Paid: 1 min check interval',
+     'Free Zap limit':'5 Zaps only on free','AI Actions':'Consume tasks + may have additional AI costs',
+   },
+   pros:['Largest integration library (7,000+ apps) — unmatched','AI Zap builder makes automation accessible to non-technical users','Tables & Interfaces add database and app-building capabilities','Extremely reliable and battle-tested'],
+   cons:['Task pricing adds up fast for high-volume automations','Free tier severely limited (100 tasks, 5 Zaps)','5–10× more expensive than Make.com at equivalent volume','AI Actions burn through tasks quickly'],
+   reddit:['"Zapier is expensive at scale but the reliability is worth it for business-critical workflows." — r/automation','"Make is 10× cheaper for the same automation. I only use Zapier for apps Make doesn\'t have." — r/nocode'],
+   rat:{output:85,speed:88,value:68,ent:82}},
+
+  {id:'make',cat:'automation',name:'Make (Integromat)',maker:'Celonis',
+   icon:'MKE',ic:'#6d00ff',
+   tag:'Visual automation platform — more powerful than Zapier at 5–10× lower cost',
+   badges:['Most Flexible','5× Cheaper than Zapier','Visual Builder'],
+   uses:['Complex workflow automation','Data transformation pipelines','API integration','Multi-step automation at scale','AI content generation workflows','E-commerce automation'],
+   feats:['1,000+ app connectors','Visual scenario builder','Operations-based pricing (not task-based)','Data manipulation tools (JSON, arrays, text)','Error handling','Webhooks','HTTP module (any API)','AI model integrations (OpenAI, Claude, Gemini)','Gamma integration','Scheduling & real-time triggers'],
+   free:['1,000 operations/month (very generous)','2 active scenarios','Unlimited apps','No team features'],
+   plans:[
+     {n:'Core',p:'$10.59/mo annual',d:'10,000 ops/mo, unlimited scenarios, all apps, 1 user'},
+     {n:'Pro',p:'$18.82/mo annual',d:'10,000 ops/mo, priority execution, custom variables, full text parser, 1 user'},
+     {n:'Teams',p:'$34.12/mo annual + additional users',d:'Everything in Pro + 3 users, team workspaces, custom roles'},
+     {n:'Enterprise',p:'Custom · starts ~$500/mo for larger volumes',d:'Custom ops, unlimited users, SSO, SLA, audit logs, dedicated support, SAML/SCIM'},
+   ],
+   limits:{
+     'Operations':'Each step in a scenario = 1 operation · more complex than Zapier\'s task model',
+     'Polling interval':'As low as 1 minute on paid plans',
+     'App library':'1,000 connectors vs Zapier\'s 7,000',
+   },
+   pros:['Much cheaper than Zapier (5–10×) for equivalent automation','Operations model gives more flexibility','Most powerful visual workflow builder','Generous free tier (1,000 ops/mo)','HTTP module connects to ANY API — not limited to listed connectors'],
+   cons:['Steeper learning curve than Zapier','Smaller app library (1,000 vs 7,000)','Interface takes time to master','Less polished UI than Zapier'],
+   reddit:['"Make is everything Zapier is but 10× cheaper. The learning curve is worth it." — r/nocode','"Zapier is easier, Make is more powerful. Depends on your technical level." — r/automation'],
+   rat:{output:85,speed:85,value:93,ent:75}},
+
+  {id:'manus',cat:'automation',name:'Manus AI',maker:'Monica AI',
+   icon:'MNS',ic:'#1a1a2e',
+   tag:'Autonomous AI agent — research, code, and complete complex tasks end-to-end',
+   badges:['Fully Autonomous','Multi-Tool Agent','Task Completion'],
+   uses:['Autonomous research reports','Data collection & analysis pipelines','Web browsing & scraping tasks','Code writing & testing autonomously','Multi-step complex task completion'],
+   feats:['Parallel agent execution (multiple sub-agents)','Web browsing autonomously','Code writing & execution','File management & creation','Form filling','Data extraction','Built-in sandbox environment','Long-running task support'],
+   free:['Very limited / waitlist access historically','Limited free tasks on beta access'],
+   plans:[
+     {n:'Individual (beta / invite)',p:'~$40–100/mo (pricing in flux)',d:'Credits-based; each complex task consumes multiple credits depending on scope'},
+     {n:'Enterprise',p:'Custom',d:'Dedicated instances, custom tasks, compliance, API integration'},
+   ],
+   limits:{
+     'Availability':'Still in early access / limited rollout as of Apr 2026',
+     'Reliability':'Agents can fail on complex edge cases — human oversight recommended',
+     'Pricing':'In flux — subject to change as product matures',
+   },
+   pros:['Most capable autonomous agent for complex multi-step tasks','Parallel task execution is faster than sequential agents','Impressive for research and data collection workflows'],
+   cons:['Still in early access — limited availability','Pricing unclear and in flux','Agents make mistakes requiring human review','Not suitable for compliance-critical workflows without oversight'],
+   reddit:['"Manus completed a market research report in 20 minutes that would take me 8 hours." — r/AItools'],
+   rat:{output:82,speed:70,value:65,ent:55}},
+
+  // ═══════════ DESIGN & UI/UX ═══════════
+  {id:'figmaai',cat:'design',name:'Figma AI',maker:'Figma',
+   icon:'FIG',ic:'#f24e1e',
+   tag:'AI built into Figma — generate UI, search assets, accelerate design workflows',
+   badges:['Designer\'s AI','Figma-Native','Design System AI'],
+   uses:['UI component generation','Design system management','Prototyping assistance','Asset search & management','Spec writing automation','Rapid design iteration'],
+   feats:['AI-generated UI from text prompts','Auto-layout AI','Asset search (natural language)','Design system documentation AI','Prototype suggestions','Background removal','Rename layers AI','Figma Dev Mode AI (for developers)','Make Designs (full screen from prompt)'],
+   free:['Limited AI credits on free Starter plan','Basic Figma AI features','No team AI features'],
+   plans:[
+     {n:'Figma Professional',p:'$15/editor/mo annual',d:'Full Figma + expanded AI credits, unlimited projects, all AI features'},
+     {n:'Figma Organization',p:'$45/editor/mo annual',d:'Enterprise features, SSO, advanced admin, design system management, unlimited AI'},
+     {n:'Enterprise',p:'$75/editor/mo',d:'Everything + dedicated support, SLA, advanced security, compliance'},
+   ],
+   limits:{
+     'AI credits':'Free: limited · Professional: generous · Organization+: unlimited',
+     'Usefulness':'Only valuable if your team already uses Figma',
+   },
+   pros:['Deeply integrated into Figma — no context switching','Generate UI directly in design environment','Dev Mode AI helps developers understand designs without asking designers'],
+   cons:['Only useful if you use Figma — no standalone value','Organization plan at $45/editor is expensive','AI output quality varies — often needs significant editing'],
+   reddit:['"Figma AI generate feature is useful for quick mockups — output needs work but saves time starting from scratch." — r/UIDesign'],
+   rat:{output:78,speed:82,value:72,ent:78}},
+
+  {id:'uizard',cat:'design',name:'Uizard',maker:'Uizard',
+   icon:'UIZ',ic:'#7c3aed',
+   tag:'AI-powered UI design for non-designers — wireframes to prototypes fast',
+   badges:['Non-Designer Friendly','Wireframe to Prototype','AI UI Generation'],
+   uses:['Quick wireframe creation','App prototype without design skills','Product manager mockups','Startup UI concepts','User testing prototypes'],
+   feats:['Text-to-UI generation','Autodesigner (complete app from prompt)','Screenshot to design conversion','UI component library','Prototyping & linking','Team collaboration','Theme generation'],
+   free:['Limited screens per project','No export on free','Basic features only','Uizard branding'],
+   plans:[
+     {n:'Pro',p:'$15/user/mo annual',d:'3 users, unlimited screens, full AI features, export, no branding'},
+     {n:'Business',p:'$39/user/mo annual',d:'Unlimited users, custom branding, SSO, priority support'},
+   ],
+   limits:{
+     'Target user':'Non-designers and product managers — less useful for professional designers',
+     'Output quality':'Good for wireframes — not production-ready design',
+   },
+   pros:['Best tool for product managers to create UI mockups without designer help','Autodesigner generates complete app flows quickly','Screenshot to design is unique — convert any UI photo to editable design'],
+   cons:['Design quality lower than Figma','Business plan at $39/user is expensive for what it offers','Limited template library vs Canva or Figma'],
+   reddit:['"Uizard is great for PMs who need to sketch app ideas without bugging designers." — r/ProductManagement'],
+   rat:{output:72,speed:82,value:72,ent:58}},
+];
+
+let activeCat='all';
+
+function buildFilters(){
+  const b=document.getElementById('fbar');
+  b.innerHTML=`<button class="fb on" onclick="setCat('all',this)">All</button>`
+    +Object.entries(CATS).map(([k,v])=>
+      `<button class="fb" onclick="setCat('${k}',this)">${v.label}</button>`
+    ).join('');
+}
+
+function setCat(cat,btn){
+  activeCat=cat;
+  document.querySelectorAll('.fb').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  render();
+}
+
+function doFilter(){
+  const q=document.getElementById('srch').value.toLowerCase();
+  document.querySelectorAll('.card').forEach(c=>{
+    const match=!q||c.textContent.toLowerCase().includes(q);
+    const catMatch=activeCat==='all'||c.dataset.cat===activeCat;
+    c.classList.toggle('hide',!(match&&catMatch));
+  });
+}
+
+function tog(id){
+  const d=document.getElementById('d'+id);
+  const b=document.getElementById('x'+id);
+  const open=d.classList.toggle('open');
+  b.textContent=open?'−':'+';
+}
+
+function planCards(plans){
+  return plans.map(p=>`
+    <div class="plan-card">
+      <div class="plan-top">
+        <span class="plan-name">${p.n}</span>
+        <span class="plan-price">${p.p}</span>
+      </div>
+      <div class="plan-desc">${p.d}</div>
+    </div>`).join('');
+}
+
+function limitRows(lims){
+  return Object.entries(lims).map(([k,v])=>
+    `<div class="lim"><span class="lk">${k}</span><span class="lv">${v}</span></div>`
+  ).join('');
+}
+
+function ratingBar(label,val,color){
+  return `<div class="rrow">
+    <span class="rl">${label}</span>
+    <div class="rbar"><div class="rfill" style="width:${val}%;background:${color}"></div></div>
+    <span class="rpct">${val}%</span>
+  </div>`;
+}
+
+function freeTag(t){
+  const first=(t.free&&t.free[0])||'';
+  if(first.includes('No free')||first.includes('No permanent')||first.includes('No permanent')||first.includes('7-day')||first.includes('no free')||first.includes('waitlist')||first.includes('paid only'))return{cls:'a',txt:'Trial Only'};
+  if(first.includes('Fully free')||first.includes('completely free'))return{cls:'g',txt:'Fully Free'};
+  return{cls:'g',txt:'Limited Free'};
+}
+
+function buildCard(t){
+  const cat=CATS[t.cat];
+  const ft=freeTag(t);
+  const teamPlan=t.plans.find(p=>/(team|business|pro)/i.test(p.n));
+  const teamPrice=teamPlan?teamPlan.p.split('\n')[0].split('·')[0].trim():'Custom';
+  return `
+<div class="card" data-cat="${t.cat}" id="c${t.id}">
+  <div class="ch" onclick="tog('${t.id}')">
+    <div class="icon" style="background:${t.ic}18;color:${t.ic};border:1px solid ${t.ic}30">${t.icon}</div>
+    <div class="ctitle">
+      <h3>${t.name} <span style="font-size:11px;color:var(--text3);font-weight:400">${t.maker}</span></h3>
+      <div class="sub">${t.tag}</div>
+      <div style="display:flex;gap:4px;flex-wrap:wrap;margin-top:5px">
+        <span class="bdg" style="color:${cat.c};border-color:${cat.c}35;background:${cat.c}12">${cat.label}</span>
+        ${t.badges.slice(0,2).map(b=>`<span class="bdg" style="color:var(--text3);border-color:var(--border);background:var(--bg3)">${b}</span>`).join('')}
+      </div>
+    </div>
+    <button class="xbtn" id="x${t.id}">+</button>
+  </div>
+
+  <div class="qrow">
+    <div class="qcell"><div class="ql">Free Plan</div><div class="qv ${ft.cls}">${ft.txt}</div></div>
+    <div class="qcell"><div class="ql">Team / Pro</div><div class="qv b" style="font-size:10px">${teamPrice}</div></div>
+    <div class="qcell"><div class="ql">Output Score</div><div class="qv ${t.rat.output>=90?'g':t.rat.output>=80?'b':'a'}">${t.rat.output}/100</div></div>
+  </div>
+
+  <div class="det" id="d${t.id}">
+
+    <div class="dsec">
+      <h4>Use Cases</h4>
+      <div class="utags">${t.uses.map(u=>`<span class="ut">${u}</span>`).join('')}</div>
+    </div>
+
+    <div class="two">
+      <div class="dsec">
+        <h4>Key Features</h4>
+        <ul class="flist">${t.feats.slice(0,9).map(f=>`<li>${f}</li>`).join('')}</ul>
+      </div>
+      <div class="dsec">
+        <h4>Free Plan Limits</h4>
+        <ul class="flist">${(t.free||[]).map(f=>`<li class="warn">${f}</li>`).join('')}</ul>
+      </div>
+    </div>
+
+    <div class="dsec">
+      <h4>Pricing Plans</h4>
+      <div class="plans-wrap">${planCards(t.plans)}</div>
+    </div>
+
+    <div class="two">
+      <div class="dsec">
+        <h4>Usage Limits & Caps</h4>
+        <div class="lims">${limitRows(t.limits)}</div>
+      </div>
+      <div class="dsec">
+        <h4>Performance Ratings</h4>
+        ${ratingBar('Output Quality',t.rat.output,'#2ecc8a')}
+        ${ratingBar('Speed & Reliability',t.rat.speed,'#5ba4f5')}
+        ${ratingBar('Value for Money',t.rat.value,'#f5a623')}
+        ${ratingBar('Enterprise Fit',t.rat.ent,'#9b6ef5')}
+      </div>
+    </div>
+
+    <div class="two">
+      <div class="dsec">
+        <h4>Pros</h4>
+        <ul class="flist">${t.pros.map(p=>`<li class="pro">${p}</li>`).join('')}</ul>
+      </div>
+      <div class="dsec">
+        <h4>Cons & Hidden Limitations</h4>
+        <ul class="flist">${t.cons.map(c=>`<li class="con">${c}</li>`).join('')}</ul>
+      </div>
+    </div>
+
+    <div class="dsec">
+      <h4>Reddit & Community Feedback</h4>
+      ${t.reddit.map(r=>`<div class="rq">${r}</div>`).join('')}
+    </div>
+
+  </div>
+</div>`;
+}
+
+function render(){
+  const root=document.getElementById('root');
+  const order=['general','content','coding','webapp','gtm','research','dashboard','image','design','video','audio','automation'];
+  let html='';
+  for(const cat of order){
+    if(activeCat!=='all'&&activeCat!==cat)continue;
+    const items=T.filter(t=>t.cat===cat);
+    if(!items.length)continue;
+    const ci=CATS[cat];
+    html+=`<div class="sec-head"><span style="color:${ci.c};font-size:13px">◈</span><h2>${ci.label}</h2></div>`;
+    html+=`<div class="grid">${items.map(buildCard).join('')}</div>`;
+  }
+  root.innerHTML=html;
+  const q=document.getElementById('srch').value.toLowerCase();
+  if(q)doFilter();
+}
+
+buildFilters();
+render();
+</script>
+</body>
+</html>
