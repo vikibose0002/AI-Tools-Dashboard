@@ -144,7 +144,7 @@ def main():
             f"No changes across {len(TOOLS)} tools.\n"
             f"Dashboard is current.\n\n"
             f"&#x1F195; New tools check:\n{new_tools_text[:300] if new_tools_text else 'Nothing notable'}\n\n"
-            f"&#x1F4CA; https://yourusername.github.io/ai-tools-dashboard"
+            f"&#x1F4CA; https://vikibose0002.github.io/ai-tools-dashboard"
         )
 
 if __name__ == "__main__":
