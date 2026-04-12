@@ -1,7 +1,7 @@
 import os, json, requests, re
 from datetime import datetime
 
-GEMINI_KEY = os.environ['AIzaSyDhjw6BCaCP450eH2OBPOGHb_3kOAP3raw']
+GEMINI_KEY = os.environ[AIzaSyDhjw6BCaCP450eH2OBPOGHb_3kOAP3raw]
 TG_TOKEN   = os.environ['TELEGRAM_BOT_TOKEN']
 TG_CHAT    = os.environ['TELEGRAM_CHAT_ID']
 
