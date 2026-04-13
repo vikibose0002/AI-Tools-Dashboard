@@ -2,7 +2,7 @@ import os, json, requests, re, time
 from datetime import datetime
 
 # ─── CREDENTIALS ────────────────────────────────────────────────
-GEMINI_KEY  = os.environ['GEMINI_API_KEY']
+NVIDIA_KEY  = os.environ['NVIDIA_API_KEY']
 TG_TOKEN    = os.environ['TELEGRAM_BOT_TOKEN']
 TG_CHAT     = os.environ['TELEGRAM_CHAT_ID']
 GITHUB_USER = os.environ.get('GITHUB_USERNAME', 'yourusername')
