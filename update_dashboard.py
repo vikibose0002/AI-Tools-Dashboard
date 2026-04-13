@@ -809,12 +809,13 @@ NEW_TOOLS_QUERIES = [
 
 # ─── GEMINI API CALL ────────────────────────────────────────────
 def ask_gemini(prompt, retries=3):
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={GEMINI_KEY}"
+    url = f"https://integrate.api.nvidia.com/v1",
+  api_key = "$NVIDIA_API_KEY"
     body = {
         "contents": [{"parts": [{"text": prompt}]}],
         "generationConfig": {
-            "temperature": 0.1,
-            "maxOutputTokens": 600
+            "temperature": 0.2,
+            "maxOutputTokens": 1024
         }
     }
     for attempt in range(retries):
