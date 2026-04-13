@@ -810,7 +810,7 @@ NEW_TOOLS_QUERIES = [
 # ─── GEMINI API CALL ────────────────────────────────────────────
 def ask_gemini(prompt, retries=3):
     url = f"https://integrate.api.nvidia.com/v1"
-    api_key = "$NVIDIA_API_KEY"
+    api_key = "NVIDIA_API_KEY"
     body = {
         "contents": [{"parts": [{"text": prompt}]}],
         "generationConfig": {
