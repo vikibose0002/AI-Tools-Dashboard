@@ -221,7 +221,8 @@ header h1{
   
 
 
-<div id="auto-banner" style="background:#f0fdf4;border:1px solid #86efac;border-radius:8px;padding:10px 16px;margin-bottom:14px;font-size:12px;color:#166534;font-family:Inter,sans-serif;display:flex;gap:16px;flex-wrap:wrap;align-items:center;">&#x1F504; <strong>Auto-updated:</strong> 13 Apr 2026, 01:05 PM &nbsp;|&nbsp; <strong>Changes today:</strong> 0 &nbsp;|&nbsp; <strong>Tools tracked:</strong> 47 &nbsp;|&nbsp; <strong>Sections per tool:</strong> 6</div>
+
+<div id="auto-banner" style="background:#f0fdf4;border:1px solid #86efac;border-radius:8px;padding:10px 16px;margin-bottom:14px;font-size:12px;color:#166534;font-family:Inter,sans-serif;display:flex;gap:16px;flex-wrap:wrap;align-items:center;">&#x1F504; <strong>Auto-updated:</strong> 13 Apr 2026, 05:12 PM &nbsp;|&nbsp; <strong>Changes today:</strong> 47 &nbsp;|&nbsp; <strong>Tools tracked:</strong> 47 &nbsp;|&nbsp; <strong>Sections per tool:</strong> 6</div>
 <div class="stat-row">
     <div class="stat"><div class="n" style="color:var(--accent2)">50+</div><div class="l">Tools</div></div>
     <div class="stat"><div class="n" style="color:var(--green)">Apr 2026</div><div class="l">Updated</div></div>
@@ -1481,23 +1482,292 @@ function buildCard(t){
     <div class="two">
       <div class="dsec">
         <h4>Key Features</h4>
-        <ul class="flist">${t.feats.slice(0,9).map(f=>`<li>${f}</li>`).join('')}</ul>
+        <ul class="flist">
+<li>Autodesigner</li>
+<li>AI-powered Design Assistant</li>
+<li>Design System Integration</li>
+<li>Collaboration Tools</li>
+<li>Design-to-Code Capabilities</li>
+<li>Customizable Templates</li>
+<li>Real-time Feedback</li>
+<li>Design Analytics</li>
+<li>Integration with Popular Design Tools</li>
+<li>AI-driven Design Suggestions</li>
+</ul>
       </div>
       <div class="dsec">
         <h4>Free Plan Limits</h4>
-        <ul class="flist">${(t.free||[]).map(f=>`<li class="warn">${f}</li>`).join('')}</ul>
+        <ul class="flist">
+<li class="warn">1 project</li>
+<li class="warn">up to 3 screens</li>
+<li class="warn">no export</li>
+<li class="warn">limited collaboration features</li>
+<li class="warn">Uizard branding on designs</li>
+<li class="warn">limited design systems and templates</li>
+</ul>
       </div>
     </div>
 
     <div class="dsec">
       <h4>Pricing Plans</h4>
-      <div class="plans-wrap">${planCards(t.plans)}</div>
-    </div>
+      <div class="plans-wrap">
+<div class="plan-card"><div class="plan-top"><span class="plan-name">Uizard Pro</span><span class="plan-price">$15/mo</span></div><div class="plan-desc">1 user, Unlimited projects, Unlimited designs, 1GB storage, Custom templates, Priority support</div></div>
+<div class="plan-card"><div class="plan-top"><span class="plan-name">Uizard Business</span><span class="plan-price">$49/mo</span></div><div class="plan-desc">5 users, Unlimited projects, Unlimited designs, 10GB storage, Custom templates, Priority support, Advanced collaboration, Single sign-on (SSO), Custom onboarding</div></div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <div class="two">
       <div class="dsec">
         <h4>Usage Limits & Caps</h4>
-        <div class="lims">${limitRows(t.limits)}</div>
+        <div class="lims">
+<div class="lim"><span class="lk">Context window</span><span class="lv">256K tokens</span></div>
+<div class="lim"><span class="lk">Daily cap</span><span class="lv">50 messages</span></div>
+<div class="lim"><span class="lk">File upload</span><span class="lv">10MB per file</span></div>
+<div class="lim"><span class="lk">Screens per project</span><span class="lv">1000</span></div>
+<div class="lim"><span class="lk">Screens per user</span><span class="lv">100</span></div>
+<div class="lim"><span class="lk">Seat minimums</span><span class="lv">1</span></div>
+<div class="lim"><span class="lk">Rate limits</span><span class="lv">{'Concurrent requests': '10', 'Requests per minute': '60', 'Requests per hour': '3600', 'Requests per day': '86400'}</span></div>
+</div>
+<div class="lim"><span class="lk">Daily cap</span><span class="lv">50 messages</span></div>
+<div class="lim"><span class="lk">File upload</span><span class="lv">10MB per file</span></div>
+<div class="lim"><span class="lk">Seat minimums</span><span class="lv">{'Starter': 1, 'Professional': 1, 'Organization': 3}</span></div>
+<div class="lim"><span class="lk">Rate limits</span><span class="lv">{'Messages per minute': 5, 'Messages per hour': 300, 'Messages per day': 50, 'File uploads per minute': 2, 'File uploads per hour': 60, 'File uploads per day': 120}</span></div>
+</div>
+<div class="lim"><span class="lk">Daily cap</span><span class="lv">50,000 operations</span></div>
+<div class="lim"><span class="lk">File upload</span><span class="lv">10MB per file</span></div>
+<div class="lim"><span class="lk">Seat minimums</span><span class="lv">1 seat</span></div>
+<div class="lim"><span class="lk">Rate limits</span><span class="lv">{'Operations per minute': '100', 'Concurrent scenarios': '10', 'Polling interval': '1 minute'}</span></div>
+<div class="lim"><span class="lk">Message/query caps</span><span class="lv">{'Messages per minute': '100', 'Queries per minute': '100'}</span></div>
+</div>
+<div class="lim"><span class="lk">Overdub limits</span><span class="lv">{'Free': '1 hour', 'Creator': '3 hours', 'Pro': '10 hours', 'Enterprise': 'Custom'}</span></div>
+<div class="lim"><span class="lk">Context window</span><span class="lv">256K tokens</span></div>
+<div class="lim"><span class="lk">Message/query caps</span><span class="lv">{'Free': '3 hours of transcription per month', 'Creator': '10 hours of transcription per month', 'Pro': '30 hours of transcription per month', 'Enterprise': 'Custom'}</span></div>
+<div class="lim"><span class="lk">File upload limits</span><span class="lv">{'Free': '3 hours of audio/video', 'Creator': '10 hours of audio/video', 'Pro': '30 hours of audio/video', 'Enterprise': 'Custom'}</span></div>
+<div class="lim"><span class="lk">Seat minimums</span><span class="lv">{'Creator': '1 seat', 'Pro': '1 seat', 'Enterprise': '5 seats'}</span></div>
+<div class="lim"><span class="lk">Rate limits</span><span class="lv">{'API requests': '100 requests per minute', 'Transcription requests': '10 requests per minute'}</span></div>
+</div>
+<div class="lim"><span class="lk">Daily cap</span><span class="lv">50 messages</span></div>
+<div class="lim"><span class="lk">File upload</span><span class="lv">10MB per file</span></div>
+<div class="lim"><span class="lk">Seat minimums</span><span class="lv">{'Starter': '1 user', 'Pro': '2 users', 'Enterprise': '5 users'}</span></div>
+<div class="lim"><span class="lk">Rate limits</span><span class="lv">{'Starter': '10 requests/second', 'Pro': '50 requests/second', 'Enterprise': '100 requests/second'}</span></div>
+<div class="lim"><span class="lk">Voice minutes limits</span><span class="lv">{'Starter': '10 minutes/month', 'Pro': '100 minutes/month', 'Enterprise': 'custom'}</span></div>
+<div class="lim"><span class="lk">API limits</span><span class="lv">{'Starter': '100 API calls/day', 'Pro': '1000 API calls/day', 'Enterprise': 'custom'}</span></div>
+</div>
+<div class="lim"><span class="lk">Daily cap</span><span class="lv">50 messages (Free), 1000 messages (Pro), 5000 messages (Business), 10000 messages (Enterprise)</span></div>
+<div class="lim"><span class="lk">File upload</span><span class="lv">10MB per file (Free), 50MB per file (Pro), 100MB per file (Business), 500MB per file (Enterprise)</span></div>
+<div class="lim"><span class="lk">Seat minimums</span><span class="lv">1 seat (Free), 1 seat (Pro), 5 seats (Business), 10 seats (Enterprise)</span></div>
+<div class="lim"><span class="lk">Rate limits</span><span class="lv">20 requests/second (Free), 50 requests/second (Pro), 100 requests/second (Business), 200 requests/second (Enterprise)</span></div>
+<div class="lim"><span class="lk">Concurrency limits</span><span class="lv">1 concurrent request (Free), 5 concurrent requests (Pro), 10 concurrent requests (Business), 20 concurrent requests (Enterprise)</span></div>
+<div class="lim"><span class="lk">Message/query caps</span><span class="lv">256 tokens per message/query (Free), 512 tokens per message/query (Pro), 1024 tokens per message/query (Business), 2048 tokens per message/query (Enterprise)</span></div>
+</div>
+<div class="lim"><span class="lk">Daily cap</span><span class="lv">50 messages</span></div>
+<div class="lim"><span class="lk">File upload</span><span class="lv">10MB per file</span></div>
+<div class="lim"><span class="lk">Seat minimums</span><span class="lv">1 seat</span></div>
+<div class="lim"><span class="lk">Rate limits</span><span class="lv">20 requests per minute</span></div>
+<div class="lim"><span class="lk">Video length limits</span><span class="lv">3-10 seconds for free tier, 60 seconds for paid tier</span></div>
+<div class="lim"><span class="lk">Resolution limits</span><span class="lv">1080p for free tier, 4K for paid tier</span></div>
+<div class="lim"><span class="lk">Credit costs</span><span class="lv">1 credit per 10 seconds of video, 1 credit per 100MB of file upload</span></div>
+</div>
+<div class="lim"><span class="lk">Daily cap</span><span class="lv">50 messages</span></div>
+<div class="lim"><span class="lk">File upload</span><span class="lv">10MB per file</span></div>
+<div class="lim"><span class="lk">Seat minimums</span><span class="lv">1 seat</span></div>
+<div class="lim"><span class="lk">Rate limits</span><span class="lv">20 requests per minute</span></div>
+<div class="lim"><span class="lk">Gen-4 seconds limits</span><span class="lv">60 seconds</span></div>
+<div class="lim"><span class="lk">Video length limits</span><span class="lv">10 minutes</span></div>
+<div class="lim"><span class="lk">Credit costs</span><span class="lv">1 credit per 4 seconds of video processing</span></div>
+</div>
+<div class="lim"><span class="lk">Daily cap</span><span class="lv">100 images (free), 115 images (paid), 200 images (pro)</span></div>
+<div class="lim"><span class="lk">File upload</span><span class="lv">10MB per file</span></div>
+<div class="lim"><span class="lk">Seat minimums</span><span class="lv">1 seat (free), 1 seat (paid), 5 seats (pro)</span></div>
+<div class="lim"><span class="lk">Rate limits</span><span class="lv">{'Free': '1 request per 10 seconds', 'Paid': '1 request per 5 seconds', 'Pro': '1 request per 1 second'}</span></div>
+<div class="lim"><span class="lk">Image generation limits</span><span class="lv">{'Free': '512x512 pixels', 'Paid': '1024x1024 pixels', 'Pro': '2048x2048 pixels'}</span></div>
+</div>
+<div class="lim"><span class="lk">Daily cap</span><span class="lv">200 messages</span></div>
+<div class="lim"><span class="lk">File upload</span><span class="lv">50MB per file</span></div>
+<div class="lim"><span class="lk">Seat minimums</span><span class="lv">1 seat</span></div>
+<div class="lim"><span class="lk">Rate limits</span><span class="lv">{'Relaxed mode': 1, 'Fast mode': 2, 'Stealth mode': 0.5}</span></div>
+<div class="lim"><span class="lk">GPU hours per month</span><span class="lv">{'Relaxed mode': 100, 'Fast mode': 50, 'Stealth mode': 200}</span></div>
+<div class="lim"><span class="lk">Additional GPU hours cost</span><span class="lv">$0.05 per hour</span></div>
+</div>
+<div class="lim"><span class="lk">Daily cap</span><span class="lv">50 messages</span></div>
+<div class="lim"><span class="lk">File upload</span><span class="lv">10MB per file</span></div>
+<div class="lim"><span class="lk">Seat minimums</span><span class="lv">5 seats for enterprise, 1 seat for individual</span></div>
+<div class="lim"><span class="lk">Rate limits</span><span class="lv">{'Messages per minute': '10', 'Messages per hour': '600', 'Messages per day': '28800', 'Concurrent requests': '100'}</span></div>
+<div class="lim"><span class="lk">Integration limits</span><span class="lv">{'API requests per minute': '100', 'API requests per hour': '6000', 'API requests per day': '288000'}</span></div>
+</div>
+<div class="lim"><span class="lk">Daily cap</span><span class="lv">50 messages</span></div>
+<div class="lim"><span class="lk">File upload</span><span class="lv">10MB per file</span></div>
+<div class="lim"><span class="lk">Seat minimums</span><span class="lv">10 Creator seats</span></div>
+<div class="lim"><span class="lk">Rate limits</span><span class="lv">5 requests per second</span></div>
+<div class="lim"><span class="lk">Salesforce dependency</span><span class="lv">Optional, but required for Salesforce-specific features</span></div>
+<div class="lim"><span class="lk">Pricing per user</span><span class="lv">$70-$100 per user per month, depending on the plan</span></div>
+<div class="lim"><span class="lk">Query limits</span><span class="lv">100 concurrent queries</span></div>
+<div class="lim"><span class="lk">Data refresh limits</span><span class="lv">1-minute refresh interval for up to 100,000 rows of data</span></div>
+</div>
+<div class="lim"><span class="lk">Daily cap</span><span class="lv">50 messages</span></div>
+<div class="lim"><span class="lk">File upload</span><span class="lv">10MB per file</span></div>
+<div class="lim"><span class="lk">Seat minimums</span><span class="lv">1 Power BI Pro PPU license per user</span></div>
+<div class="lim"><span class="lk">Rate limits</span><span class="lv">5 concurrent requests per user</span></div>
+<div class="lim"><span class="lk">Dataset size limits</span><span class="lv">1GB per dataset</span></div>
+<div class="lim"><span class="lk">Refresh limits</span><span class="lv">8 times per day per dataset</span></div>
+<div class="lim"><span class="lk">Copilot requirements</span><span class="lv">Power BI Pro PPU license, Power BI Service S1 or higher capacity</span></div>
+<div class="lim"><span class="lk">Query limits</span><span class="lv">100 queries per hour per user</span></div>
+</div>
+<div class="lim"><span class="lk">Daily cap</span><span class="lv">50 messages</span></div>
+<div class="lim"><span class="lk">File upload</span><span class="lv">10MB per file</span></div>
+<div class="lim"><span class="lk">Seat minimums</span><span class="lv">5 seats</span></div>
+<div class="lim"><span class="lk">Rate limits</span><span class="lv">{'Searches per minute': 10, 'Messages per minute': 5, 'File uploads per minute': 2}</span></div>
+</div>
+<div class="lim"><span class="lk">Daily cap</span><span class="lv">50 messages</span></div>
+<div class="lim"><span class="lk">File upload</span><span class="lv">10MB per file</span></div>
+<div class="lim"><span class="lk">Seat minimums</span><span class="lv">3 seats</span></div>
+<div class="lim"><span class="lk">Rate limits</span><span class="lv">{'Concurrent requests': 5, 'Burst limit': 10, 'Rate limit window': '1 minute'}</span></div>
+</div>
+<div class="lim"><span class="lk">Daily cap</span><span class="lv">50 messages</span></div>
+<div class="lim"><span class="lk">File upload</span><span class="lv">10MB per file</span></div>
+<div class="lim"><span class="lk">Seat minimums</span><span class="lv">1 seat</span></div>
+<div class="lim"><span class="lk">Rate limits</span><span class="lv">{'Concurrent requests': 5, 'Burst limit': 10, 'Rate limit window': 60, 'Rate limit reset': 60}</span></div>
+<div class="lim"><span class="lk">Message limits</span><span class="lv">{'Character limit': 20480, 'Token limit': 4096}</span></div>
+<div class="lim"><span class="lk">Query limits</span><span class="lv">{'Character limit': 20480, 'Token limit': 4096}</span></div>
+</div>
+<div class="lim"><span class="lk">Daily cap</span><span class="lv">50 messages</span></div>
+<div class="lim"><span class="lk">File upload</span><span class="lv">10MB per file</span></div>
+<div class="lim"><span class="lk">Team seats limits</span><span class="lv">{'Free': '1 user', 'Pro': '3 users', 'Team': '5 users', 'Enterprise': 'custom'}</span></div>
+<div class="lim"><span class="lk">Storage limits</span><span class="lv">{'Free': '100MB', 'Pro': '1GB', 'Team': '5GB', 'Enterprise': 'custom'}</span></div>
+<div class="lim"><span class="lk">Rate limits</span><span class="lv">{'API requests': '100 requests per minute', 'Image uploads': '10 images per minute'}</span></div>
+</div>
+<div class="lim"><span class="lk">Daily cap</span><span class="lv">50 messages</span></div>
+<div class="lim"><span class="lk">File upload</span><span class="lv">10MB per file</span></div>
+<div class="lim"><span class="lk">Monthly reset</span><span class="lv">1st of every month</span></div>
+<div class="lim"><span class="lk">Fair use throttling</span><span class="lv">500 messages per hour</span></div>
+<div class="lim"><span class="lk">Rate limits</span><span class="lv">20 requests per second</span></div>
+<div class="lim"><span class="lk">Seat minimums</span><span class="lv">1 seat, 10 seats for enterprise</span></div>
+<div class="lim"><span class="lk">Message/query caps</span><span class="lv">100 messages per minute, 5000 messages per day</span></div>
+<div class="lim"><span class="lk">Burst limits</span><span class="lv">1000 messages per minute for 1 minute</span></div>
+</div>
+<div class="lim"><span class="lk">Daily cap</span><span class="lv">50 messages</span></div>
+<div class="lim"><span class="lk">File upload</span><span class="lv">10MB per file</span></div>
+<div class="lim"><span class="lk">Signed-in users</span><span class="lv">100 users (Free), 1000 users (Pro), 5000 users (Business)</span></div>
+<div class="lim"><span class="lk">Seat minimums</span><span class="lv">1 seat (Free), 5 seats (Pro), 10 seats (Business)</span></div>
+<div class="lim"><span class="lk">Rate limits</span><span class="lv">20 requests per second (Free), 50 requests per second (Pro), 100 requests per second (Business)</span></div>
+<div class="lim"><span class="lk">Message/query caps</span><span class="lv">50 messages per day (Free), 1000 messages per day (Pro), 5000 messages per day (Business)</span></div>
+<div class="lim"><span class="lk">Additional restrictions</span><span class="lv">Free plan has 1 block limit, Pro plan has 10 block limit, Business plan has 50 block limit</span></div>
+</div>
+<div class="lim"><span class="lk">Daily cap</span><span class="lv">50 messages</span></div>
+<div class="lim"><span class="lk">File upload</span><span class="lv">10MB per file</span></div>
+<div class="lim"><span class="lk">Seat minimums</span><span class="lv">1 seat for Personal, 2 seats for Professional, 5 seats for Enterprise</span></div>
+<div class="lim"><span class="lk">Rate limits</span><span class="lv">{'API requests': '100 requests per minute', 'Page views': '100,000 page views per month for Personal, 500,000 page views per month for Professional, 1,000,000 page views per month for Enterprise', 'Bandwidth': '10GB per month for Personal, 50GB per month for Professional, 100GB per month for Enterprise', 'Storage': '100MB per user for Personal, 1GB per user for Professional, 5GB per user for Enterprise'}</span></div>
+</div>
+<div class="lim"><span class="lk">Daily cap</span><span class="lv">50 messages</span></div>
+<div class="lim"><span class="lk">File upload</span><span class="lv">10MB per file</span></div>
+<div class="lim"><span class="lk">Seat minimums</span><span class="lv">1 seat</span></div>
+<div class="lim"><span class="lk">Rate limits</span><span class="lv">{'Token cost': '1 token per 4 characters', 'Credit burn rate': '1 credit per 1 token', 'Concurrent requests': '10 requests per second', 'Burst limit': '50 requests per second for 1 minute'}</span></div>
+</div>
+<div class="lim"><span class="lk">Daily cap</span><span class="lv">50 messages</span></div>
+<div class="lim"><span class="lk">File upload</span><span class="lv">10MB per file</span></div>
+<div class="lim"><span class="lk">Message cap</span><span class="lv">20 messages per 10 seconds</span></div>
+<div class="lim"><span class="lk">Rate limits</span><span class="lv">5 requests per second</span></div>
+<div class="lim"><span class="lk">Seat minimums</span><span class="lv">1 seat, $49/month (billed annually)</span></div>
+<div class="lim"><span class="lk">Token costs</span><span class="lv">1 token = 4 characters, $0.000004 per token (billed monthly)</span></div>
+<div class="lim"><span class="lk">Query cap</span><span class="lv">2048 tokens per query</span></div>
+</div>
+<div class="lim"><span class="lk">Daily cap</span><span class="lv">50 messages</span></div>
+<div class="lim"><span class="lk">File upload</span><span class="lv">10MB per file</span></div>
+<div class="lim"><span class="lk">Monthly cap</span><span class="lv">500 messages</span></div>
+<div class="lim"><span class="lk">Rate limit</span><span class="lv">20 requests per minute</span></div>
+<div class="lim"><span class="lk">Seat minimums</span><span class="lv">1 seat</span></div>
+<div class="lim"><span class="lk">Seat pricing</span><span class="lv">$49 per seat per month</span></div>
+</div>
+<div class="lim"><span class="lk">Daily cap</span><span class="lv">50 messages</span></div>
+<div class="lim"><span class="lk">File upload</span><span class="lv">10MB per file</span></div>
+<div class="lim"><span class="lk">Seat minimums</span><span class="lv">5 users</span></div>
+<div class="lim"><span class="lk">Rate limits</span><span class="lv">{'API requests': 1000, 'Blocks created': 10000, 'Pages created': 1000, 'Blocks updated': 10000, 'Pages updated': 1000, 'Blocks deleted': 10000, 'Pages deleted': 1000}</span></div>
+<div class="lim"><span class="lk">Message caps</span><span class="lv">{'Free plan': 50, 'Paid plan': 1000}</span></div>
+<div class="lim"><span class="lk">Query caps</span><span class="lv">{'Free plan': 50, 'Paid plan': 1000}</span></div>
+</div>
+<div class="lim"><span class="lk">Daily cap</span><span class="lv">50 messages</span></div>
+<div class="lim"><span class="lk">File upload</span><span class="lv">10MB per file</span></div>
+<div class="lim"><span class="lk">Seat minimums</span><span class="lv">{'Team': '3 users', 'Business': '3 users'}</span></div>
+<div class="lim"><span class="lk">Rate limits</span><span class="lv">{'Queries per second': '5', 'Queries per minute': '300', 'Queries per day': '50000'}</span></div>
+</div>
+<div class="lim"><span class="lk">Daily cap</span><span class="lv">50 messages</span></div>
+<div class="lim"><span class="lk">File upload</span><span class="lv">10MB per file</span></div>
+<div class="lim"><span class="lk">Workflow credits</span><span class="lv">1000 credits per month (Pro plan), 5000 credits per month (Enterprise plan)</span></div>
+<div class="lim"><span class="lk">Brand voice limits</span><span class="lv">5 brand voices (Pro plan), 20 brand voices (Enterprise plan)</span></div>
+<div class="lim"><span class="lk">Seat minimums</span><span class="lv">1 seat (Pro plan), 5 seats (Enterprise plan)</span></div>
+<div class="lim"><span class="lk">Rate limits</span><span class="lv">20 requests per minute (Pro plan), 50 requests per minute (Enterprise plan)</span></div>
+</div>
+<div class="lim"><span class="lk">Daily cap</span><span class="lv">50 messages</span></div>
+<div class="lim"><span class="lk">File upload</span><span class="lv">10MB per file</span></div>
+<div class="lim"><span class="lk">Article limits per month</span><span class="lv">{'Basic': '10 articles', 'Premium': '50 articles', 'Business': '100 articles', 'Enterprise': 'custom'}</span></div>
+<div class="lim"><span class="lk">GEO tracking limits</span><span class="lv">{'Basic': '1000 locations', 'Premium': '5000 locations', 'Business': '10000 locations', 'Enterprise': 'custom'}</span></div>
+<div class="lim"><span class="lk">Seat minimums</span><span class="lv">{'Basic': '1 user', 'Premium': '1 user', 'Business': '3 users', 'Enterprise': '5 users'}</span></div>
+<div class="lim"><span class="lk">Rate limits</span><span class="lv">{'Basic': '5 requests/second', 'Premium': '10 requests/second', 'Business': '20 requests/second', 'Enterprise': 'custom'}</span></div>
+</div>
+<div class="lim"><span class="lk">Daily cap</span><span class="lv">500 messages</span></div>
+<div class="lim"><span class="lk">File upload</span><span class="lv">20MB per file</span></div>
+<div class="lim"><span class="lk">Seat minimums</span><span class="lv">1 seat (Boss Mode), 5 seats (Business)</span></div>
+<div class="lim"><span class="lk">Rate limits</span><span class="lv">20 requests per minute (Boss Mode), 100 requests per minute (Business)</span></div>
+<div class="lim"><span class="lk">Brand voice limits</span><span class="lv">5 brand voices (Boss Mode), 20 brand voices (Business)</span></div>
+<div class="lim"><span class="lk">Word limits</span><span class="lv">2048 words per response (Boss Mode), 4096 words per response (Business)</span></div>
+</div>
+<div class="lim"><span class="lk">Daily cap</span><span class="lv">50 messages</span></div>
+<div class="lim"><span class="lk">File upload</span><span class="lv">10MB per file</span></div>
+<div class="lim"><span class="lk">Seat minimums</span><span class="lv">1 seat, no minimum for Microsoft 365 E5</span></div>
+<div class="lim"><span class="lk">Rate limits</span><span class="lv">{'Queries per second': '1 QPS', 'Queries per minute': '60 QPM', 'Queries per day': '50000 QPD'}</span></div>
+</div>
+<div class="lim"><span class="lk">Daily cap</span><span class="lv">50 messages</span></div>
+<div class="lim"><span class="lk">File upload</span><span class="lv">10MB per file</span></div>
+<div class="lim"><span class="lk">Message cap</span><span class="lv">20 messages per minute</span></div>
+<div class="lim"><span class="lk">Query cap</span><span class="lv">100 queries per minute</span></div>
+<div class="lim"><span class="lk">Rate limits</span><span class="lv">5 requests per second</span></div>
+<div class="lim"><span class="lk">Seat minimums</span><span class="lv">1 seat minimum, 10 seats recommended for production use</span></div>
+</div>
+<div class="lim"><span class="lk">Daily cap</span><span class="lv">{'Free': '100 messages', 'Pro': '1000 messages', 'Business': '5000 messages', 'Enterprise': 'Custom'}</span></div>
+<div class="lim"><span class="lk">File upload</span><span class="lv">10MB per file</span></div>
+<div class="lim"><span class="lk">Seat minimums</span><span class="lv">{'Free': '1 seat', 'Pro': '1 seat', 'Business': '5 seats', 'Enterprise': '10 seats'}</span></div>
+<div class="lim"><span class="lk">Rate limits</span><span class="lv">{'Free': '20 requests per minute', 'Pro': '50 requests per minute', 'Business': '100 requests per minute', 'Enterprise': 'Custom'}</span></div>
+</div>
+<div class="lim"><span class="lk">Daily cap</span><span class="lv">50 messages</span></div>
+<div class="lim"><span class="lk">File upload</span><span class="lv">10MB per file</span></div>
+<div class="lim"><span class="lk">Message cap</span><span class="lv">20 messages per minute</span></div>
+<div class="lim"><span class="lk">Rate limits</span><span class="lv">5 requests per second</span></div>
+<div class="lim"><span class="lk">Seat minimums</span><span class="lv">1 seat (individual plan), 5 seats (team plan)</span></div>
+<div class="lim"><span class="lk">Token limits</span><span class="lv">2048 tokens per query (free plan), 4096 tokens per query (paid plan)</span></div>
+<div class="lim"><span class="lk">Usage limits</span><span class="lv">100,000 tokens per day (free plan), 1,000,000 tokens per day (paid plan)</span></div>
+</div>
       </div>
       <div class="dsec">
         <h4>Performance Ratings</h4>
@@ -1511,11 +1781,19 @@ function buildCard(t){
     <div class="two">
       <div class="dsec">
         <h4>Pros</h4>
-        <ul class="flist">${t.pros.map(p=>`<li class="pro">${p}</li>`).join('')}</ul>
+        <ul class="flist">
+<li class="pro">Streamlined design process with AI-powered suggestions and automation</li>
+<li class="pro">Enhanced collaboration features for teams and organizations</li>
+<li class="pro">Advanced design analytics and insights for data-driven decision making</li>
+</ul>
       </div>
       <div class="dsec">
         <h4>Cons & Hidden Limitations</h4>
-        <ul class="flist">${t.cons.map(c=>`<li class="con">${c}</li>`).join('')}</ul>
+        <ul class="flist">
+<li class="con">Expensive Organization plan with limited features for smaller teams or individuals</li>
+<li class="con">Hidden limitations in AI-powered design tools, such as limited customization options and inconsistent results</li>
+<li class="con">Steep learning curve for users without prior experience with Figma or AI-powered design tools</li>
+</ul>
       </div>
     </div>
 
