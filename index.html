@@ -201,7 +201,17 @@ header h1{
   box-shadow:0 4px 14px rgba(82,84,212,.35);z-index:999;
 }
 
-@media(max-width:600px){
+.src-wrap{margin-top:2px;}
+.src-row{display:flex;gap:5px;flex-wrap:wrap;margin-top:5px;}
+.src-link{
+  font-size:10px;color:var(--blue);
+  background:rgba(44,123,229,0.07);
+  padding:3px 9px;border-radius:6px;
+  border:1px solid rgba(44,123,229,0.2);
+  text-decoration:none;white-space:nowrap;
+}
+.src-link:hover{background:rgba(44,123,229,0.15);text-decoration:underline;}
+  @media(max-width:600px){
   .grid{grid-template-columns:1fr;}
   .qrow{grid-template-columns:1fr 1fr;}
   header{padding:10px 14px;}
@@ -2969,10 +2979,18 @@ function buildCard(t){
     </div>
 
     <div class="dsec">
-      <h4>Reddit & Community Feedback</h4>
+      <h4>Reddit &amp; Community Feedback</h4>
       ${t.reddit.map(r=>`<div class="rq">${r}</div>`).join('')}
     </div>
-
+ 
+    ${t.sources?`<div class="dsec src-wrap">
+      <h4>Official Data Sources</h4>
+      <div class="src-row">
+        ${Object.entries(t.sources).map(([k,v])=>
+          `<a href="${v}" target="_blank" rel="noopener" class="src-link">&#x1F517; ${k}</a>`
+        ).join('')}
+      </div>
+    </div>`:''}
   </div>
 </div>`;
 }
@@ -2996,6 +3014,61 @@ function render(){
 
 buildFilters();
 render();
+ 
+// Load fresh data from data.json (written by Python auto-updater)
+// This merges updated pricing, features, Reddit feedback into the dashboard
+(function applyFreshData(){
+  fetch('./data.json?v=' + Date.now())
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      if(!d || !d.tools) return;
+ 
+      // Merge fresh data into each tool in T array
+      T.forEach(function(tool){
+        var upd = d.tools[tool.id];
+        if(!upd) return;
+        // Update each section if fresh data is available and non-empty
+        if(upd.plans  && upd.plans.length)   tool.plans   = upd.plans;
+        if(upd.free   && upd.free.length)    tool.free    = upd.free;
+        if(upd.limits && Object.keys(upd.limits).length) tool.limits = upd.limits;
+        if(upd.feats  && upd.feats.length)   tool.feats   = upd.feats;
+        if(upd.pros   && upd.pros.length)    tool.pros    = upd.pros;
+        if(upd.cons   && upd.cons.length)    tool.cons    = upd.cons;
+        if(upd.reddit && upd.reddit.length)  tool.reddit  = upd.reddit;
+        if(upd.uses   && upd.uses.length)    tool.uses    = upd.uses;
+        if(upd.sources) tool.sources = upd.sources;
+      });
+ 
+      // Update the top stats banner with IST time from data.json
+      if(d.meta){
+        var b = document.getElementById('auto-banner');
+        if(b){
+          b.innerHTML =
+            '\u{1F504} <strong>Auto-updated:</strong> ' + d.meta.updated +
+            ' &nbsp;|&nbsp; <strong>Changes today:</strong> ' + d.meta.changes +
+            ' &nbsp;|&nbsp; <strong>Tools tracked:</strong> ' + d.meta.total +
+            ' &nbsp;|&nbsp; <strong>Sections per tool:</strong> ' + d.meta.sections;
+        }
+ 
+        // Update the stat card that shows tool count
+        var statNums = document.querySelectorAll('.stat .n');
+        statNums.forEach(function(el){
+          if(el.textContent === '50+' || el.textContent === '47' || el.textContent === '54+'){
+            el.textContent = d.meta.total;
+          }
+        });
+      }
+ 
+      // Re-render all cards with the fresh merged data
+      render();
+    })
+    .catch(function(err){
+      // Silent fail — dashboard still shows hardcoded data if data.json missing
+      console.log('data.json not yet available:', err);
+    });
+})();
+ 
 </script>
 </body>
 </html>
+
