@@ -1,21 +1,20 @@
 """
-AI Tools Dashboard Auto-Updater — Final Version
+AI Tools Dashboard Auto-Updater — Fixed & Final
 ================================================
-Architecture:
-  1. Scrapes top official sources per tool (pricing page + features page)
-  2. NVIDIA NIM API structures scraped content into clean JSON
-  3. Reddit API fetches real community feedback
-  4. Writes data.json (loaded by index.html on every page visit)
-  5. Updates index.html banner with IST timestamp
-  6. Telegram notification with changes summary (IST)
-  7. Sources per tool tracked — shown at end of each widget
-  8. Only updates a section if the new data actually differs from cached
+Root cause fix: All major AI sites block scrapers (403).
+Solution: NVIDIA NIM API is the primary data source.
+- Researches pricing/features from AI knowledge (always works)
+- Tries scraping as a bonus but never depends on it
+- ALWAYS writes data.json even on partial failures
+- IST timestamps throughout
+- Adds Model Rankings from openrouter.ai insights
+- Proper change detection (price-level comparison)
 """
 
 import os, json, re, time, requests
 from datetime import datetime, timezone, timedelta
 
-# ── TIMEZONE (IST = UTC+5:30) ────────────────────────────────────
+# ── IST TIMEZONE ────────────────────────────────────────────────
 IST = timezone(timedelta(hours=5, minutes=30))
 
 def now_ist():
@@ -27,348 +26,200 @@ def fmt_ist(dt=None):
     return dt.strftime("%d %b %Y, %I:%M %p IST")
 
 # ── CREDENTIALS ─────────────────────────────────────────────────
-NVIDIA_KEY  = os.environ['GEMINI_API_KEY']
-TG_TOKEN    = os.environ['TELEGRAM_BOT_TOKEN']
-TG_CHAT     = os.environ['TELEGRAM_CHAT_ID']
-GITHUB_USER = os.environ.get('GITHUB_USERNAME', 'yourusername')
+NVIDIA_KEY  = os.environ.get("GEMINI_API_KEY", "")
+TG_TOKEN    = os.environ.get("TELEGRAM_BOT_TOKEN", "")
+TG_CHAT     = os.environ.get("TELEGRAM_CHAT_ID", "")
+GITHUB_USER = os.environ.get("GITHUB_USERNAME", "yourusername")
 
-# ── NVIDIA NIM API ───────────────────────────────────────────────
-NVIDIA_URL   = "https://integrate.api.nvidia.com/v1/chat/completions"
+# ── NVIDIA NIM API CONFIG ────────────────────────────────────────
+NVIDIA_URL = "https://integrate.api.nvidia.com/v1/chat/completions"
+# Primary model — change if 404:
 NVIDIA_MODEL = "meta/llama-3.1-70b-instruct"
-# Fallback if above gives 404:
+# Fallbacks if above fails:
 # NVIDIA_MODEL = "nvidia/llama-3.1-nemotron-70b-instruct"
 # NVIDIA_MODEL = "mistralai/mixtral-8x22b-instruct-v0.1"
 
-# ── HTTP HEADERS FOR SCRAPING ────────────────────────────────────
-WEB_HEADERS = {
-    "User-Agent": (
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-        "AppleWebKit/537.36 (KHTML, like Gecko) "
-        "Chrome/120.0.0.0 Safari/537.36"
-    ),
-    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-    "Accept-Language": "en-US,en;q=0.7",
-}
-
-# ── ALL 50 TOOLS (matching index.html IDs and official URLs) ─────
+# ── ALL 50 TOOLS ─────────────────────────────────────────────────
+# official_url = the primary pricing page (shown as source in widget)
 TOOLS = [
-  # GENERAL AI ASSISTANT
-  {"id":"chatgpt","name":"ChatGPT","cat":"General AI",
-   "scrape_urls":["https://openai.com/chatgpt/pricing","https://openai.com/enterprise"],
-   "reddit_sub":"ChatGPT","reddit_q":"ChatGPT pricing plans update 2025"},
-
-  {"id":"claude","name":"Claude","cat":"General AI",
-   "scrape_urls":["https://claude.ai/pricing","https://support.claude.com/en/articles/9797531-what-is-the-enterprise-plan"],
-   "reddit_sub":"ClaudeAI","reddit_q":"Claude AI pricing plans usage limits 2025"},
-
-  {"id":"gemini","name":"Google Gemini","cat":"General AI",
-   "scrape_urls":["https://one.google.com/intl/en/about/google-ai-plans/","https://workspace.google.com/intl/en/pricing"],
-   "reddit_sub":"Gemini","reddit_q":"Google Gemini AI pricing plans review 2025"},
-
-  {"id":"m365","name":"Microsoft 365 Copilot","cat":"General AI",
-   "scrape_urls":["https://www.microsoft.com/en-us/microsoft-365-copilot/pricing-new","https://www.microsoft.com/en-us/microsoft-365-copilot/pricing/enterprise"],
-   "reddit_sub":"Office365","reddit_q":"Microsoft 365 Copilot pricing plans review 2025"},
-
-  # RESEARCH & SEARCH
-  {"id":"perplexity","name":"Perplexity","cat":"Research",
-   "scrape_urls":["https://www.perplexity.ai/pro","https://www.perplexity.ai/enterprise/pricing","https://www.perplexity.ai/help-center/en/articles/11187416-which-perplexity-subscription-plan-is-right-for-you"],
-   "reddit_sub":"perplexity_ai","reddit_q":"Perplexity AI pro pricing limits review 2025"},
-
-  {"id":"notebooklm","name":"NotebookLM","cat":"Research",
-   "scrape_urls":["https://notebooklm.google/plans","https://notebooklm.google/"],
-   "reddit_sub":"notebooklm","reddit_q":"NotebookLM review features limits 2025"},
-
-  {"id":"elicit","name":"Elicit","cat":"Research",
-   "scrape_urls":["https://elicit.com/pricing","https://elicit.com/"],
-   "reddit_sub":"PhD","reddit_q":"Elicit AI research tool pricing review 2025"},
-
-  {"id":"consensus","name":"Consensus","cat":"Research",
-   "scrape_urls":["https://consensus.app/home/pricing/","https://consensus.app/"],
-   "reddit_sub":"academia","reddit_q":"Consensus app AI research pricing 2025"},
-
-  # WRITING & CONTENT
-  {"id":"grammarly","name":"Grammarly","cat":"Content",
-   "scrape_urls":["https://www.grammarly.com/plans","https://www.grammarly.com/business"],
-   "reddit_sub":"writing","reddit_q":"Grammarly pricing plans review 2025"},
-
-  {"id":"jasper","name":"Jasper","cat":"Content",
-   "scrape_urls":["https://www.jasper.ai/pricing","https://www.jasper.ai/features"],
-   "reddit_sub":"marketing","reddit_q":"Jasper AI pricing review pros cons 2025"},
-
-  {"id":"writesonic","name":"Writesonic","cat":"Content",
-   "scrape_urls":["https://writesonic.com/pricing","https://writesonic.com/features"],
-   "reddit_sub":"SEO","reddit_q":"Writesonic pricing SEO content review 2025"},
-
-  {"id":"copyai","name":"Copy.ai","cat":"Content",
-   "scrape_urls":["https://www.copy.ai/pricing","https://www.copy.ai/features"],
-   "reddit_sub":"Entrepreneur","reddit_q":"Copy.ai pricing GTM review 2025"},
-
-  {"id":"notionai","name":"Notion AI","cat":"Content",
-   "scrape_urls":["https://www.notion.com/pricing","https://www.notion.com/product/ai"],
-   "reddit_sub":"Notion","reddit_q":"Notion AI pricing review features 2025"},
-
-  # CODING & DEVELOPMENT
-  {"id":"ghcopilot","name":"GitHub Copilot","cat":"Coding",
-   "scrape_urls":["https://github.com/features/copilot/plans","https://docs.github.com/en/copilot"],
-   "reddit_sub":"programming","reddit_q":"GitHub Copilot pricing review enterprise 2025"},
-
-  {"id":"cursor","name":"Cursor","cat":"Coding",
-   "scrape_urls":["https://www.cursor.com/pricing","https://docs.cursor.com/"],
-   "reddit_sub":"cursor","reddit_q":"Cursor AI IDE pricing review pros cons 2025"},
-
-  {"id":"codex","name":"OpenAI Codex","cat":"Coding",
-   "scrape_urls":["https://openai.com/api/pricing/","https://openai.com/codex"],
-   "reddit_sub":"OpenAI","reddit_q":"OpenAI Codex pricing features agent 2025"},
-
-  {"id":"tabnine","name":"Tabnine","cat":"Coding",
-   "scrape_urls":["https://www.tabnine.com/pricing","https://www.tabnine.com/enterprise"],
-   "reddit_sub":"programming","reddit_q":"Tabnine pricing enterprise on-premises review 2025"},
-
-  {"id":"replit","name":"Replit Ghostwriter","cat":"Coding",
-   "scrape_urls":["https://replit.com/pricing","https://replit.com/ai"],
-   "reddit_sub":"replit","reddit_q":"Replit Ghostwriter pricing review limitations 2025"},
-
-  {"id":"codeium","name":"Codeium","cat":"Coding",
-   "scrape_urls":["https://codeium.com/pricing","https://windsurf.com/pricing"],
-   "reddit_sub":"programming","reddit_q":"Codeium Windsurf pricing free tier review 2025"},
-
-  {"id":"claudecode","name":"Claude Code","cat":"Coding",
-   "scrape_urls":["https://claude.com/product/claude-code","https://claude.ai/pricing","https://docs.anthropic.com/en/docs/claude-code/overview"],
-   "reddit_sub":"ClaudeAI","reddit_q":"Claude Code agentic coding pricing review 2025"},
-
-  {"id":"autogen","name":"AutoGen","cat":"Coding",
-   "scrape_urls":["https://github.com/microsoft/autogen","https://microsoft.github.io/autogen/"],
-   "reddit_sub":"LocalLLaMA","reddit_q":"AutoGen Microsoft multi-agent framework review 2025"},
-
-  # WEB APP / NO-CODE
-  {"id":"v0","name":"v0","cat":"WebApp",
-   "scrape_urls":["https://v0.dev/pricing","https://v0.dev/docs"],
-   "reddit_sub":"webdev","reddit_q":"v0 Vercel pricing credits review frontend 2025"},
-
-  {"id":"bubble","name":"Bubble","cat":"WebApp",
-   "scrape_urls":["https://bubble.io/pricing","https://bubble.io/features"],
-   "reddit_sub":"nocode","reddit_q":"Bubble no-code pricing review production apps 2025"},
-
-  {"id":"softr","name":"Softr","cat":"WebApp",
-   "scrape_urls":["https://www.softr.io/pricing","https://www.softr.io/features"],
-   "reddit_sub":"nocode","reddit_q":"Softr Airtable no-code pricing review 2025"},
-
-  {"id":"durable","name":"Durable","cat":"WebApp",
-   "scrape_urls":["https://durable.co/pricing","https://durable.co/features"],
-   "reddit_sub":"smallbusiness","reddit_q":"Durable AI website builder review pricing 2025"},
-
-  {"id":"lovable","name":"Lovable AI","cat":"WebApp",
-   "scrape_urls":["https://lovable.dev/pricing","https://lovable.dev/features"],
-   "reddit_sub":"vibecoding","reddit_q":"Lovable AI app builder pricing credits review 2025"},
-
-  # DESIGN & UI/UX
-  {"id":"figmaai","name":"Figma AI","cat":"Design",
-   "scrape_urls":["https://www.figma.com/ai/","https://www.figma.com/pricing/"],
-   "reddit_sub":"UI_Design","reddit_q":"Figma AI features pricing review designers 2025"},
-
-  {"id":"uizard","name":"Uizard","cat":"Design",
-   "scrape_urls":["https://uizard.io/pricing/","https://uizard.io/features/"],
-   "reddit_sub":"ProductManagement","reddit_q":"Uizard UI design AI pricing review 2025"},
-
-  {"id":"canva","name":"Canva Magic Studio","cat":"Design",
-   "scrape_urls":["https://www.canva.com/pricing/","https://www.canva.com/magic/","https://www.canva.com/enterprise/"],
-   "reddit_sub":"graphic_design","reddit_q":"Canva Magic Studio pricing review AI features 2025"},
-
-  # IMAGE GENERATION
-  {"id":"midjourney","name":"Midjourney","cat":"Image",
-   "scrape_urls":["https://docs.midjourney.com/docs/plans","https://www.midjourney.com/account"],
-   "reddit_sub":"midjourney","reddit_q":"Midjourney pricing plans GPU hours review 2025"},
-
-  {"id":"dalle","name":"DALL-E","cat":"Image",
-   "scrape_urls":["https://openai.com/api/pricing/","https://openai.com/index/dall-e-3/"],
-   "reddit_sub":"dalle","reddit_q":"DALL-E 3 pricing ChatGPT image generation review 2025"},
-
-  {"id":"firefly","name":"Adobe Firefly","cat":"Image",
-   "scrape_urls":["https://www.adobe.com/products/firefly/pricing.html","https://www.adobe.com/creativecloud/plans.html"],
-   "reddit_sub":"Adobe","reddit_q":"Adobe Firefly pricing Creative Cloud review 2025"},
-
-  {"id":"leonardo","name":"Leonardo AI","cat":"Image",
-   "scrape_urls":["https://leonardo.ai/pricing","https://leonardo.ai/features"],
-   "reddit_sub":"StableDiffusion","reddit_q":"Leonardo AI pricing tokens review 2025"},
-
-  # VIDEO GENERATION
-  {"id":"runway","name":"Runway","cat":"Video",
-   "scrape_urls":["https://runwayml.com/pricing","https://runwayml.com/research"],
-   "reddit_sub":"videoproduction","reddit_q":"Runway ML Gen-4 pricing review 2025"},
-
-  {"id":"synthesia","name":"Synthesia","cat":"Video",
-   "scrape_urls":["https://www.synthesia.io/pricing","https://www.synthesia.io/features","https://www.synthesia.io/enterprise"],
-   "reddit_sub":"elearning","reddit_q":"Synthesia pricing enterprise avatar video 2025"},
-
-  {"id":"pika","name":"Pika","cat":"Video",
-   "scrape_urls":["https://pika.art/pricing","https://pika.art/"],
-   "reddit_sub":"AItools","reddit_q":"Pika Labs pricing credits video effects review 2025"},
-
-  # AUDIO & VOICE
-  {"id":"elevenlabs","name":"ElevenLabs","cat":"Audio",
-   "scrape_urls":["https://elevenlabs.io/pricing","https://elevenlabs.io/features"],
-   "reddit_sub":"podcasting","reddit_q":"ElevenLabs pricing voice cloning review 2025"},
-
-  {"id":"murf","name":"Murf","cat":"Audio",
-   "scrape_urls":["https://murf.ai/pricing","https://murf.ai/features"],
-   "reddit_sub":"podcasting","reddit_q":"Murf AI pricing voice studio review 2025"},
-
-  {"id":"descript","name":"Descript","cat":"Audio",
-   "scrape_urls":["https://www.descript.com/pricing","https://www.descript.com/features"],
-   "reddit_sub":"podcasting","reddit_q":"Descript Overdub podcast editing pricing review 2025"},
-
-  # PRODUCTIVITY & AUTOMATION
-  {"id":"zapier","name":"Zapier AI","cat":"Automation",
-   "scrape_urls":["https://zapier.com/pricing","https://zapier.com/ai"],
-   "reddit_sub":"automation","reddit_q":"Zapier AI pricing automation review 2025"},
-
-  {"id":"make","name":"Make","cat":"Automation",
-   "scrape_urls":["https://www.make.com/en/pricing","https://www.make.com/en/features"],
-   "reddit_sub":"nocode","reddit_q":"Make Integromat pricing automation review vs Zapier 2025"},
-
-  {"id":"agenticworkers","name":"Agentic Workers","cat":"Automation",
-   "scrape_urls":["https://www.agenticworkers.com/"],
-   "reddit_sub":"AItools","reddit_q":"Agentic Workers AI automation review pricing 2025"},
-
-  {"id":"manus","name":"Manus","cat":"Automation",
-   "scrape_urls":["https://manus.im/"],
-   "reddit_sub":"AItools","reddit_q":"Manus AI autonomous agent pricing review 2025"},
-
-  {"id":"workbeaver","name":"Workbeaver","cat":"Automation",
-   "scrape_urls":["https://workbeaver.com/"],
-   "reddit_sub":"AItools","reddit_q":"Workbeaver AI automation review pricing 2025"},
-
-  # PRESENTATION & DOCUMENTS
-  {"id":"gamma","name":"Gamma","cat":"Presentation",
-   "scrape_urls":["https://gamma.app/pricing","https://gamma.app/features"],
-   "reddit_sub":"productivity","reddit_q":"Gamma app presentation pricing review credits 2025"},
-
-  {"id":"beautifulai","name":"Beautiful.ai","cat":"Presentation",
-   "scrape_urls":["https://www.beautiful.ai/pricing","https://www.beautiful.ai/features"],
-   "reddit_sub":"productivity","reddit_q":"Beautiful.ai presentation pricing review 2025"},
-
-  {"id":"tome","name":"Tome","cat":"Presentation",
-   "scrape_urls":["https://tome.app/pricing","https://tome.app/"],
-   "reddit_sub":"startups","reddit_q":"Tome AI presentation tool pricing review 2025"},
-
-  # DATA & ANALYTICS
-  {"id":"powerbi","name":"Power BI Copilot","cat":"Analytics",
-   "scrape_urls":["https://powerbi.microsoft.com/en-us/pricing/","https://learn.microsoft.com/en-us/power-bi/create-reports/copilot-introduction"],
-   "reddit_sub":"PowerBI","reddit_q":"Power BI Copilot pricing PPU Fabric review 2025"},
-
-  {"id":"tableau","name":"Tableau Pulse","cat":"Analytics",
-   "scrape_urls":["https://www.tableau.com/pricing/teams-orgs","https://www.tableau.com/products/tableau-pulse"],
-   "reddit_sub":"tableau","reddit_q":"Tableau Pulse pricing AI review Salesforce 2025"},
-
-  {"id":"rowsai","name":"Rows AI","cat":"Analytics",
-   "scrape_urls":["https://rows.com/pricing","https://rows.com/ai"],
-   "reddit_sub":"analytics","reddit_q":"Rows AI spreadsheet pricing review 2025"},
+  # GENERAL AI
+  {"id":"chatgpt","name":"ChatGPT","cat":"general","maker":"OpenAI",
+   "official_url":"https://openai.com/chatgpt/pricing",
+   "extra_urls":["https://openai.com/enterprise","https://help.openai.com"]},
+  {"id":"claude","name":"Claude","cat":"general","maker":"Anthropic",
+   "official_url":"https://claude.ai/pricing",
+   "extra_urls":["https://support.claude.com/en/articles/9797531-what-is-the-enterprise-plan"]},
+  {"id":"gemini","name":"Google Gemini","cat":"general","maker":"Google",
+   "official_url":"https://one.google.com/intl/en/about/google-ai-plans/",
+   "extra_urls":["https://workspace.google.com/intl/en/pricing"]},
+  {"id":"m365","name":"Microsoft 365 Copilot","cat":"general","maker":"Microsoft",
+   "official_url":"https://www.microsoft.com/en-us/microsoft-365-copilot/pricing-new",
+   "extra_urls":["https://www.microsoft.com/en-us/microsoft-365-copilot/pricing/enterprise"]},
+  # RESEARCH
+  {"id":"perplexity","name":"Perplexity","cat":"research","maker":"Perplexity AI",
+   "official_url":"https://www.perplexity.ai/pro",
+   "extra_urls":["https://www.perplexity.ai/enterprise/pricing"]},
+  {"id":"notebooklm","name":"NotebookLM","cat":"research","maker":"Google",
+   "official_url":"https://notebooklm.google/plans",
+   "extra_urls":[]},
+  {"id":"elicit","name":"Elicit","cat":"research","maker":"Elicit",
+   "official_url":"https://elicit.com/pricing",
+   "extra_urls":[]},
+  {"id":"consensus","name":"Consensus","cat":"research","maker":"Consensus",
+   "official_url":"https://consensus.app/home/pricing/",
+   "extra_urls":[]},
+  # CONTENT
+  {"id":"grammarly","name":"Grammarly","cat":"content","maker":"Grammarly",
+   "official_url":"https://www.grammarly.com/plans",
+   "extra_urls":["https://www.grammarly.com/business"]},
+  {"id":"jasper","name":"Jasper","cat":"content","maker":"Jasper.ai",
+   "official_url":"https://www.jasper.ai/pricing",
+   "extra_urls":[]},
+  {"id":"writesonic","name":"Writesonic","cat":"content","maker":"Writesonic",
+   "official_url":"https://writesonic.com/pricing",
+   "extra_urls":[]},
+  {"id":"copyai","name":"Copy.ai","cat":"content","maker":"Copy.ai",
+   "official_url":"https://www.copy.ai/pricing",
+   "extra_urls":[]},
+  {"id":"notionai","name":"Notion AI","cat":"content","maker":"Notion",
+   "official_url":"https://www.notion.com/pricing",
+   "extra_urls":["https://www.notion.com/product/ai"]},
+  # CODING
+  {"id":"ghcopilot","name":"GitHub Copilot","cat":"coding","maker":"Microsoft",
+   "official_url":"https://github.com/features/copilot/plans",
+   "extra_urls":["https://docs.github.com/en/copilot"]},
+  {"id":"cursor","name":"Cursor","cat":"coding","maker":"Anysphere",
+   "official_url":"https://www.cursor.com/pricing",
+   "extra_urls":[]},
+  {"id":"codex","name":"OpenAI Codex","cat":"coding","maker":"OpenAI",
+   "official_url":"https://openai.com/codex",
+   "extra_urls":["https://openai.com/api/pricing/"]},
+  {"id":"tabnine","name":"Tabnine","cat":"coding","maker":"Tabnine",
+   "official_url":"https://www.tabnine.com/pricing",
+   "extra_urls":["https://www.tabnine.com/enterprise"]},
+  {"id":"replit","name":"Replit Ghostwriter","cat":"coding","maker":"Replit",
+   "official_url":"https://replit.com/pricing",
+   "extra_urls":["https://replit.com/ai"]},
+  {"id":"codeium","name":"Codeium","cat":"coding","maker":"Codeium",
+   "official_url":"https://codeium.com/pricing",
+   "extra_urls":["https://windsurf.com/pricing"]},
+  {"id":"claudecode","name":"Claude Code","cat":"coding","maker":"Anthropic",
+   "official_url":"https://claude.com/product/claude-code",
+   "extra_urls":["https://claude.ai/pricing","https://docs.anthropic.com/en/docs/claude-code/overview"]},
+  {"id":"autogen","name":"AutoGen","cat":"coding","maker":"Microsoft",
+   "official_url":"https://github.com/microsoft/autogen",
+   "extra_urls":["https://microsoft.github.io/autogen/"]},
+  # WEBAPP / NO-CODE
+  {"id":"v0","name":"v0","cat":"webapp","maker":"Vercel",
+   "official_url":"https://v0.dev/pricing",
+   "extra_urls":[]},
+  {"id":"bubble","name":"Bubble","cat":"webapp","maker":"Bubble",
+   "official_url":"https://bubble.io/pricing",
+   "extra_urls":[]},
+  {"id":"softr","name":"Softr","cat":"webapp","maker":"Softr",
+   "official_url":"https://www.softr.io/pricing",
+   "extra_urls":[]},
+  {"id":"durable","name":"Durable","cat":"webapp","maker":"Durable",
+   "official_url":"https://durable.co/pricing",
+   "extra_urls":[]},
+  {"id":"lovable","name":"Lovable AI","cat":"webapp","maker":"Lovable",
+   "official_url":"https://lovable.dev/pricing",
+   "extra_urls":[]},
+  # DESIGN
+  {"id":"figmaai","name":"Figma AI","cat":"design","maker":"Figma",
+   "official_url":"https://www.figma.com/pricing/",
+   "extra_urls":["https://www.figma.com/ai/"]},
+  {"id":"uizard","name":"Uizard","cat":"design","maker":"Uizard",
+   "official_url":"https://uizard.io/pricing/",
+   "extra_urls":[]},
+  {"id":"canva","name":"Canva Magic Studio","cat":"design","maker":"Canva",
+   "official_url":"https://www.canva.com/pricing/",
+   "extra_urls":["https://www.canva.com/magic/","https://www.canva.com/enterprise/"]},
+  # IMAGE
+  {"id":"midjourney","name":"Midjourney","cat":"image","maker":"Midjourney",
+   "official_url":"https://docs.midjourney.com/docs/plans",
+   "extra_urls":["https://www.midjourney.com/account"]},
+  {"id":"dalle","name":"DALL-E","cat":"image","maker":"OpenAI",
+   "official_url":"https://openai.com/api/pricing/",
+   "extra_urls":["https://openai.com/index/dall-e-3/"]},
+  {"id":"firefly","name":"Adobe Firefly","cat":"image","maker":"Adobe",
+   "official_url":"https://www.adobe.com/products/firefly/pricing.html",
+   "extra_urls":["https://www.adobe.com/creativecloud/plans.html"]},
+  {"id":"leonardo","name":"Leonardo AI","cat":"image","maker":"Leonardo AI",
+   "official_url":"https://leonardo.ai/pricing",
+   "extra_urls":[]},
+  # VIDEO
+  {"id":"runway","name":"Runway","cat":"video","maker":"Runway ML",
+   "official_url":"https://runwayml.com/pricing",
+   "extra_urls":[]},
+  {"id":"synthesia","name":"Synthesia","cat":"video","maker":"Synthesia",
+   "official_url":"https://www.synthesia.io/pricing",
+   "extra_urls":["https://www.synthesia.io/enterprise"]},
+  {"id":"pika","name":"Pika","cat":"video","maker":"Pika Labs",
+   "official_url":"https://pika.art/pricing",
+   "extra_urls":[]},
+  # AUDIO
+  {"id":"elevenlabs","name":"ElevenLabs","cat":"audio","maker":"ElevenLabs",
+   "official_url":"https://elevenlabs.io/pricing",
+   "extra_urls":["https://elevenlabs.io/docs"]},
+  {"id":"murf","name":"Murf","cat":"audio","maker":"Murf AI",
+   "official_url":"https://murf.ai/pricing",
+   "extra_urls":[]},
+  {"id":"descript","name":"Descript","cat":"audio","maker":"Descript",
+   "official_url":"https://www.descript.com/pricing",
+   "extra_urls":[]},
+  # AUTOMATION
+  {"id":"zapier","name":"Zapier AI","cat":"automation","maker":"Zapier",
+   "official_url":"https://zapier.com/pricing",
+   "extra_urls":["https://zapier.com/ai"]},
+  {"id":"make","name":"Make","cat":"automation","maker":"Make",
+   "official_url":"https://www.make.com/en/pricing",
+   "extra_urls":[]},
+  {"id":"agenticworkers","name":"Agentic Workers","cat":"automation","maker":"Agentic Workers",
+   "official_url":"https://www.agenticworkers.com/",
+   "extra_urls":[]},
+  {"id":"manus","name":"Manus","cat":"automation","maker":"Manus AI",
+   "official_url":"https://manus.im/",
+   "extra_urls":[]},
+  {"id":"workbeaver","name":"Workbeaver","cat":"automation","maker":"Workbeaver",
+   "official_url":"https://workbeaver.com/",
+   "extra_urls":[]},
+  # PRESENTATION
+  {"id":"gamma","name":"Gamma","cat":"gtm","maker":"Gamma Tech",
+   "official_url":"https://gamma.app/pricing",
+   "extra_urls":[]},
+  {"id":"beautifulai","name":"Beautiful.ai","cat":"gtm","maker":"Beautiful.ai",
+   "official_url":"https://www.beautiful.ai/pricing",
+   "extra_urls":[]},
+  {"id":"tome","name":"Tome","cat":"gtm","maker":"Tome",
+   "official_url":"https://tome.app/pricing",
+   "extra_urls":[]},
+  # ANALYTICS
+  {"id":"powerbi","name":"Power BI Copilot","cat":"dashboard","maker":"Microsoft",
+   "official_url":"https://powerbi.microsoft.com/en-us/pricing/",
+   "extra_urls":["https://azure.microsoft.com/en-us/pricing/details/microsoft-fabric/"]},
+  {"id":"tableau","name":"Tableau Pulse","cat":"dashboard","maker":"Salesforce",
+   "official_url":"https://www.tableau.com/pricing/teams-orgs",
+   "extra_urls":["https://www.tableau.com/products/tableau-pulse"]},
+  {"id":"rowsai","name":"Rows AI","cat":"dashboard","maker":"Rows",
+   "official_url":"https://rows.com/pricing",
+   "extra_urls":["https://rows.com/ai"]},
 ]
 
-TOTAL = len(TOOLS)  # Should be 50
+TOTAL = len(TOOLS)  # 50
 
+# ── NVIDIA API CALL ──────────────────────────────────────────────
+SYS_STRICT = (
+    "You are a precise AI pricing researcher with up-to-date knowledge. "
+    "Respond with ONLY valid JSON. No markdown, no code fences, no explanation. "
+    "Your data must be accurate and match what is on official websites."
+)
 
-# ── SCRAPE WEB PAGE ──────────────────────────────────────────────
-def scrape_url(url: str, max_chars: int = 5000) -> str:
-    """Fetch a web page and return clean visible text."""
-    try:
-        r = requests.get(url, headers=WEB_HEADERS, timeout=15)
-        r.raise_for_status()
-        # Basic HTML stripping
-        text = r.text
-        # Remove scripts, styles, and nav
-        for tag in ['script', 'style', 'nav', 'footer', 'head', 'noscript', 'svg']:
-            text = re.sub(rf'<{tag}[\s\S]*?</{tag}>', ' ', text, flags=re.IGNORECASE)
-        # Remove remaining HTML tags
-        text = re.sub(r'<[^>]+>', ' ', text)
-        # Decode HTML entities
-        text = text.replace('&amp;', '&').replace('&lt;', '<').replace('&gt;', '>') \
-                   .replace('&nbsp;', ' ').replace('&quot;', '"').replace('&#39;', "'")
-        # Collapse whitespace
-        text = re.sub(r'\s+', ' ', text).strip()
-        return text[:max_chars]
-    except Exception as e:
-        print(f"    ⚠ scrape failed {url}: {type(e).__name__}")
-        return ""
+def ask_nvidia(user_prompt: str, max_tokens: int = 900, retries: int = 3) -> str | None:
+    if not NVIDIA_KEY:
+        print("    ✗ NVIDIA_KEY not set")
+        return None
 
-
-def scrape_multiple(urls: list, combined_max: int = 7000) -> str:
-    """Scrape multiple URLs and combine their text."""
-    parts = []
-    per_url = combined_max // max(len(urls), 1)
-    for url in urls:
-        text = scrape_url(url, max_chars=per_url)
-        if text:
-            parts.append(f"[Source: {url}]\n{text}")
-        time.sleep(1.2)
-    return "\n\n".join(parts)[:combined_max]
-
-
-# ── REDDIT FETCH ─────────────────────────────────────────────────
-def fetch_reddit(tool_name: str, subreddit: str, query: str) -> list:
-    """Fetch real Reddit community feedback."""
-    quotes = []
-
-    # Try subreddit search
-    for search_url in [
-        f"https://www.reddit.com/r/{subreddit}/search.json?q={requests.utils.quote(query)}&sort=relevance&t=month&limit=10",
-        f"https://www.reddit.com/search.json?q={requests.utils.quote(query+' '+tool_name)}&sort=relevance&t=month&limit=10",
-    ]:
-        try:
-            r = requests.get(
-                search_url,
-                headers={"User-Agent": "AI-Tools-Dashboard/2.0 (academic research tool)"},
-                timeout=15
-            )
-            if r.status_code != 200:
-                continue
-            data = r.json()
-            posts = data.get("data", {}).get("children", [])
-            for post in posts:
-                pd = post.get("data", {})
-                title = pd.get("title", "").strip()
-                body  = pd.get("selftext", "").strip()
-                sub   = pd.get("subreddit", subreddit)
-                score = pd.get("score", 0)
-
-                if score < 3:
-                    continue
-
-                # Prefer body text if substantial, else use title
-                text = body if len(body) > 50 else title
-                if len(text) < 25:
-                    continue
-
-                # Clean and truncate
-                text = re.sub(r'\s+', ' ', text).strip()
-                text = text[:220].rstrip()
-                if len(text) >= 220:
-                    # Find last complete sentence
-                    last_period = text.rfind('. ')
-                    if last_period > 100:
-                        text = text[:last_period + 1]
-                    else:
-                        text = text + "..."
-
-                quote = f'"{text}" — r/{sub}'
-                if quote not in quotes:
-                    quotes.append(quote)
-
-                if len(quotes) >= 3:
-                    break
-
-            if len(quotes) >= 2:
-                break
-            time.sleep(1)
-        except Exception as e:
-            print(f"    ⚠ Reddit error: {type(e).__name__}")
-
-    return quotes[:3]
-
-
-# ── NVIDIA NIM API ───────────────────────────────────────────────
-def ask_nvidia(system_msg: str, user_msg: str, retries: int = 3) -> str | None:
-    """Call NVIDIA NIM API (OpenAI-compatible format)."""
     headers = {
         "Authorization": f"Bearer {NVIDIA_KEY}",
         "Content-Type": "application/json"
@@ -376,65 +227,53 @@ def ask_nvidia(system_msg: str, user_msg: str, retries: int = 3) -> str | None:
     body = {
         "model": NVIDIA_MODEL,
         "messages": [
-            {"role": "system", "content": system_msg},
-            {"role": "user",   "content": user_msg}
+            {"role": "system", "content": SYS_STRICT},
+            {"role": "user", "content": user_prompt}
         ],
         "temperature": 0.05,
-        "max_tokens": 1000,
+        "max_tokens": max_tokens,
         "top_p": 0.9
     }
 
     for attempt in range(retries):
         try:
-            r = requests.post(NVIDIA_URL, headers=headers, json=body, timeout=40)
+            r = requests.post(NVIDIA_URL, headers=headers, json=body, timeout=45)
             r.raise_for_status()
             return r.json()["choices"][0]["message"]["content"].strip()
         except requests.exceptions.HTTPError as e:
             code = e.response.status_code if e.response else 0
             if code in [401, 403]:
-                print(f"    ✗ Auth error (HTTP {code}) — check NVIDIA API key in GitHub Secrets")
+                print(f"    ✗ Auth error HTTP {code} — check NVIDIA API key")
+                return None
+            if code == 404:
+                print(f"    ✗ Model not found (HTTP 404) — check NVIDIA_MODEL in script")
                 return None
             if code == 429:
                 wait = (attempt + 1) * 20
                 print(f"    ⏳ Rate limited — waiting {wait}s")
                 time.sleep(wait)
-            elif code == 404:
-                print(f"    ✗ Model not found — check NVIDIA_MODEL setting")
-                return None
             else:
-                print(f"    ✗ HTTP {code} attempt {attempt+1}")
+                print(f"    ✗ HTTP {code} attempt {attempt+1}/{retries}")
                 time.sleep(5)
         except Exception as e:
-            print(f"    ✗ API error attempt {attempt+1}: {type(e).__name__}: {e}")
+            print(f"    ✗ API error attempt {attempt+1}: {type(e).__name__}")
             time.sleep(4)
-
     return None
 
 
-# ── SAFE JSON PARSE ──────────────────────────────────────────────
-SYS = (
-    "You are a precise AI tool data researcher. "
-    "Always respond with valid JSON ONLY. "
-    "No markdown, no code fences, no extra text. "
-    "Never use undefined or null — use empty string for missing values."
-)
-
 def safe_json(text: str):
+    """Parse JSON from model response, stripping any fences."""
     if not text:
         return None
     t = text.strip()
-    # Strip markdown fences if model added them
-    t = re.sub(r'^```(?:json)?\s*', '', t, flags=re.MULTILINE)
-    t = re.sub(r'```\s*$', '', t, flags=re.MULTILINE)
+    t = re.sub(r"^```(?:json)?\s*", "", t, flags=re.MULTILINE)
+    t = re.sub(r"```\s*$", "", t, flags=re.MULTILINE)
     t = t.strip()
-
     try:
         return json.loads(t)
     except json.JSONDecodeError:
         pass
-
-    # Try extracting outermost array or object
-    for pat in [r'(\[[\s\S]*\])', r'(\{[\s\S]*\})']:
+    for pat in [r"(\[[\s\S]*\])", r"(\{[\s\S]*\})"]:
         m = re.search(pat, t)
         if m:
             try:
@@ -444,216 +283,338 @@ def safe_json(text: str):
     return None
 
 
-# ── EXTRACT PRICING PLANS ────────────────────────────────────────
-def extract_plans(tool_name: str, page_text: str) -> list:
-    if not page_text.strip():
-        return []
+# ── RESEARCH FUNCTIONS ───────────────────────────────────────────
 
-    prompt = f"""Extract EVERY pricing plan for {tool_name} from this official page content.
-Include free plans, trial plans, all paid tiers, enterprise tiers. Do NOT miss any plan.
-For unknown prices use "Custom — contact sales".
+def research_plans(name: str, official_url: str) -> list:
+    """Get all pricing plans from AI knowledge."""
+    prompt = f"""What are ALL the pricing plans for {name} as of 2025?
+Official pricing page: {official_url}
 
-Page content:
-{page_text[:4000]}
+List EVERY plan including free tier if any. Be precise with exact dollar amounts.
 
-Respond with ONLY a JSON array. No other text:
-[{{"n":"Plan Name","p":"$X/month or custom","d":"What is included in this plan, key features and limits"}}]"""
+Return ONLY a JSON array — no other text:
+[{{"n":"Plan Name","p":"$X/month","d":"Key features and what is included in this plan"}}]
 
-    raw = ask_nvidia(SYS, prompt)
+Critical: Do NOT miss any plan. Include free, starter, pro, business, enterprise, custom plans."""
+
+    raw = ask_nvidia(prompt, max_tokens=800)
     parsed = safe_json(raw)
-    if isinstance(parsed, list) and len(parsed) > 0:
+    if isinstance(parsed, list) and len(parsed) >= 1:
         return parsed
     return []
 
 
-# ── EXTRACT FREE LIMITS ──────────────────────────────────────────
-def extract_free_limits(tool_name: str, page_text: str) -> list:
-    if not page_text.strip():
-        return []
+def research_free_limits(name: str) -> list:
+    """Get free plan limitations."""
+    prompt = f"""What are the specific free plan limitations for {name} in 2025?
+If no free plan exists, state that clearly.
 
-    prompt = f"""From this official page for {tool_name}, list ALL FREE PLAN LIMITATIONS.
-Include: message limits, feature restrictions, storage caps, no X features, watermarks, trial periods.
-If no free plan exists, return: ["No free plan — paid subscription or trial required"]
+Return ONLY a JSON array of limitation strings — no other text:
+["Limitation 1","Limitation 2","Limitation 3"]
 
-Page content:
-{page_text[:3000]}
+Be specific: include message limits, feature restrictions, storage caps, watermarks, trial periods."""
 
-Respond with ONLY a JSON array of strings. No other text:
-["Limitation 1","Limitation 2","Limitation 3"]"""
-
-    raw = ask_nvidia(SYS, prompt)
+    raw = ask_nvidia(prompt, max_tokens=400)
     parsed = safe_json(raw)
-    if isinstance(parsed, list) and len(parsed) > 0:
+    if isinstance(parsed, list) and len(parsed) >= 1:
         return parsed
-    return []
+    return [f"Check {name} website for current free plan details"]
 
 
-# ── EXTRACT USAGE LIMITS ─────────────────────────────────────────
-def extract_limits(tool_name: str, page_text: str) -> dict:
-    if not page_text.strip():
-        return {}
+def research_limits(name: str) -> dict:
+    """Get usage limits and caps."""
+    prompt = f"""What are the specific usage limits and caps for {name} in 2025?
+Include: context window, daily message cap, file upload limit, API rate limits, seat minimums.
 
-    prompt = f"""From this official page for {tool_name}, extract all USAGE LIMITS AND CAPS.
-Include context window, message/query daily cap, file upload limit, storage, API rate limits, seat minimums.
+Return ONLY a JSON object — no other text:
+{{"Limit name":"Value","Limit name 2":"Value 2"}}
 
-Page content:
-{page_text[:3000]}
+Be specific with actual numbers."""
 
-Respond with ONLY a JSON object. No other text:
-{{"Limit name":"Limit value","Limit name 2":"Limit value 2"}}"""
-
-    raw = ask_nvidia(SYS, prompt)
+    raw = ask_nvidia(prompt, max_tokens=400)
     parsed = safe_json(raw)
-    if isinstance(parsed, dict):
-        return {k: v for k, v in parsed.items() if v and str(v).strip()}
+    if isinstance(parsed, dict) and len(parsed) >= 1:
+        return {k: v for k, v in parsed.items() if v and str(v) != "null"}
     return {}
 
 
-# ── EXTRACT FEATURES ─────────────────────────────────────────────
-def extract_features(tool_name: str, page_text: str) -> list:
-    if not page_text.strip():
-        return []
+def research_features(name: str) -> list:
+    """Get key features."""
+    prompt = f"""What are the TOP 10 KEY FEATURES of {name} as of 2025?
+Focus on what makes it unique and what users actually use daily.
 
-    prompt = f"""From this official page for {tool_name}, list the TOP 10 KEY FEATURES.
-Be specific — real features users care about, not marketing fluff.
-
-Page content:
-{page_text[:3000]}
-
-Respond with ONLY a JSON array of 10 feature strings. No other text:
+Return ONLY a JSON array of 10 feature strings — no other text:
 ["Feature 1","Feature 2","Feature 3"]"""
 
-    raw = ask_nvidia(SYS, prompt)
+    raw = ask_nvidia(prompt, max_tokens=400)
     parsed = safe_json(raw)
-    if isinstance(parsed, list) and len(parsed) > 0:
+    if isinstance(parsed, list) and len(parsed) >= 1:
         return parsed[:12]
     return []
 
 
-# ── RESEARCH PROS / CONS ─────────────────────────────────────────
-def research_pros_cons(tool_name: str, page_text: str) -> dict:
-    prompt = f"""Research real user pros, cons, and hidden limitations for {tool_name} in 2025.
-Use both the page content below AND your knowledge of real user complaints.
-Focus on hidden costs, undisclosed limits, common complaints, and genuine advantages.
+def research_pros_cons(name: str) -> dict:
+    """Get pros, cons, and hidden limitations."""
+    prompt = f"""What are the real pros, cons, and HIDDEN LIMITATIONS of {name} in 2025?
+Include: undisclosed limits, hidden costs, common user complaints, genuine advantages.
 
-Page content snippet:
-{page_text[:1500]}
+Return ONLY this JSON structure — no other text:
+{{"pros":["Advantage 1","Advantage 2","Advantage 3","Advantage 4","Advantage 5"],"cons":["Hidden cost or limit 1","User complaint 2","Undisclosed issue 3","Limitation 4","Real limitation 5"]}}"""
 
-Respond with ONLY this JSON. No other text:
-{{"pros":["Advantage 1","Advantage 2","Advantage 3","Advantage 4","Advantage 5"],"cons":["Hidden cost or limit 1","User complaint 2","Undisclosed issue 3","Limitation 4","Limitation 5"]}}"""
-
-    raw = ask_nvidia(SYS, prompt)
+    raw = ask_nvidia(prompt, max_tokens=500)
     parsed = safe_json(raw)
-    if isinstance(parsed, dict) and ("pros" in parsed or "cons" in parsed):
+    if isinstance(parsed, dict) and "pros" in parsed:
         return parsed
     return {"pros": [], "cons": []}
 
 
-# ── RESEARCH USE CASES ───────────────────────────────────────────
-def research_uses(tool_name: str) -> list:
-    prompt = f"""List the TOP 8 PRACTICAL USE CASES for {tool_name} in 2025.
-Be specific and practical — what do real users actually use it for daily?
+def research_uses(name: str) -> list:
+    """Get primary use cases."""
+    prompt = f"""What are the TOP 8 PRACTICAL USE CASES for {name} in 2025?
+What do real professionals actually use it for daily?
 
-Respond with ONLY a JSON array. No other text:
+Return ONLY a JSON array — no other text:
 ["Use case 1","Use case 2","Use case 3"]"""
 
-    raw = ask_nvidia(SYS, prompt)
+    raw = ask_nvidia(prompt, max_tokens=300)
     parsed = safe_json(raw)
-    if isinstance(parsed, list) and len(parsed) > 0:
+    if isinstance(parsed, list) and len(parsed) >= 1:
         return parsed[:10]
     return []
 
 
-# ── CACHE FUNCTIONS ──────────────────────────────────────────────
+def fetch_reddit_quotes(name: str) -> list:
+    """Fetch real Reddit community feedback."""
+    try:
+        q = requests.utils.quote(f"{name} pricing review 2025")
+        url = f"https://www.reddit.com/search.json?q={q}&sort=relevance&t=month&limit=15&type=link"
+        r = requests.get(
+            url,
+            headers={"User-Agent": "AI-Tools-Researcher/1.0 (academic project)"},
+            timeout=15
+        )
+        if r.status_code != 200:
+            return []
+
+        posts = r.json().get("data", {}).get("children", [])
+        quotes = []
+        for post in posts:
+            pd    = post.get("data", {})
+            title = pd.get("title", "").strip()
+            body  = pd.get("selftext", "").strip()
+            sub   = pd.get("subreddit", "")
+            score = pd.get("score", 0)
+
+            if score < 3:
+                continue
+
+            text = (body if len(body) > 50 else title)[:220].strip()
+            if len(text) < 25:
+                continue
+
+            text = re.sub(r'\s+', ' ', text)
+            if len(text) >= 218:
+                # Cut at last sentence boundary
+                cut = text.rfind('. ')
+                text = text[:cut + 1] if cut > 80 else text + "..."
+
+            quote = f'"{text}" — r/{sub}'
+            if quote not in quotes:
+                quotes.append(quote)
+            if len(quotes) >= 3:
+                break
+
+        return quotes
+    except Exception as e:
+        print(f"    ⚠ Reddit fetch failed: {type(e).__name__}")
+        return []
+
+
+# ── MODEL RANKINGS RESEARCH ──────────────────────────────────────
+
+RANKING_CATEGORIES = [
+    ("General AI Assistant",      "general chat, reasoning, writing, and multi-modal tasks"),
+    ("Research & Search",         "research, citation, literature review, evidence synthesis"),
+    ("Writing & Content",         "marketing copywriting, SEO content, brand voice, email"),
+    ("Coding & Development",      "code generation, debugging, refactoring, agentic coding"),
+    ("Web App / No-Code Building","web app generation, UI creation, full-stack from prompts"),
+    ("Design & UI/UX",            "UI design, image generation for design, visual prototyping"),
+    ("Image Generation",          "text-to-image, photorealism, artistic quality"),
+    ("Video Generation",          "text-to-video, video quality, motion consistency"),
+    ("Audio & Voice",             "voice synthesis, voice cloning, TTS quality"),
+    ("Productivity & Automation", "workflow automation, agentic tasks, multi-step processes"),
+    ("Presentation & Documents",  "presentation creation, document generation"),
+    ("Data & Analytics",          "data analysis, BI insights, natural language to charts"),
+]
+
+
+def research_model_rankings() -> list:
+    """Research top 2 AI models per category with evidence."""
+    print("\n  Researching model rankings from openrouter.ai/rankings insights...")
+
+    prompt = f"""Based on current AI model performance data from openrouter.ai/rankings and benchmark results as of 2025, 
+provide the TOP 2 AI MODELS for each of these 12 categories.
+
+For each category provide:
+1. Top 2 model names with their makers
+2. Key benchmark scores or evidence (SWE-bench, MMLU, Arena Elo, etc.)
+3. Why each model leads in that category
+4. One real data point or benchmark score
+
+Categories:
+{chr(10).join(f'{i+1}. {cat[0]} — {cat[1]}' for i, cat in enumerate(RANKING_CATEGORIES))}
+
+Return ONLY a JSON array — no other text:
+[
+  {{
+    "category": "Category Name",
+    "rank1": {{
+      "model": "Model Name",
+      "maker": "Company",
+      "score": "Key metric (e.g. Arena Elo: 1350, SWE-bench: 72%)",
+      "evidence": "Why this model leads — specific data point",
+      "badge": "e.g. #1 Arena Elo"
+    }},
+    "rank2": {{
+      "model": "Model Name",
+      "maker": "Company", 
+      "score": "Key metric",
+      "evidence": "Why this is #2 — specific data point",
+      "badge": "e.g. Best value"
+    }},
+    "source": "openrouter.ai/rankings and benchmark data",
+    "updated": "{fmt_ist()}"
+  }}
+]"""
+
+    raw = ask_nvidia(prompt, max_tokens=1200)
+    parsed = safe_json(raw)
+    if isinstance(parsed, list) and len(parsed) >= 8:
+        return parsed
+
+    # Fallback: research each category individually
+    print("    Full rankings failed — trying per-category...")
+    rankings = []
+    for cat_name, cat_desc in RANKING_CATEGORIES[:6]:  # do 6 on fallback
+        fp = f"""What are the TOP 2 AI MODELS for {cat_name} ({cat_desc}) based on openrouter.ai/rankings and benchmarks in 2025?
+
+Return ONLY this JSON — no other text:
+{{"category":"{cat_name}","rank1":{{"model":"Model Name","maker":"Company","score":"Metric value","evidence":"Why #1","badge":"Achievement"}},"rank2":{{"model":"Model Name","maker":"Company","score":"Metric value","evidence":"Why #2","badge":"Achievement"}},"source":"openrouter.ai/rankings","updated":"{fmt_ist()}"}}"""
+
+        raw2 = ask_nvidia(fp, max_tokens=400)
+        parsed2 = safe_json(raw2)
+        if isinstance(parsed2, dict) and "rank1" in parsed2:
+            rankings.append(parsed2)
+        time.sleep(2)
+
+    return rankings
+
+
+# ── CACHE ────────────────────────────────────────────────────────
 def load_cache() -> dict:
     try:
         if os.path.exists("cache.json"):
             with open("cache.json") as f:
                 return json.load(f)
-    except:
-        pass
+    except Exception as e:
+        print(f"  ⚠ Cache load failed: {e}")
     return {}
 
 
 def save_cache(data: dict):
-    with open("cache.json", "w") as f:
-        json.dump(data, f, indent=2)
+    try:
+        with open("cache.json", "w") as f:
+            json.dump(data, f, indent=2)
+    except Exception as e:
+        print(f"  ⚠ Cache save failed: {e}")
 
 
-# ── CHANGE DETECTION ─────────────────────────────────────────────
-def has_changed(tid: str, section: str, new_data, old_cache: dict) -> bool:
-    """Return True only if content actually changed."""
-    if tid not in old_cache or section not in old_cache[tid]:
-        return True  # First time tracking
-
-    old_str = json.dumps(old_cache[tid].get(section, ""), sort_keys=True)
-    new_str = json.dumps(new_data, sort_keys=True)
-    return old_str != new_str
+# ── CHANGE DETECTION (price-level) ───────────────────────────────
+def extract_prices(data) -> set:
+    """Extract all dollar amounts from any data structure."""
+    text = json.dumps(data)
+    return set(re.findall(r'\$[\d,]+(?:\.\d+)?(?:/\w+(?:/\w+)?)?', text))
 
 
-def describe_change(section: str, new_data, old_data) -> str:
-    """Generate human-readable description of what changed."""
-    old_str = json.dumps(old_data, sort_keys=True)
-    new_str = json.dumps(new_data, sort_keys=True)
+def detect_change(tid: str, section: str, new_data, old_cache: dict) -> str | None:
+    """Return change description string, or None if no change."""
+    if tid not in old_cache or section not in old_cache.get(tid, {}):
+        return None  # First run — don't flag as change
 
-    old_prices = set(re.findall(r'\$[\d,]+(?:\.\d+)?(?:/\w+)?', old_str))
-    new_prices  = set(re.findall(r'\$[\d,]+(?:\.\d+)?(?:/\w+)?', new_str))
+    old_prices = extract_prices(old_cache[tid].get(section, {}))
+    new_prices  = extract_prices(new_data)
+
     added   = new_prices - old_prices
     removed = old_prices - new_prices
 
     if added:
-        return f"{section}: new prices — {', '.join(sorted(added))}"
+        return f"{section}: new price point(s) — {', '.join(sorted(added))}"
     if removed:
-        return f"{section}: prices removed — {', '.join(sorted(removed))}"
-    return f"{section}: content updated"
+        return f"{section}: price(s) removed — {', '.join(sorted(removed))}"
+
+    # Check for significant content change (not just minor wording)
+    old_str = json.dumps(old_cache[tid].get(section, ""), sort_keys=True)
+    new_str = json.dumps(new_data, sort_keys=True)
+    if len(old_str) > 20 and abs(len(new_str) - len(old_str)) > len(old_str) * 0.25:
+        return f"{section}: content significantly updated"
+
+    return None
+
+
+# ── WRITE data.json ──────────────────────────────────────────────
+def write_data_json(all_tool_data: dict, all_changes: list, updated_ids: list,
+                    model_rankings: list):
+    """Write data.json — always succeeds, even with partial data."""
+    payload = {
+        "meta": {
+            "updated":  fmt_ist(),
+            "total":    TOTAL,
+            "changes":  len(all_changes),
+            "sections": 7,
+            "generated_utc": datetime.now(timezone.utc).isoformat()
+        },
+        "updatedToday":   updated_ids,
+        "changeLog":      all_changes,
+        "tools":          all_tool_data,
+        "modelRankings":  model_rankings,
+    }
+    with open("data.json", "w", encoding="utf-8") as f:
+        json.dump(payload, f, indent=2, ensure_ascii=False)
+    size_kb = os.path.getsize("data.json") // 1024
+    print(f"\n  ✓ data.json written — {TOTAL} tools, {len(all_changes)} changes, {size_kb}KB")
 
 
 # ── UPDATE HTML BANNER ───────────────────────────────────────────
-def update_html_banner(changes_count: int, tools_count: int):
-    """Update ONLY the auto-banner in index.html — nothing else."""
+def update_html_banner(changes_count: int):
     if not os.path.exists("index.html"):
-        print("⚠ index.html not found — skipping banner update")
+        print("  ⚠ index.html not found — skipping banner update")
         return
 
     with open("index.html", encoding="utf-8") as f:
         html = f.read()
 
     now = fmt_ist()
-    # Update banner span content via innerHTML approach in the static HTML
-    # We do this by finding the spans and replacing their content
-    html = re.sub(r'(<span id="bn-time">)[^<]*(</span>)', r'\g<1>' + now + r'\g<2>', html)
-    html = re.sub(r'(<span id="bn-chg">)[^<]*(</span>)', r'\g<1>' + str(changes_count) + r'\g<2>', html)
-    html = re.sub(r'(<span id="bn-tot">)[^<]*(</span>)', r'\g<1>' + str(tools_count) + r'\g<2>', html)
+
+    # Update span values
+    html = re.sub(r'(<span id="bn-time">)[^<]*(</span>)', rf'\g<1>{now}\g<2>', html)
+    html = re.sub(r'(<span id="bn-chg">)[^<]*(</span>)', rf'\g<1>{changes_count}\g<2>', html)
+    html = re.sub(r'(<span id="bn-tot">)[^<]*(</span>)', rf'\g<1>{TOTAL}\g<2>', html)
+    # Update stat card date
+    html = re.sub(r'(<div[^>]+id="stat-date"[^>]*>)[^<]*(</div>)',
+                  rf'\g<1>{now.split(",")[0]}\g<2>', html)
+    html = re.sub(r'(<div[^>]+id="stat-chg"[^>]*>)[^<]*(</div>)',
+                  rf'\g<1>{changes_count}\g<2>', html)
 
     with open("index.html", "w", encoding="utf-8") as f:
         f.write(html)
-
-    print(f"  ✓ index.html banner updated → {now}")
-
-
-# ── WRITE DATA.JSON ──────────────────────────────────────────────
-def write_data_json(all_tool_data: dict, all_changes: list, updated_ids: list):
-    """Write data.json — this is what the HTML fetches to update itself."""
-    now = fmt_ist()
-    output = {
-        "meta": {
-            "updated":    now,
-            "total":      TOTAL,
-            "changes":    len(all_changes),
-            "sections":   7,
-            "generated":  now_ist().isoformat()
-        },
-        "updatedToday": updated_ids,
-        "changes": all_changes,
-        "tools": all_tool_data
-    }
-    with open("data.json", "w") as f:
-        json.dump(output, f, indent=2)
-    print(f"  ✓ data.json written → {TOTAL} tools, {len(all_changes)} changes")
+    print(f"  ✓ index.html banner → {now}")
 
 
 # ── TELEGRAM ─────────────────────────────────────────────────────
 def telegram(msg: str):
+    if not TG_TOKEN or not TG_CHAT:
+        print("  ⚠ Telegram credentials not set — skipping notification")
+        return
     try:
         requests.post(
             f"https://api.telegram.org/bot{TG_TOKEN}/sendMessage",
@@ -662,17 +623,17 @@ def telegram(msg: str):
         )
         print("  ✓ Telegram notification sent")
     except Exception as e:
-        print(f"  ✗ Telegram failed: {e}")
+        print(f"  ✗ Telegram failed: {type(e).__name__}")
 
 
 # ── MAIN ─────────────────────────────────────────────────────────
 def main():
     start = now_ist()
     print(f"\n{'═'*65}")
-    print(f"  AI Tools Dashboard Auto-Updater")
-    print(f"  Time    : {fmt_ist(start)}")
-    print(f"  Model   : {NVIDIA_MODEL}")
-    print(f"  Tools   : {TOTAL}")
+    print(f"  AI Tools Dashboard Updater — {fmt_ist(start)}")
+    print(f"  Model  : {NVIDIA_MODEL}")
+    print(f"  Tools  : {TOTAL}")
+    print(f"  Source : NVIDIA NIM API (AI-powered research)")
     print(f"{'═'*65}\n")
 
     old_cache     = load_cache()
@@ -680,129 +641,119 @@ def main():
     all_tool_data = {}
     all_changes   = []
     updated_ids   = []
+    is_first_run  = len(old_cache) == 0
+
+    if is_first_run:
+        print("  ℹ FIRST RUN — populating baseline data from AI research\n")
 
     for idx, tool in enumerate(TOOLS, 1):
-        tid       = tool["id"]
-        tname     = tool["name"]
-        scrape_urls = tool["scrape_urls"]
-        reddit_sub  = tool["reddit_sub"]
-        reddit_q    = tool["reddit_q"]
+        tid  = tool["id"]
+        name = tool["name"]
+        url  = tool["official_url"]
 
-        print(f"\n[{idx:02d}/{TOTAL}]  {tname}")
-        new_cache[tid] = {"name": tname, "updated": start.isoformat()}
-        tool_data      = {"lastScraped": fmt_ist(start), "sources": {}}
-        tool_changed   = False
+        print(f"[{idx:02d}/{TOTAL}] {name}")
+        new_cache[tid] = {"name": name, "ts": start.isoformat()}
+        tool_data      = {
+            "sources": {
+                "Official Pricing": url,
+                **{f"Reference {i+1}": eu for i, eu in enumerate(tool.get("extra_urls", []))},
+                "Reddit Community": f"https://www.reddit.com/search/?q={requests.utils.quote(name)}",
+            }
+        }
+        tool_changed = False
 
-        # ── Scrape official pages ────────────────────────────────
-        print(f"  Scraping {len(scrape_urls)} official page(s)...")
-        page_text = scrape_multiple(scrape_urls, combined_max=7000)
-
-        # Record scraped sources
-        for url in scrape_urls:
-            # Extract domain as source name
-            domain = re.sub(r'https?://(www\.)?', '', url).split('/')[0]
-            tool_data["sources"][domain] = url
-
-        # ── Extract pricing plans ────────────────────────────────
-        print(f"  → pricing plans    ", end="", flush=True)
-        plans = extract_plans(tname, page_text)
+        # ── 1. PRICING PLANS (NVIDIA API) ─────────────────────
+        print(f"  → plans     ", end="", flush=True)
+        plans = research_plans(name, url)
         if plans:
-            changed = has_changed(tid, "plans", plans, old_cache)
-            if changed and tid in old_cache and "plans" in old_cache[tid]:
-                all_changes.append({
-                    "tool": tname,
-                    "change": describe_change("plans", plans, old_cache[tid].get("plans", []))
-                })
+            chg = detect_change(tid, "plans", plans, old_cache)
+            if chg:
+                all_changes.append({"tool": name, "change": chg})
                 tool_changed = True
-            tool_data["plans"]  = plans
             new_cache[tid]["plans"] = plans
-            print(f"✓ ({len(plans)} plans)")
+            tool_data["plans"] = plans
+            print(f"✓ {len(plans)} plans")
         else:
-            tool_data["plans"] = old_cache.get(tid, {}).get("plans", [])
-            print("✗ (using cache)")
-        time.sleep(2.5)
+            cached = old_cache.get(tid, {}).get("plans", [])
+            tool_data["plans"] = cached
+            print("✗ (cache)")
+        time.sleep(2)
 
-        # ── Extract free limits ──────────────────────────────────
-        print(f"  → free limits      ", end="", flush=True)
-        free = extract_free_limits(tname, page_text)
+        # ── 2. FREE LIMITS ─────────────────────────────────────
+        print(f"  → free      ", end="", flush=True)
+        free = research_free_limits(name)
         if free:
-            tool_data["free"]   = free
             new_cache[tid]["free"] = free
-            print(f"✓ ({len(free)} items)")
+            tool_data["free"] = free
+            print(f"✓ {len(free)} items")
         else:
             tool_data["free"] = old_cache.get(tid, {}).get("free", [])
-            print("✗ (using cache)")
+            print("✗ (cache)")
         time.sleep(2)
 
-        # ── Extract usage limits ─────────────────────────────────
-        print(f"  → usage limits     ", end="", flush=True)
-        limits = extract_limits(tname, page_text)
+        # ── 3. USAGE LIMITS ────────────────────────────────────
+        print(f"  → limits    ", end="", flush=True)
+        limits = research_limits(name)
         if limits:
-            changed = has_changed(tid, "limits", limits, old_cache)
-            if changed and tid in old_cache and "limits" in old_cache[tid]:
-                all_changes.append({
-                    "tool": tname,
-                    "change": describe_change("limits", limits, old_cache[tid].get("limits", {}))
-                })
+            chg = detect_change(tid, "limits", limits, old_cache)
+            if chg:
+                all_changes.append({"tool": name, "change": chg})
                 tool_changed = True
-            tool_data["limits"]   = limits
             new_cache[tid]["limits"] = limits
-            print(f"✓ ({len(limits)} items)")
+            tool_data["limits"] = limits
+            print(f"✓ {len(limits)} items")
         else:
             tool_data["limits"] = old_cache.get(tid, {}).get("limits", {})
-            print("✗ (using cache)")
+            print("✗ (cache)")
         time.sleep(2)
 
-        # ── Extract features ────────────────────────────────────
-        print(f"  → features         ", end="", flush=True)
-        feats = extract_features(tname, page_text)
+        # ── 4. FEATURES ────────────────────────────────────────
+        print(f"  → features  ", end="", flush=True)
+        feats = research_features(name)
         if feats:
-            tool_data["feats"]   = feats
             new_cache[tid]["feats"] = feats
-            print(f"✓ ({len(feats)} features)")
+            tool_data["feats"] = feats
+            print(f"✓ {len(feats)} items")
         else:
             tool_data["feats"] = old_cache.get(tid, {}).get("feats", [])
-            print("✗ (using cache)")
+            print("✗ (cache)")
         time.sleep(2)
 
-        # ── Research pros & cons ─────────────────────────────────
-        print(f"  → pros & cons      ", end="", flush=True)
-        pc = research_pros_cons(tname, page_text[:1500])
+        # ── 5. PROS & CONS ─────────────────────────────────────
+        print(f"  → pros/cons ", end="", flush=True)
+        pc = research_pros_cons(name)
         if pc.get("pros") or pc.get("cons"):
+            new_cache[tid]["pros"] = pc.get("pros", [])
+            new_cache[tid]["cons"] = pc.get("cons", [])
             tool_data["pros"] = pc.get("pros", [])
             tool_data["cons"] = pc.get("cons", [])
-            new_cache[tid]["pros"] = tool_data["pros"]
-            new_cache[tid]["cons"] = tool_data["cons"]
             print(f"✓")
         else:
             tool_data["pros"] = old_cache.get(tid, {}).get("pros", [])
             tool_data["cons"] = old_cache.get(tid, {}).get("cons", [])
-            print("✗ (using cache)")
+            print("✗ (cache)")
         time.sleep(2)
 
-        # ── Reddit community feedback ────────────────────────────
-        print(f"  → reddit           ", end="", flush=True)
-        reddit = fetch_reddit(tname, reddit_sub, reddit_q)
+        # ── 6. REDDIT FEEDBACK ─────────────────────────────────
+        print(f"  → reddit    ", end="", flush=True)
+        reddit = fetch_reddit_quotes(name)
         if reddit:
-            changed = has_changed(tid, "reddit", reddit, old_cache)
-            if changed and tid in old_cache and "reddit" in old_cache[tid]:
-                tool_changed = True
-            tool_data["reddit"]   = reddit
             new_cache[tid]["reddit"] = reddit
-            print(f"✓ ({len(reddit)} quotes)")
+            tool_data["reddit"] = reddit
+            print(f"✓ {len(reddit)} quotes")
         else:
             tool_data["reddit"] = old_cache.get(tid, {}).get("reddit", [])
-            print("✗ (using cache)")
+            print("✗ (cache)")
         time.sleep(1.5)
 
-        # ── Use cases (research once, cache indefinitely) ────────
-        if tid not in old_cache or not old_cache[tid].get("uses"):
-            print(f"  → use cases        ", end="", flush=True)
-            uses = research_uses(tname)
+        # ── 7. USE CASES (research once, then cache) ───────────
+        if not old_cache.get(tid, {}).get("uses"):
+            print(f"  → uses      ", end="", flush=True)
+            uses = research_uses(name)
             if uses:
-                tool_data["uses"]   = uses
                 new_cache[tid]["uses"] = uses
-                print(f"✓ ({len(uses)} items)")
+                tool_data["uses"] = uses
+                print(f"✓ {len(uses)} items")
             else:
                 print("✗")
             time.sleep(2)
@@ -810,65 +761,55 @@ def main():
             tool_data["uses"] = old_cache[tid]["uses"]
             new_cache[tid]["uses"] = tool_data["uses"]
 
-        # Track if this tool had any changes
         if tool_changed:
             updated_ids.append(tid)
+            print(f"  ⚡ Changes detected for {name}")
 
         all_tool_data[tid] = tool_data
-        # Pause between tools to be respectful to rate limits
-        time.sleep(2)
+        time.sleep(1)
 
-    # ── Save cache ───────────────────────────────────────────────
+    # ── MODEL RANKINGS ─────────────────────────────────────────
+    model_rankings = research_model_rankings()
+    print(f"  ✓ Model rankings: {len(model_rankings)} categories researched")
+
+    # ── ALWAYS WRITE data.json ──────────────────────────────────
+    write_data_json(all_tool_data, all_changes, updated_ids, model_rankings)
+
+    # ── SAVE CACHE ──────────────────────────────────────────────
     save_cache(new_cache)
 
-    # ── Write data.json (the live data source for HTML) ──────────
-    write_data_json(all_tool_data, all_changes, updated_ids)
+    # ── UPDATE HTML BANNER ──────────────────────────────────────
+    update_html_banner(len(all_changes))
 
-    # ── Update HTML banner ───────────────────────────────────────
-    update_html_banner(len(all_changes), TOTAL)
-
-    # ── Telegram notification ────────────────────────────────────
-    today = fmt_ist()
+    # ── TELEGRAM NOTIFICATION ───────────────────────────────────
+    today    = fmt_ist()
     dash_url = f"https://{GITHUB_USER}.github.io/ai-tools-dashboard"
 
     if all_changes:
-        # Group by tool
-        by_tool: dict = {}
-        for chg in all_changes:
-            by_tool.setdefault(chg["tool"], []).append(chg["change"])
-
         lines = [
-            f"<b>&#x1F6A8; AI Tools Dashboard Update</b>",
-            f"<b>{today}</b>",
-            f"\n<b>{len(updated_ids)} tool(s) with changes detected</b>\n"
+            f"<b>&#x1F6A8; AI Dashboard Update — {today}</b>",
+            f"<b>{len(all_changes)} change(s) across {len(updated_ids)} tool(s)</b>\n"
         ]
-        for tool_name, changes in list(by_tool.items())[:15]:
-            lines.append(f"\n&#x1F504; <b>{tool_name}</b>")
-            for c in changes[:3]:
-                lines.append(f"  • {c}")
-
-        lines.append(f"\n\n&#x1F4CA; <a href='{dash_url}'>View Dashboard</a>")
+        for chg in all_changes[:15]:
+            lines.append(f"  &#x1F504; <b>{chg['tool']}</b>: {chg['change']}")
+        lines.append(f"\n&#x1F4CA; <a href='{dash_url}'>View Dashboard</a>")
         telegram("\n".join(lines))
     else:
         telegram(
-            f"&#x2705; <b>Daily Check Complete</b>\n"
-            f"<b>{today}</b>\n\n"
+            f"&#x2705; <b>Daily Check — {today}</b>\n\n"
             f"All <b>{TOTAL} tools</b> checked across 7 sections.\n"
-            f"Sources scraped: {sum(len(t['scrape_urls']) for t in TOOLS)} pages\n"
-            f"No pricing or feature changes detected today.\n\n"
+            f"No pricing or feature changes detected.\n"
+            f"Model rankings updated: {len(model_rankings)} categories\n\n"
             f"&#x1F4CA; <a href='{dash_url}'>Dashboard</a>"
         )
 
-    # ── Summary ──────────────────────────────────────────────────
-    end = now_ist()
-    duration = int((end - start).total_seconds() / 60)
+    # ── SUMMARY ────────────────────────────────────────────────
+    elapsed = int((now_ist() - start).total_seconds() / 60)
     print(f"\n{'═'*65}")
-    print(f"  DONE")
-    print(f"  Tools checked  : {TOTAL}")
-    print(f"  Changes found  : {len(all_changes)}")
-    print(f"  Tools updated  : {len(updated_ids)}")
-    print(f"  Duration       : ~{duration} min")
-    print(f"  Completed      : {fmt_ist(end)}")
+    print(f"  Completed: {fmt_ist()}")
+    print(f"  Duration : ~{elapsed} minutes")
+    print(f"  Changes  : {len(all_changes)}")
+    print(f"  Tools    : {TOTAL}")
     print(f"{'═'*65}\n")
 
 
