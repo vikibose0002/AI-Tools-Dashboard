@@ -2,9 +2,9 @@ name: Daily AI Tools Dashboard Update
 
 on:
   schedule:
-    # 08:00 AM IST = 02:30 UTC
-    - cron: '30 2 * * *'
-  workflow_dispatch:   # lets you trigger manually from Actions tab anytime
+    # 8:30 AM IST = 3:00 AM UTC  (IST = UTC + 5:30)
+    - cron: '0 3 * * *'
+  workflow_dispatch:   # Manual trigger anytime from Actions tab
 
 jobs:
   update:
@@ -21,8 +21,8 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install Python dependencies
-        run: pip install requests beautifulsoup4
+      - name: Install dependencies
+        run: pip install requests
 
       - name: Run dashboard updater
         env:
@@ -32,10 +32,18 @@ jobs:
           GITHUB_USERNAME:    ${{ secrets.GITHUB_USERNAME }}
         run: python update_dashboard.py
 
-      - name: Commit and push all updated files
+      # Always commit — even if only data.json changed
+      - name: Commit and push updates
         run: |
           git config user.email "dashbot@github.com"
           git config user.name "Dashboard Bot"
+          # Stage ALL files (data.json + index.html + cache.json)
           git add -A
-          git diff --staged --quiet || git commit -m "Auto update $(TZ='Asia/Kolkata' date +'%Y-%m-%d %H:%M IST')"
-          git push
+          # Commit only if there are staged changes
+          if git diff --staged --quiet; then
+            echo "No file changes to commit"
+          else
+            git commit -m "Auto update $(TZ='Asia/Kolkata' date +'%d %b %Y %H:%M IST')"
+            git push
+            echo "Changes pushed successfully"
+          fi
