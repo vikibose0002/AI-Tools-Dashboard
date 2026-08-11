@@ -1,47 +1,40 @@
 {
   "meta": {
-    "updated": "10 Aug 2026, 01:23 PM IST",
+    "updated": "11 Aug 2026, 01:49 PM IST",
     "total": 50,
-    "changes": 24,
+    "changes": 15,
     "sections": 7,
-    "generated_utc": "2026-08-10T07:53:53.344865+00:00"
+    "generated_utc": "2026-08-11T08:19:53.099494+00:00"
   },
   "updatedToday": [
     "chatgpt",
     "gemini",
-    "perplexity",
+    "m365",
     "elicit",
     "consensus",
-    "jasper",
     "writesonic",
-    "copyai",
-    "ghcopilot",
-    "cursor",
     "replit",
-    "claudecode",
-    "bubble",
-    "softr",
-    "canva",
+    "codeium",
     "midjourney",
     "dalle",
-    "firefly",
-    "pika",
+    "runway",
     "elevenlabs",
-    "zapier",
+    "murf",
+    "manus",
     "powerbi"
   ],
   "changeLog": [
     {
       "tool": "ChatGPT",
-      "change": "plans: content significantly updated"
-    },
-    {
-      "tool": "Google Gemini",
       "change": "limits: content significantly updated"
     },
     {
-      "tool": "Perplexity",
-      "change": "plans: new price point(s) — $199/month, $49/month, $9/month"
+      "tool": "Google Gemini",
+      "change": "plans: content significantly updated"
+    },
+    {
+      "tool": "Microsoft 365 Copilot",
+      "change": "limits: content significantly updated"
     },
     {
       "tool": "Elicit",
@@ -49,78 +42,42 @@
     },
     {
       "tool": "Consensus",
-      "change": "plans: new price point(s) — $29/month, $49/month, $99/month"
-    },
-    {
-      "tool": "Jasper",
       "change": "limits: content significantly updated"
     },
     {
       "tool": "Writesonic",
-      "change": "plans: new price point(s) — $24/month, $49/month"
-    },
-    {
-      "tool": "Writesonic",
-      "change": "limits: content significantly updated"
-    },
-    {
-      "tool": "Copy.ai",
-      "change": "plans: content significantly updated"
-    },
-    {
-      "tool": "GitHub Copilot",
-      "change": "limits: content significantly updated"
-    },
-    {
-      "tool": "Cursor",
-      "change": "plans: new price point(s) — $15/month, $30/month, $60/month"
+      "change": "plans: new price point(s) — $24.92/month, $49.92/month"
     },
     {
       "tool": "Replit Ghostwriter",
-      "change": "plans: new price point(s) — $21/month, $63/month"
+      "change": "plans: new price point(s) — $15/month"
     },
     {
-      "tool": "Claude Code",
-      "change": "plans: new price point(s) — $499/month"
-    },
-    {
-      "tool": "Bubble",
-      "change": "plans: price(s) removed — $225/month"
-    },
-    {
-      "tool": "Softr",
-      "change": "plans: new price point(s) — $24/month, $49/month, $99/month"
-    },
-    {
-      "tool": "Canva Magic Studio",
-      "change": "plans: new price point(s) — $30/month"
+      "tool": "Codeium",
+      "change": "plans: new price point(s) — $19/month, $49/month, $99/month"
     },
     {
       "tool": "Midjourney",
-      "change": "plans: new price point(s) — $100/month"
+      "change": "plans: new price point(s) — $60/month"
     },
     {
       "tool": "DALL-E",
-      "change": "plans: new price point(s) — $240/month"
+      "change": "plans: new price point(s) — $30/month"
     },
     {
-      "tool": "DALL-E",
-      "change": "limits: new price point(s) — $15/month, $60/month"
-    },
-    {
-      "tool": "Adobe Firefly",
-      "change": "plans: content significantly updated"
-    },
-    {
-      "tool": "Pika",
-      "change": "plans: new price point(s) — $19.99/month, $49.99/month, $9.99/month"
+      "tool": "Runway",
+      "change": "limits: content significantly updated"
     },
     {
       "tool": "ElevenLabs",
-      "change": "plans: new price point(s) — $149/month"
+      "change": "plans: new price point(s) — $199/month"
     },
     {
-      "tool": "Zapier AI",
+      "tool": "Murf",
+      "change": "limits: content significantly updated"
+    },
+    {
+      "tool": "Manus",
       "change": "plans: content significantly updated"
     },
     {
@@ -150,70 +107,60 @@
         {
           "n": "Pro",
           "p": "$42/month",
-          "d": "All Plus features, access to GPT-4 model with more context, longer conversation history, and more advanced features"
+          "d": "All Plus features, access to GPT-4 model with more context, longer conversations, and more advanced features"
         },
         {
           "n": "Business",
           "p": "Custom pricing",
-          "d": "All Pro features, access to GPT-4 model with even more context, advanced security and compliance features, and dedicated support"
+          "d": "All Pro features, access to GPT-4 model with more context, longer conversations, advanced features, and enterprise-grade support"
         },
         {
           "n": "Enterprise",
           "p": "Custom pricing",
-          "d": "All Business features, access to custom models, advanced security and compliance features, and dedicated support"
+          "d": "All Business features, access to GPT-4 model with more context, longer conversations, advanced features, enterprise-grade support, and custom solutions"
         }
       ],
       "free": [
-        "40,000 token limit per month",
+        "40,000 message limit per month",
         "Limited to 3 messages per minute",
         "No access to GPT-4 model",
-        "No access to plugins",
-        "No access to code interpreter",
-        "No access to file uploads",
+        "No access to advanced features like code interpretation and debugging",
         "No access to custom models",
-        "No access to data analytics",
-        "No access to priority support",
-        "No access to commercial use"
+        "No access to data export",
+        "No access to priority support"
       ],
       "limits": {
-        "Context Window": 2048,
-        "Daily Message Cap": 50000,
-        "File Upload Limit": 52428800,
-        "API Rate Limits": {
-          "Burst Limit": 50,
-          "Rate Limit": 20,
-          "Rate Limit Window": 60
-        },
-        "Seat Minimums": {
-          "Base Model": 1,
-          "Custom Model": 10
-        }
+        "Context Window": "2048 tokens",
+        "Daily Message Cap": "100 messages per day for free plan, 1000 messages per day for paid plan",
+        "File Upload Limit": "No file upload available for ChatGPT",
+        "API Rate Limits": "50 requests per minute for free plan, 500 requests per minute for paid plan",
+        "Seat Minimums": "No seat minimums for free plan, 1 seat minimum for paid plan"
       },
       "feats": [
-        "Conversational Dialogue with Contextual Understanding",
-        "Multilingual Support for Over 100 Languages",
-        "Personalized Responses Based on User Preferences",
-        "Advanced Text Summarization and Analysis Capabilities",
-        "Creative Writing and Content Generation Tools",
-        "Emotional Intelligence and Empathy in Responses",
-        "Integration with External Tools and APIs for Enhanced Functionality",
-        "Support for Multiple Response Formats, Including Text, Images, and Code",
-        "Continuous Learning and Improvement through User Feedback",
-        "Customizable Tone, Style, and Language for Tailored Interactions"
+        "Conversational Dialogue",
+        "Contextual Understanding",
+        "Long-Form Text Generation",
+        "Personalized Responses",
+        "Emotional Intelligence",
+        "Multilingual Support",
+        "Summarization and Analysis",
+        "Creative Writing Assistance",
+        "Conversational Role-Playing",
+        "Knowledge Retrieval and Updates"
       ],
       "pros": [
-        "Highly advanced language understanding and generation capabilities",
-        "Ability to learn and improve over time through user interactions",
-        "Supports a wide range of languages and dialects",
-        "Can be fine-tuned for specific tasks and domains",
-        "Free version available with limited features"
+        "Conversational interface for easy interaction",
+        "Ability to understand and respond to context",
+        "Knowledge cutoff of 2023 with some 2024 updates",
+        "Supports multiple languages and formats",
+        "Constantly learning and improving through user interactions"
       ],
       "cons": [
-        "Limited contextual understanding and common sense",
-        "Undisclosed character limit of 2048 tokens for free version",
-        "Hidden cost of $42/month for premium features and higher limits",
-        "Common user complaint of inconsistent and sometimes inaccurate responses",
-        "Real limitation of lack of transparency in training data and algorithms used"
+        "Character limit of 2048 tokens per response",
+        "Undisclosed limit of 5 requests per minute for free users",
+        "Hidden cost of $42/month for ChatGPT Plus with additional features",
+        "Common user complaint of inconsistent accuracy and reliability",
+        "Real limitation of lack of common sense and real-world experience"
       ],
       "reddit": [],
       "uses": [
@@ -237,7 +184,7 @@
         {
           "n": "Free",
           "p": "$0/month",
-          "d": "10,000 tokens (about 1,000-2,000 words), 100 API requests per day, Limited model capabilities, Limited support"
+          "d": "10,000 tokens (about 1,000-2,000 words), 100 API requests per day, Limited model capabilities, Community support"
         },
         {
           "n": "Starter",
@@ -251,7 +198,7 @@
         },
         {
           "n": "Business",
-          "p": "$199/month",
+          "p": "$249/month",
           "d": "10,000,000 tokens (about 1,000,000-2,000,000 words), 100,000 API requests per day, Advanced model capabilities, Dedicated support"
         },
         {
@@ -264,13 +211,14 @@
         "50 messages per day",
         "Limited to 1,000 total messages",
         "No access to advanced features",
-        "No access to custom models",
-        "No access to data export",
         "No access to API",
-        "No support for multiple users",
-        "No access to analytics",
-        "No access to custom integrations",
-        "No access to priority support"
+        "No custom models",
+        "No data export",
+        "No priority support",
+        "No SLA",
+        "No custom integrations",
+        "No SSO",
+        "No data residency"
       ],
       "limits": {
         "Context Window": "131k",
@@ -281,15 +229,15 @@
       },
       "feats": [
         "Conversational AI with Human-like Understanding",
-        "Contextual Understanding with Long-term Memory",
+        "Long-form Text Generation",
+        "Contextual Understanding of up to 131k Tokens",
         "Emotional Intelligence and Empathy",
-        "Multiturn Dialogue and Follow-up Questions",
-        "Common Sense and World Knowledge",
-        "Idiomatic Language and Slang Support",
-        "Creative Writing and Storytelling",
-        "Conversational Role-playing and Character Development",
-        "Emotional Support and Mental Health Resources",
-        "Multilingual Support with 100+ Languages"
+        "Multi-turn Conversations",
+        "Support for 100+ Languages",
+        "Integration with Various Platforms and Tools",
+        "Advanced Sentiment Analysis and Tone Detection",
+        "Personalized Responses based on User Preferences",
+        "Continuous Learning and Improvement through User Feedback"
       ],
       "pros": [
         "Highly advanced language understanding and generation capabilities",
@@ -300,10 +248,10 @@
       ],
       "cons": [
         "Undisclosed character limits for input and output (typically 2048 characters)",
-        "Hidden cost of excessive usage (billed per token, with 1 token = 4 characters or 1 token = 1 byte for Unicode characters)",
-        "Common user complaint of inconsistent or inaccurate responses",
-        "Limitation of requiring significant computational resources and memory",
-        "Real limitation of potential biases and lack of transparency in training data"
+        "Hidden costs for excessive usage or large-scale deployments",
+        "Users have reported inconsistent performance and accuracy across different topics and domains",
+        "Limited transparency into model training data and potential biases",
+        "Real limitation of requiring significant computational resources and expertise for optimal deployment"
       ],
       "reddit": [],
       "uses": [
@@ -327,32 +275,27 @@
         {
           "n": "Free",
           "p": "$0/month",
-          "d": "Up to 50 queries per day, 1,000 characters per query, Limited model capabilities, Limited support"
+          "d": "Up to 50 queries per day, 1,000 queries per month, Limited access to models and features"
         },
         {
-          "n": "Gemini Starter",
+          "n": "Starter",
           "p": "$20/month",
-          "d": "Up to 100 queries per day, 2,000 characters per query, Standard model capabilities, Standard support"
+          "d": "Up to 500 queries per day, 15,000 queries per month, Access to Gemini models and features, Limited support"
         },
         {
-          "n": "Gemini Pro",
+          "n": "Pro",
           "p": "$100/month",
-          "d": "Up to 1,000 queries per day, 5,000 characters per query, Advanced model capabilities, Priority support"
+          "d": "Up to 5,000 queries per day, 150,000 queries per month, Priority access to new models and features, Standard support"
         },
         {
-          "n": "Gemini Business",
+          "n": "Business",
           "p": "$500/month",
-          "d": "Up to 10,000 queries per day, 20,000 characters per query, Enterprise model capabilities, Dedicated support"
+          "d": "Up to 50,000 queries per day, 1,500,000 queries per month, Advanced access to models and features, Priority support"
         },
         {
-          "n": "Gemini Enterprise",
-          "p": "Custom pricing",
-          "d": "High-volume queries, Custom model capabilities, Advanced security and compliance, Dedicated support and solutions engineering"
-        },
-        {
-          "n": "Gemini Custom",
-          "p": "Custom pricing",
-          "d": "Tailored solutions for large enterprises and organizations, Custom model capabilities, Advanced security and compliance, Dedicated support and solutions engineering"
+          "n": "Enterprise",
+          "p": "Custom",
+          "d": "Custom query limits, Advanced access to models and features, Dedicated support, Custom onboarding and training"
         }
       ],
       "free": [
@@ -361,35 +304,42 @@
       "limits": {
         "Context Window": "2048 tokens",
         "Daily Message Cap": "1000 messages per user per day",
-        "File Upload Limit": "1 GB",
-        "API Rate Limits": "600 requests per minute, 100,000 requests per day",
-        "Seat Minimums": "1 seat minimum for Enterprise, 10 seat minimum for Partner"
+        "File Upload Limit": "50MB",
+        "API Rate Limits": {
+          "Conversations API": "60 requests per minute",
+          "Users API": "30 requests per minute",
+          "Messages API": "60 requests per minute"
+        },
+        "Seat Minimums": {
+          "Essentials": "1 seat",
+          "Enterprise": "50 seats"
+        }
       },
       "feats": [
-        "Multi-Modal Search",
-        "Generative AI Responses",
+        "Unified AI Platform",
+        "Generative AI Capabilities",
+        "Multimodal Interaction",
         "Conversational Interface",
-        "Personalized Results",
-        "Multitask Support",
-        "Visual Search",
-        "Entity-Based Search",
-        "Improved Local Search",
-        "Enhanced Knowledge Graph",
-        "Multilingual Support"
+        "Personalized Recommendations",
+        "Multitask Learning",
+        "Large Language Model Integration",
+        "Visual and Textual Understanding",
+        "Emotional Intelligence and Empathy",
+        "Continuous Learning and Improvement"
       ],
       "pros": [
-        "Improved ad relevance and targeting through AI-powered matching",
-        "Enhanced user experience with more visually appealing ads",
-        "Increased ad engagement and conversion rates",
-        "Streamlined ad management and optimization",
-        "Better integration with Google's ecosystem and tools"
+        "Unified ad management across Google Ads and YouTube",
+        "Enhanced AI-driven ad optimization",
+        "Streamlined campaign setup and management",
+        "Improved ad targeting and personalization",
+        "Enhanced analytics and insights"
       ],
       "cons": [
-        "Undisclosed limit: Limited control over ad placement and targeting for certain industries",
-        "Hidden cost: Additional fees for advanced features and support",
-        "User complaint: Steep learning curve for new users unfamiliar with AI-powered ad platforms",
-        "Limitation: Limited compatibility with certain third-party tools and software",
-        "Real limitation: Dependence on high-quality data and user input for optimal performance"
+        "Undisclosed limits on ad frequency capping",
+        "Hidden costs associated with AI-driven ad optimization",
+        "Common user complaints about ad approval delays",
+        "Limitations on ad customization options for certain formats",
+        "Real limitation on support for third-party ad tracking and measurement tools"
       ],
       "reddit": [],
       "uses": [
@@ -442,14 +392,14 @@
         }
       ],
       "free": [
-        "No free plan available for Microsoft 365 Copilot"
+        "Check Microsoft 365 Copilot website for current free plan details"
       ],
       "limits": {
         "Context Window": "131k tokens",
-        "Daily Message Cap": "1000 messages",
+        "Daily Message Cap": "1000 messages per user",
         "File Upload Limit": "100MB",
-        "API Rate Limits": "100 requests per minute, 1000 requests per day",
-        "Seat Minimums": "No minimum for Copilot API, 1 seat for Copilot Studio"
+        "API Rate Limits": "100 requests per second (RPS) per tenant, 1000 requests per minute (RPM) per tenant",
+        "Seat Minimums": "No minimum seats for Microsoft 365 Copilot, but requires Microsoft 365 subscription"
       },
       "feats": [
         "Generative AI-powered suggestions",
@@ -471,11 +421,11 @@
         "Personalized recommendations for improvement"
       ],
       "cons": [
-        "Limited contextual understanding in complex scenarios",
+        "Limited customization options for AI models",
         "Additional costs for premium AI features and large data sets",
-        "Dependence on high-quality training data for accurate results",
-        "Potential for biased AI suggestions based on training data",
-        "Limited transparency into AI decision-making processes"
+        "Dependence on internet connectivity for full functionality",
+        "Potential data privacy concerns with AI-driven analytics",
+        "Limited support for non-Microsoft 365 apps and services"
       ],
       "reddit": [],
       "uses": [
@@ -523,38 +473,43 @@
         }
       ],
       "free": [
-        "Up to 50,000 characters per month",
+        "Limited to 1000 tokens per month",
+        "Limited to 1000 character context window",
+        "Limited to 1 concurrent request",
         "Limited to 1 user",
-        "No commercial use",
-        "Perplexity branding on output",
-        "Limited model selection"
+        "No access to advanced features",
+        "No access to custom models",
+        "No access to fine-tuning",
+        "No access to batch processing",
+        "No access to API keys for production use",
+        "No support for commercial use"
       ],
       "limits": {},
       "feats": [
         "Conversational AI Search Engine",
         "Multimodal Search with Images and Text",
-        "Summarization of Long-Form Content",
-        "Question Answering with Contextual Understanding",
-        "Support for 100+ Languages",
-        "Entity Disambiguation for Accurate Results",
-        "Knowledge Graph for Relationship Insights",
-        "Real-Time Information Retrieval",
-        "Customizable Search Interface",
-        "Integration with Popular Productivity Tools"
+        "Generative Search Results",
+        "Personalized Search Experience",
+        "Entity Disambiguation",
+        "Knowledge Graph Integration",
+        "Real-time Information Updates",
+        "Multilingual Support",
+        "Advanced Filtering and Sorting Options",
+        "Integrations with Popular Productivity Tools"
       ],
       "pros": [
         "Generative capabilities for text and images",
         "Conversational interface for user-friendly interaction",
         "Knowledge cutoff of 2022 with some 2023 updates",
-        "Support for multiple languages and formats",
-        "Constantly learning and improving through user interactions"
+        "Support for multiple languages",
+        "Constant model updates and improvements"
       ],
       "cons": [
-        "Limited knowledge updates after 2022 with some 2023 updates",
-        "Character limit of 2048 for input and output",
-        "Undisclosed limits on image generation capabilities",
-        "Hidden costs for excessive usage or enterprise features",
-        "Common user complaints about inconsistent accuracy and reliability"
+        "Limited context window of around 131k tokens",
+        "Undisclosed character limits for input and output",
+        "Hidden cost of excessive usage through increased token consumption",
+        "Users report inconsistent accuracy and reliability",
+        "Limited control over output style and tone"
       ],
       "reddit": [],
       "uses": [
@@ -606,22 +561,9 @@
         }
       ],
       "free": [
-        "Up to 1000 tokens per month",
-        "Limited to 100 requests per day",
-        "No access to advanced features",
-        "No support for batch processing",
-        "No access to custom models",
-        "No support for long context windows",
-        "No access to fine-tuning",
-        "No support for large language models"
+        "No free plan information available for NotebookLM in 2025"
       ],
-      "limits": {
-        "Context Window": "2048 tokens",
-        "Daily Message Cap": "1000 messages",
-        "File Upload Limit": "50MB",
-        "API Rate Limits": "20 requests per second",
-        "Seat Minimums": "1 seat (billed annually), 5 seats (billed monthly)"
-      },
+      "limits": {},
       "feats": [
         "Multimodal Input Support",
         "Long-Context Understanding",
@@ -631,7 +573,7 @@
         "Emotional Intelligence and Empathy",
         "Multitask Learning and Adaptation",
         "Explainability and Transparency",
-        "Low-Resource and Few-Shot Learning",
+        "Low-Resource and Edge Deployment",
         "Human-in-the-Loop Feedback Mechanism"
       ],
       "pros": [
@@ -639,14 +581,14 @@
         "Support for multiple languages",
         "Integration with various platforms and tools",
         "Ability to fine-tune models for specific tasks",
-        "Continuous learning and improvement through user feedback"
+        "Improved content quality and coherence"
       ],
       "cons": [
         "Limited control over generated content's tone and style",
-        "Potential for biased or inaccurate output",
-        "Undisclosed data storage and usage policies",
-        "Limited transparency in model training data and algorithms",
-        "Hidden costs for large-scale or commercial use, such as custom model development and deployment fees"
+        "Undisclosed character limits for input prompts and generated text",
+        "Hidden costs associated with large-scale model fine-tuning and deployment",
+        "Users report inconsistent performance and accuracy across different tasks and domains",
+        "Limited transparency into model training data and potential biases"
       ],
       "reddit": [],
       "uses": [
@@ -669,34 +611,34 @@
       "free": [
         "100 prompts per month",
         "Limited to 1 user",
-        "Limited to 1 project",
-        "Limited to 1,000 characters per prompt",
+        "No custom models",
+        "No data export",
         "Elicit branding on output",
-        "No commercial use"
+        "No priority support"
       ],
       "limits": {
-        "Context Window": "2048 tokens",
-        "Daily Message Cap": "100 messages per day for free plan, 1000 messages per day for paid plan",
-        "File Upload Limit": "10MB",
-        "API Rate Limits": "20 requests per second, 100,000 requests per day for free plan, 100 requests per second, 1,000,000 requests per day for paid plan",
-        "Seat Minimums": "1 seat for free plan, 5 seats for paid plan"
+        "Context Window": 4096,
+        "Daily Message Cap": 100000,
+        "File Upload Limit": 52428800,
+        "API Rate Limits": 60,
+        "Seat Minimums": 1
       },
       "feats": [
-        "Generative AI-powered research assistant",
-        "Automated literature review and summarization",
-        "Customizable research workflows",
-        "Collaborative research environment",
-        "AI-driven research question suggestions",
-        "Automated data extraction and analysis",
-        "Integration with popular research tools and databases",
-        "Personalized research recommendations",
-        "Real-time research updates and alerts",
-        "Transparent and explainable AI decision-making"
+        "Generative AI Research Assistant",
+        "AI-Powered Literature Review",
+        "Automated Study Summarization",
+        "Research Question Generation",
+        "Study Design Suggestions",
+        "Automated Data Extraction",
+        "Collaborative Research Workspace",
+        "Customizable Research Templates",
+        "Integration with Popular Citation Tools",
+        "AI-Driven Research Recommendations"
       ],
       "pros": [
         "Generative AI capabilities for research assistance",
-        "Streamlined workflow for researchers and analysts",
         "Integration with various data sources and tools",
+        "Streamlined workflow for researchers and analysts",
         "Customizable and adaptable to specific research needs",
         "Collaboration features for teams and organizations"
       ],
@@ -765,33 +707,33 @@
         "Daily Message Cap": "100,000 messages",
         "File Upload Limit": "50MB",
         "API Rate Limits": "50 requests per second",
-        "Seat Minimums": "1 seat for the Free plan, 5 seats for the Team plan, 10 seats for the Enterprise plan"
+        "Seat Minimums": "1 seat"
       },
       "feats": [
-        "Automated Compliance and Risk Management",
-        "AI-Powered Policy Management",
-        "Real-Time Compliance Monitoring",
-        "Customizable Compliance Frameworks",
-        "Integrated Risk Assessment and Mitigation",
-        "Automated Audit and Reporting",
-        "Collaborative Workflow and Task Management",
-        "Regulatory Change Management and Alerts",
-        "Compliance Training and Awareness Platform",
-        "Advanced Analytics and Insights for Compliance"
+        "Automated Content Generation",
+        "AI-Powered Research Assistant",
+        "Collaborative Workspace",
+        "Content Optimization",
+        "Real-time Analytics",
+        "Personalized Content Recommendations",
+        "Content Localization",
+        "Integration with Popular Tools",
+        "Customizable Workflows",
+        "Advanced Content Security"
       ],
       "pros": [
         "Automated data validation and enrichment",
-        "Real-time data synchronization across systems",
+        "Real-time data synchronization",
         "Advanced data analytics and insights",
-        "Scalable and customizable data management",
-        "Integration with various data sources and systems"
+        "Customizable workflows and integrations",
+        "Scalable and secure data management"
       ],
       "cons": [
         "Limited customization options for non-technical users",
         "Additional costs for premium support and services",
-        "Data quality issues if source data is inaccurate",
-        "Limited control over data processing and storage",
-        "Potential security risks if not properly configured"
+        "Data import limitations for large datasets",
+        "Limited integration with certain third-party tools",
+        "Steep learning curve for advanced features"
       ],
       "reddit": [],
       "uses": [
@@ -820,20 +762,25 @@
         {
           "n": "Premium",
           "p": "$12/month (billed monthly), $11.66/month (billed quarterly), $11.66/month (billed annually)",
-          "d": "Advanced grammar, spelling, and punctuation checks, suggestions for improvement, vocabulary enhancement, and citation suggestions."
+          "d": "Advanced grammar, spelling, and punctuation checks, suggestions for improvement, plagiarism detection, citation suggestions, and a full set of features."
         },
         {
           "n": "Business",
           "p": "$15/month (billed annually per member, minimum 3 members)",
-          "d": "Advanced grammar, spelling, and punctuation checks, suggestions for improvement, vocabulary enhancement, citation suggestions, style guides, and centralized billing and user management."
+          "d": "Advanced grammar, spelling, and punctuation checks, suggestions for improvement, plagiarism detection, citation suggestions, a full set of features, centralized billing, and priority support."
         }
       ],
       "free": [
-        "Check Grammarly website for current free plan details"
+        "Limited to 100 unique checks per month",
+        "Limited to 150,000 characters per check",
+        "No access to advanced features like plagiarism detection, citation suggestions, and readability scores",
+        "No access to Grammarly Editor",
+        "No access to Grammarly Business features",
+        "Limited to basic grammar, spelling, and punctuation checks"
       ],
       "limits": {
         "Context Window": "20,000 characters",
-        "Daily Message Cap": "100,000 messages",
+        "Daily Message Cap": "200 messages",
         "File Upload Limit": "4MB",
         "API Rate Limits": "60 requests per minute, 10,000 requests per day",
         "Seat Minimums": "3 seats for Grammarly Business"
@@ -847,22 +794,22 @@
         "Citation and Reference Management",
         "Readability Score",
         "Sentence Structure and Syntax Analysis",
-        "Contextual Thesaurus",
-        "Integration with Popular Writing Platforms"
+        "Contextual Suggestions",
+        "Integration with Multiple Platforms and Devices"
       ],
       "pros": [
         "Advanced grammar and spell check capabilities",
         "Enhanced writing suggestions for clarity and concision",
         "Integration with popular writing platforms and tools",
         "Personalized writing insights and analytics",
-        "Multi-language support"
+        "Multi-language support for global users"
       ],
       "cons": [
-        "Undisclosed character limit of 100,000 characters per document for free plan",
-        "Additional cost for human proofreading services, starting at $14 per document",
-        "Limited functionality in offline mode",
-        "No direct integration with certain niche writing tools",
-        "Free plan does not include advanced features like citation suggestions and readability scores"
+        "Undisclosed character limit of 100,000 characters per document for free users",
+        "Hidden cost of $12/month for Grammarly Premium's advanced features",
+        "Common user complaint of occasional incorrect grammar suggestions",
+        "Limitation of no offline access for web-based users",
+        "Real limitation of limited support for specialized or technical writing styles"
       ],
       "reddit": [],
       "uses": [
@@ -881,67 +828,46 @@
         "Official Pricing": "https://www.jasper.ai/pricing",
         "Reddit Community": "https://www.reddit.com/search/?q=Jasper"
       },
-      "plans": [
-        {
-          "n": "Free",
-          "p": "$0/month",
-          "d": "Limited access to AI tools, 10,000 characters per month, 1 user seat, Limited templates and recipes, Limited customer support"
-        },
-        {
-          "n": "Boss Mode",
-          "p": "$49/month",
-          "d": "Unlimited AI tools, 50,000 characters per month, 1 user seat, Priority customer support, Unlimited templates and recipes"
-        },
-        {
-          "n": "Business",
-          "p": "$99/month",
-          "d": "Unlimited AI tools, 200,000 characters per month, 3 user seats, Priority customer support, Unlimited templates and recipes, Custom onboarding, Dedicated customer success manager"
-        },
-        {
-          "n": "Custom",
-          "p": "Custom pricing",
-          "d": "Unlimited AI tools, Custom characters per month, Custom user seats, Priority customer support, Unlimited templates and recipes, Custom onboarding, Dedicated customer success manager, Custom solutions and integrations"
-        }
-      ],
+      "plans": [],
       "free": [
         "5,000 characters per month",
-        "Limited access to templates",
-        "Limited access to AI tools",
+        "Limited templates",
+        "Limited tone options",
         "Jasper branding on output",
         "No commercial use"
       ],
       "limits": {
-        "Context Window": "20480 tokens",
+        "Context Window": "2048 tokens",
         "Daily Message Cap": "20000 messages",
         "File Upload Limit": "20MB",
-        "API Rate Limits": "20 requests per second",
-        "Seat Minimums": "1 seat for Boss Plan, 3 seats for Business Plan, 5 seats for Enterprise Plan"
+        "API Rate Limits": "50 requests per second",
+        "Seat Minimums": "1 seat for Boss Mode, 5 seats for Business"
       },
       "feats": [
         "Long-form content generation",
-        "AI-powered content optimization",
+        "AI-powered writing assistant",
+        "Content optimization and improvement",
+        "SEO-focused content creation",
+        "Multi-language support",
+        "Tone and style customization",
         "Content templates and workflows",
-        "SEO optimization and keyword research",
-        "Content collaboration and commenting",
-        "AI-powered grammar and spell check",
-        "Integration with popular content management systems",
-        "Content analytics and performance tracking",
-        "Customizable content tone and style",
-        "Multilingual content generation"
+        "Integration with popular tools and platforms",
+        "Collaboration and team management features",
+        "AI-driven content analytics and insights"
       ],
       "pros": [
         "Generates high-quality content quickly",
         "Supports multiple languages and formats",
-        "Offers a user-friendly interface",
-        "Provides a wide range of templates and tools",
-        "Integrates with popular platforms like WordPress and Google Docs"
+        "Has a user-friendly interface",
+        "Offers a free trial and flexible pricing plans",
+        "Constantly updates with new features and templates"
       ],
       "cons": [
         "Character limit of 600 characters per generation in the Starter plan",
-        "Additional costs for priority support and onboarding",
+        "No direct phone support for users",
         "Limited control over tone and style in certain templates",
-        "No direct integration with popular SEO tools like Ahrefs or SEMrush",
-        "Limited customization options for the output format in the lower-tier plans"
+        "Additional costs for priority support and custom onboarding",
+        "Limited integration with certain third-party tools and platforms"
       ],
       "reddit": [],
       "uses": [
@@ -964,27 +890,27 @@
         {
           "n": "Free",
           "p": "$0/month",
-          "d": "10 credits, 1 user, Limited features, Limited support"
+          "d": "10 credits, 1 user, Limited features, 1 project, 1 language, Limited support"
         },
         {
           "n": "Starter",
           "p": "$12.67/month",
-          "d": "100 credits, 1 user, Priority support, Limited features"
+          "d": "100 credits, 1 user, Essential features, 5 projects, 1 language, Priority support"
         },
         {
           "n": "Pro",
-          "p": "$24/month",
-          "d": "500 credits, 2 users, Priority support, Advanced features"
+          "p": "$24.92/month",
+          "d": "500 credits, 2 users, Advanced features, 10 projects, 2 languages, Priority support"
         },
         {
           "n": "Business",
-          "p": "$49/month",
-          "d": "2000 credits, 5 users, Priority support, Advanced features, Custom templates"
+          "p": "$49.92/month",
+          "d": "2,000 credits, 5 users, Business features, 20 projects, 5 languages, Priority support"
         },
         {
           "n": "Enterprise",
           "p": "Custom",
-          "d": "Custom credits, Custom users, Dedicated support, Advanced features, Custom templates, Onboarding and training"
+          "d": "Custom credits, Custom users, Advanced features, Custom projects, Custom languages, Dedicated support"
         }
       ],
       "free": [
@@ -992,36 +918,36 @@
       ],
       "limits": {
         "Context Window": "2048 tokens",
-        "Daily Message Cap": "100,000 messages",
+        "Daily Message Cap": "1000 messages",
         "File Upload Limit": "10MB",
-        "API Rate Limits": "50 requests/second",
-        "Seat Minimums": "1 seat (Starter), 2 seats (Pro), 5 seats (Business)"
+        "API Rate Limits": "5 requests/second",
+        "Seat Minimums": "1 seat"
       },
       "feats": [
-        "AI-powered content generation",
-        "Long-form content creation",
-        "Content optimization for SEO",
-        "Personalized tone and style",
-        "Multi-language support",
-        "Content analytics and insights",
-        "Integration with popular platforms",
-        "Customizable templates and workflows",
-        "Collaboration tools for teams",
-        "Content localization and translation"
+        "AI Article Writer",
+        "AI Blog Writer",
+        "AI Copywriter",
+        "AI Email Writer",
+        "AI Landing Page Writer",
+        "AI Product Description Writer",
+        "AI Social Media Writer",
+        "Content Rephraser",
+        "Content Summarizer",
+        "Long-Form Content Writer"
       ],
       "pros": [
         "Generates high-quality content quickly",
         "Supports multiple languages and formats",
         "Offers a user-friendly interface",
         "Provides a wide range of templates and tools",
-        "Integrates with popular platforms like WordPress and Shopify"
+        "Integrates with popular platforms and tools"
       ],
       "cons": [
-        "Character limit of 750 characters per generation for the free plan, with undisclosed limits on the number of generations per day",
-        "Users have reported inconsistent tone and style in generated content",
-        "Limited control over the content generation process, with some users finding it difficult to customize output",
-        "No direct human support for the basic plan, with some users reporting long response times for email support",
-        "The 'Long-form' feature, which allows for longer content generation, is only available on the 'Enterprise' plan, which is not publicly priced"
+        "Character limit of 750 characters per generation for the free plan",
+        "Limited customization options for the tone and style of generated content",
+        "No direct human editing or proofreading support",
+        "Limited control over the output quality and accuracy",
+        "Additional costs for priority support and advanced features"
       ],
       "reddit": [],
       "uses": [
@@ -1066,9 +992,15 @@
         "100,000 words per month",
         "Limited to 1 user",
         "Limited access to templates",
-        "Limited access to tools",
-        "Copy.ai branding on output",
-        "No commercial use"
+        "Limited access to workflows",
+        "Limited access to integrations",
+        "Limited access to priority support",
+        "No multi-language support",
+        "No custom branding",
+        "No advanced analytics",
+        "No API access",
+        "No custom workflows",
+        "No advanced collaboration features"
       ],
       "limits": {
         "Context Window": "2048 tokens",
@@ -1091,17 +1023,17 @@
       ],
       "pros": [
         "Generates high-quality content quickly",
-        "Supports multiple languages and formats",
         "User-friendly interface and easy to navigate",
+        "Supports multiple languages and formats",
         "Offers a free plan with limited features",
-        "Constantly updated with new features and improvements"
+        "Constantly updated with new features and templates"
       ],
       "cons": [
-        "Character limit of 50,000 characters per month on the free plan",
-        "Limited customization options for content tone and style",
-        "No direct human editing or proofreading support",
-        "Limited control over content output and sometimes generates irrelevant content",
-        "No API access on lower-tier plans, limiting integration with other tools"
+        "Character limit of 1000 characters per generation in free plan",
+        "Limited customization options for templates and tone",
+        "No direct human support in free plan, only email support",
+        "Limited analytics and tracking features in lower-tier plans",
+        "No option to save and reuse generated content in free plan"
       ],
       "reddit": [],
       "uses": [
@@ -1121,34 +1053,13 @@
         "Reference 1": "https://www.notion.com/product/ai",
         "Reddit Community": "https://www.reddit.com/search/?q=Notion%20AI"
       },
-      "plans": [
-        {
-          "n": "Free",
-          "p": "$0/month",
-          "d": "Unlimited pages and blocks, 100MB file upload limit, 5MB file size limit, 1 guest editor, 1 block of AI content per day, Limited AI features"
-        },
-        {
-          "n": "Personal",
-          "p": "$4/month",
-          "d": "Unlimited pages and blocks, 100MB file upload limit, 5MB file size limit, 10 guest editors, 100 blocks of AI content per day, All AI features"
-        },
-        {
-          "n": "Team",
-          "p": "$8/month",
-          "d": "Unlimited pages and blocks, 500MB file upload limit, 50MB file size limit, 100 guest editors, 1,000 blocks of AI content per day, All AI features, Advanced security and controls"
-        },
-        {
-          "n": "Enterprise",
-          "p": "Custom",
-          "d": "Unlimited pages and blocks, 1GB file upload limit, 100MB file size limit, Unlimited guest editors, Unlimited blocks of AI content per day, All AI features, Advanced security and controls, Dedicated support, Custom onboarding"
-        }
-      ],
+      "plans": [],
       "free": [
-        "50 AI-generated blocks per month",
-        "Limited to 100 AI-generated blocks in total",
-        "No access to advanced AI features",
-        "No access to custom AI models",
-        "No priority support"
+        "100 AI-generated text blocks per month",
+        "Limited to 1 user",
+        "No access to advanced features like custom models and data export",
+        "Notion AI logo watermark on generated content",
+        "No access to priority support"
       ],
       "limits": {
         "Context Window": "131k tokens",
@@ -1170,18 +1081,18 @@
         "Conversational interface for user queries"
       ],
       "pros": [
-        "Enhanced writing capabilities with AI-powered suggestions",
-        "Streamlined content creation and editing process",
-        "Improved research capabilities with AI-driven search",
-        "Enhanced collaboration features with AI-driven commenting and feedback",
-        "Seamless integration with existing Notion workflows"
+        "Generative writing capabilities",
+        "Enhanced research assistance",
+        "Streamlined content creation",
+        "Improved organization and planning",
+        "Seamless integration with Notion ecosystem"
       ],
       "cons": [
-        "Undisclosed character limit of 2000 characters for AI-generated content",
-        "Hidden cost of additional AI model training data storage ($0.10 per 1000 tokens)",
-        "Common user complaint of inconsistent AI model performance and accuracy",
-        "Limitation of AI model training data to 100,000 tokens per month on free plan",
-        "Real limitation of AI model customization options, limited to 5 custom models per user"
+        "Limited contextual understanding",
+        "Character limit of 2048 for AI responses",
+        "No support for multi-step conversations",
+        "Dependence on internet connectivity for AI functionality",
+        "Potential for biased or inaccurate information generation"
       ],
       "reddit": [],
       "uses": [
@@ -1219,38 +1130,37 @@
         }
       ],
       "free": [
-        "Limited to 1,000,000 tokens (approximately 100,000 lines of code) per month",
+        "Limited to 1,000 code completions per month",
         "Limited to 1 user",
-        "Does not include GitHub Copilot X",
-        "Does not include GitHub Copilot for Business",
-        "Does not include advanced security features",
-        "Does not include advanced analytics features",
-        "Does not include priority support"
+        "No access to GitHub Copilot X",
+        "No access to GitHub Copilot for Business",
+        "No access to advanced features like code explanations and code summaries",
+        "No access to GitHub Copilot API"
       ],
       "limits": {
         "Context Window": "2048 tokens",
         "Daily Message Cap": "1000 messages",
-        "File Upload Limit": "100MB",
+        "File Upload Limit": "10MB",
         "API Rate Limits": {
-          "Authenticated Requests": "100 requests per minute",
-          "Unauthenticated Requests": "60 requests per minute"
+          "requests per minute": 100,
+          "burst limit": 150
         },
         "Seat Minimums": {
-          "GitHub Copilot for Individuals": "1 seat",
-          "GitHub Copilot for Business": "10 seats"
+          "GitHub Copilot for Individuals": 1,
+          "GitHub Copilot for Business": 10
         }
       },
       "feats": [
         "AI-powered code completion",
         "Code suggestions in real-time",
         "Support for multiple programming languages",
-        "Integration with GitHub and Visual Studio Code",
-        "Code review and analysis",
-        "Code transformation and refactoring",
-        "Code snippet generation",
-        "Function and method suggestions",
-        "Code debugging and troubleshooting",
-        "Customizable code templates and snippets"
+        "Integration with Visual Studio Code and Neovim",
+        "Code explanation and documentation",
+        "Code refactoring and optimization",
+        "Code review and feedback",
+        "Security vulnerability detection",
+        "Code snippet management",
+        "Customizable coding style and preferences"
       ],
       "pros": [
         "Improved coding efficiency and speed",
@@ -1260,7 +1170,7 @@
         "Constantly learning and improving model"
       ],
       "cons": [
-        "Undisclosed character limit of 2048 characters per code completion request",
+        "Undisclosed character limit of 2048 characters for code suggestions",
         "Hidden cost of $10/month for individuals and $19/month for businesses after the free trial",
         "Common user complaint of inconsistent code quality and accuracy",
         "Limitation of requiring a stable internet connection for optimal performance",
@@ -1287,27 +1197,27 @@
         {
           "n": "Free",
           "p": "$0/month",
-          "d": "Up to 3 users, Unlimited messages, 10k message history, 1 integration, Limited features"
+          "d": "1 workspace, 1 user, 100 messages, 1MB file storage, Limited integrations, Limited support"
         },
         {
           "n": "Starter",
           "p": "$15/month",
-          "d": "Up to 10 users, Unlimited messages, 100k message history, 10 integrations, Standard features"
+          "d": "1 workspace, 10 users, 10,000 messages, 10GB file storage, Standard integrations, Standard support"
         },
         {
           "n": "Pro",
           "p": "$30/month",
-          "d": "Up to 50 users, Unlimited messages, 1M message history, 50 integrations, Advanced features"
+          "d": "1 workspace, 50 users, 50,000 messages, 50GB file storage, Advanced integrations, Priority support"
         },
         {
           "n": "Business",
           "p": "$60/month",
-          "d": "Up to 100 users, Unlimited messages, 10M message history, 100 integrations, Premium features"
+          "d": "Multiple workspaces, 100 users, 100,000 messages, 100GB file storage, Advanced integrations, Priority support, Custom onboarding, Advanced analytics"
         },
         {
           "n": "Enterprise",
           "p": "Custom",
-          "d": "100+ users, Unlimited messages, Unlimited message history, Unlimited integrations, Enterprise features, Dedicated support"
+          "d": "Multiple workspaces, Unlimited users, Unlimited messages, Unlimited file storage, Advanced integrations, Priority support, Custom onboarding, Advanced analytics, Dedicated support, Custom security and compliance"
         }
       ],
       "free": [
@@ -1328,23 +1238,23 @@
         "Content optimization",
         "Readability scoring",
         "Summarization tool",
-        "Translation support",
-        "Integration with popular writing platforms",
-        "Customizable writing goals and analytics"
+        "Language translation",
+        "Citation and referencing",
+        "Integration with popular writing platforms"
       ],
       "pros": [
         "AI-powered writing assistant",
-        "Real-time language translation",
-        "Content optimization suggestions",
-        "Grammar and spell check",
-        "Integration with popular writing tools"
+        "Real-time grammar and spell check",
+        "Personalized writing feedback",
+        "Integration with popular writing tools",
+        "Enhanced writing productivity"
       ],
       "cons": [
         "Limited free version features",
-        "500 character limit for free version translations",
         "No offline access",
-        "Limited customization options for writing styles",
-        "No direct integration with Google Docs or Microsoft Word for free version"
+        "Occasional inaccuracies in grammar suggestions",
+        "Limited support for non-English languages",
+        "500,000 character limit for document analysis"
       ],
       "reddit": [],
       "uses": [
@@ -1368,53 +1278,59 @@
         {
           "n": "Free",
           "p": "$0/month",
-          "d": "10,000 free tokens per month, 1,000 free tokens per day, Limited access to Codex models, Limited access to Codex API, Limited access to Codex plugins, Limited support"
+          "d": "10,000 free tokens per month, 1,000 free completions per month, Limited access to Codex models, Limited access to Codex APIs, Limited support"
         },
         {
           "n": "Pro",
           "p": "$49/month",
-          "d": "400,000 tokens per month, 10,000 tokens per day, Priority access to Codex models, Priority access to Codex API, Priority access to Codex plugins, Priority support"
+          "d": "400,000 tokens per month, 40,000 completions per month, Priority access to Codex models, Priority access to Codex APIs, Priority support"
         },
         {
           "n": "Business",
           "p": "$199/month",
-          "d": "2,000,000 tokens per month, 50,000 tokens per day, Dedicated access to Codex models, Dedicated access to Codex API, Dedicated access to Codex plugins, Dedicated support, Custom onboarding and training"
+          "d": "2,000,000 tokens per month, 200,000 completions per month, Dedicated access to Codex models, Dedicated access to Codex APIs, Dedicated support"
         },
         {
           "n": "Enterprise",
           "p": "Custom",
-          "d": "Custom token limits, Custom access to Codex models, Custom access to Codex API, Custom access to Codex plugins, Dedicated support, Custom onboarding and training, Custom security and compliance"
+          "d": "Custom tokens per month, Custom completions per month, Custom access to Codex models, Custom access to Codex APIs, Custom support, Dedicated account management, Custom onboarding and training, Custom security and compliance"
         }
       ],
       "free": [
-        "No free plan available for OpenAI Codex, only a paid plan with custom pricing for enterprise customers"
+        "No free plan available for OpenAI Codex"
       ],
-      "limits": {},
+      "limits": {
+        "Context Window": "2048 tokens",
+        "Daily Message Cap": "20000 messages",
+        "File Upload Limit": "20MB",
+        "API Rate Limits": "20 requests per minute",
+        "Seat Minimums": "1 seat ( Codex model), 10 seats ( Codex model with fine-tuning)"
+      },
       "feats": [
         "Code Completion",
         "Code Generation",
+        "Code Explanation",
         "Code Translation",
         "Code Summarization",
         "Code Review",
         "Code Optimization",
-        "Code Refactoring",
-        "Code Explanation",
         "Code Debugging",
-        "Multi-Language Support"
+        "Multi-Language Support",
+        "Integration with Popular Development Environments"
       ],
       "pros": [
-        "Highly accurate code completion",
+        "Highly accurate code generation",
         "Supports a wide range of programming languages",
-        "Can understand natural language and generate code accordingly",
-        "Faster development time",
-        "Constantly learning and improving"
+        "Can be integrated with various development tools",
+        "Fast and efficient code completion",
+        "Constantly learning and improving through user feedback"
       ],
       "cons": [
-        "Undisclosed character limit of 2048 characters per prompt",
-        "Hidden cost of increased usage with larger models",
-        "Users complain about inconsistent code formatting",
-        "Limited control over code generation and customization",
-        "Real limitation of requiring a stable internet connection for optimal performance"
+        "Limited to 2048 token limit per prompt",
+        "No direct support for multi-file projects",
+        "Steep learning curve for non-technical users",
+        "Potential for biased or inaccurate code generation",
+        "No offline access or support for air-gapped environments"
       ],
       "reddit": [],
       "uses": [
@@ -1438,50 +1354,39 @@
         {
           "n": "Free",
           "p": "$0/month",
-          "d": "1 user, 1 million characters, 100 completions per day, Basic code understanding, Basic code completion, Basic code explanation, Limited support"
+          "d": "Code completion, Code explanation, Code review, Unlimited code completions, Limited to 1 user, Limited to 1 project, Limited to 1 language, Limited to 1 IDE, Limited to 1 codebase, Limited to 1 GitHub repository, Limited to 1 GitLab repository, Limited to 1 Bitbucket repository"
         },
         {
           "n": "Pro",
           "p": "$19/month",
-          "d": "1 user, Unlimited characters, Unlimited completions, Advanced code understanding, Advanced code completion, Advanced code explanation, Priority support"
+          "d": "All Free features, Unlimited projects, Unlimited languages, Unlimited IDEs, Unlimited codebases, Unlimited GitHub repositories, Unlimited GitLab repositories, Unlimited Bitbucket repositories, Priority support, Unlimited users"
         },
         {
           "n": "Business",
           "p": "$49/month",
-          "d": "5 users, Unlimited characters, Unlimited completions, Advanced code understanding, Advanced code completion, Advanced code explanation, Priority support, Custom onboarding, Dedicated support"
+          "d": "All Pro features, Advanced security and compliance, Custom onboarding, Dedicated support, Single sign-on (SSO), Advanced analytics and reporting, Custom integrations, Unlimited users"
         },
         {
           "n": "Enterprise",
           "p": "Custom",
-          "d": "10+ users, Unlimited characters, Unlimited completions, Advanced code understanding, Advanced code completion, Advanced code explanation, Priority support, Custom onboarding, Dedicated support, Custom security and compliance, Custom integrations"
-        },
-        {
-          "n": "Student",
-          "p": "$0/month",
-          "d": "1 user, Unlimited characters, Unlimited completions, Advanced code understanding, Advanced code completion, Advanced code explanation, Priority support, Requires a valid .edu email address"
-        },
-        {
-          "n": "Team",
-          "p": "$29/month",
-          "d": "5 users, Unlimited characters, Unlimited completions, Advanced code understanding, Advanced code completion, Advanced code explanation, Priority support, Custom onboarding"
+          "d": "All Business features, Custom pricing, Custom security and compliance, Custom onboarding, Dedicated support, Single sign-on (SSO), Advanced analytics and reporting, Custom integrations, Unlimited users"
         }
       ],
       "free": [
         "Limited to 100 completions per day",
         "Limited to 100 characters per completion",
-        "Limited to 1 user",
-        "Limited to 1 project",
-        "Limited to 1 language",
-        "No access to advanced features",
-        "No access to team features",
-        "No access to priority support"
+        "No support for multiple cursors",
+        "No support for code reviews",
+        "No support for custom models",
+        "No support for self-hosted deployment",
+        "Tabnine branding in the editor"
       ],
       "limits": {
-        "Context Window": "4096 tokens",
+        "Context Window": "2048 tokens",
         "Daily Message Cap": "1000 messages",
         "File Upload Limit": "10MB",
         "API Rate Limits": "100 requests per minute, 1000 requests per hour, 5000 requests per day",
-        "Seat Minimums": "5 seats for Team plan, 10 seats for Enterprise plan"
+        "Seat Minimums": "1 seat for Personal, 2 seats for Team, 5 seats for Business"
       },
       "feats": [
         "AI-powered code completion",
@@ -1490,10 +1395,10 @@
         "Real-time code analysis",
         "Code snippet suggestions",
         "Code review and feedback",
-        "Integration with popular IDEs",
+        "Integration with popular IDEs and editors",
         "Personalized coding experience",
-        "Code health and security checks",
-        "Collaborative coding features"
+        "Code security and vulnerability detection",
+        "Explainable AI for transparent code suggestions"
       ],
       "pros": [
         "Enhanced coding speed and efficiency",
@@ -1531,26 +1436,26 @@
         {
           "n": "Free",
           "p": "$0/month",
-          "d": "1 Repl, 100MB storage, 100MB RAM, 1 CPU core, Limited collaboration, Limited support"
+          "d": "1 private repl, 1GB storage, 100MB RAM, 1000 seconds of CPU time per day, Limited collaboration features, Limited support, Limited access to Ghostwriter features"
         },
         {
           "n": "Hacker",
           "p": "$7/month",
-          "d": "Unlimited Repls, 1GB storage, 1GB RAM, 2 CPU cores, Unlimited collaboration, Priority support"
-        },
-        {
-          "n": "Pro",
-          "p": "$21/month",
-          "d": "Unlimited Repls, 5GB storage, 5GB RAM, 4 CPU cores, Unlimited collaboration, Priority support, Custom domains, Advanced security, Advanced backup and restore"
+          "d": "Unlimited private repls, 5GB storage, 512MB RAM, Unlimited CPU time, Unlimited collaboration features, Priority support, Full access to Ghostwriter features"
         },
         {
           "n": "Team",
-          "p": "$63/month",
-          "d": "Unlimited Repls, 10GB storage, 10GB RAM, 8 CPU cores, Unlimited collaboration, Priority support, Custom domains, Advanced security, Advanced backup and restore, Team management, Single sign-on (SSO)"
+          "p": "$15/month",
+          "d": "Unlimited private repls, 10GB storage, 1GB RAM, Unlimited CPU time, Unlimited collaboration features, Priority support, Full access to Ghostwriter features, Team management features"
+        },
+        {
+          "n": "Enterprise",
+          "p": "Custom",
+          "d": "Custom storage, Custom RAM, Unlimited CPU time, Unlimited collaboration features, Priority support, Full access to Ghostwriter features, Team management features, Custom security and compliance features, Dedicated support"
         }
       ],
       "free": [
-        "Check Replit Ghostwriter website for current free plan details"
+        "No free plan information available for Replit Ghostwriter in 2025"
       ],
       "limits": {
         "Context Window": "2048 tokens",
@@ -1561,29 +1466,29 @@
       },
       "feats": [
         "AI-powered code completion",
-        "Real-time code review and feedback",
+        "Real-time code analysis and suggestions",
         "Automated code refactoring",
-        "Code snippet generation",
-        "Code translation and localization",
-        "Collaborative coding environment",
+        "Code snippet library and reuse",
+        "Collaborative coding with real-time feedback",
         "Integrated debugging and testing tools",
-        "Customizable coding workflows",
         "Support for multiple programming languages",
-        "Seamless GitHub integration"
+        "Customizable code templates and workflows",
+        "AI-driven code review and optimization",
+        "Seamless integration with Replit's cloud-based IDE"
       ],
       "pros": [
         "Generates high-quality code snippets",
         "Supports multiple programming languages",
         "Integrates well with Replit's coding environment",
-        "Helps with code completion and suggestions",
-        "Reduces coding time and effort"
+        "Can be used for a variety of tasks, from bug fixing to feature implementation",
+        "Constantly learning and improving through user feedback"
       ],
       "cons": [
-        "Limited to 1000 character input for free users",
-        "Does not support all programming languages",
-        "May not always understand context or intent",
-        "Can be slow for complex code generation",
-        "Requires a Replit account and internet connection to function"
+        "Limited to 1000 character input for code generation",
+        "Requires a Replit account and subscription for full access",
+        "May not always understand the context of the code, leading to incorrect suggestions",
+        "Can be slow to generate code for complex tasks or large inputs",
+        "Has limited support for domain-specific languages and frameworks"
       ],
       "reddit": [],
       "uses": [
@@ -1611,57 +1516,46 @@
         },
         {
           "n": "Personal",
-          "p": "$9.99/month",
-          "d": "1 user, 1,000 code completions, 1,000 code explanations, Priority support, Basic features"
+          "p": "$19/month",
+          "d": "1 user, 1,000 code completions, 1,000 code explanations, Priority support, Code explanations, Code completions, Code snippets"
         },
         {
           "n": "Pro",
-          "p": "$19.99/month",
-          "d": "1 user, 10,000 code completions, 10,000 code explanations, Priority support, Advanced features, Code review, Code optimization"
+          "p": "$49/month",
+          "d": "5 users, 10,000 code completions, 10,000 code explanations, Priority support, Code explanations, Code completions, Code snippets, Customizable code snippets, Advanced code explanations"
         },
         {
           "n": "Business",
-          "p": "$49.99/month",
-          "d": "5 users, 50,000 code completions, 50,000 code explanations, Priority support, Advanced features, Code review, Code optimization, Custom onboarding, Dedicated support"
+          "p": "$99/month",
+          "d": "10 users, 50,000 code completions, 50,000 code explanations, Priority support, Code explanations, Code completions, Code snippets, Customizable code snippets, Advanced code explanations, Single sign-on (SSO), Advanced security and compliance"
         },
         {
           "n": "Enterprise",
           "p": "Custom",
-          "d": "10+ users, Custom code completions, Custom code explanations, Priority support, Advanced features, Code review, Code optimization, Custom onboarding, Dedicated support, Custom security and compliance"
+          "d": "50+ users, Custom code completions, Custom code explanations, Priority support, Code explanations, Code completions, Code snippets, Customizable code snippets, Advanced code explanations, Single sign-on (SSO), Advanced security and compliance, Dedicated support, Custom onboarding"
         }
       ],
       "free": [
-        "100 code completions per month",
-        "Limited to 100 lines of code per completion",
-        "No access to advanced features",
-        "No access to custom models",
-        "No access to GitHub integration",
-        "No access to Bitbucket integration",
-        "No access to GitLab integration",
-        "No access to custom API keys",
-        "No access to custom model training",
-        "No access to advanced analytics",
-        "No access to priority support",
-        "No access to single sign-on (SSO)"
+        "No free plan available, only a 14-day free trial"
       ],
       "limits": {
         "Context Window": "2048 tokens",
         "Daily Message Cap": "1000 messages",
-        "File Upload Limit": "50MB",
+        "File Upload Limit": "10MB",
         "API Rate Limits": "50 requests per second, 100,000 requests per day",
         "Seat Minimums": "1 seat, with a minimum of 1 user per seat"
       },
       "feats": [
         "AI-powered Code Completion",
-        "Real-time Code Analysis",
-        "Automated Code Refactoring",
+        "Code Review and Analysis",
+        "Code Refactoring and Optimization",
         "Code Snippet Library",
-        "Multi-Language Support",
+        "Real-time Collaboration",
         "Intelligent Code Suggestions",
-        "Code Review and Feedback",
-        "Collaborative Coding Environment",
-        "Personalized Coding Assistant",
-        "Integration with Popular IDEs"
+        "Automated Code Formatting",
+        "Code Security Scanning",
+        "Code Performance Profiling",
+        "Multi-Language Support"
       ],
       "pros": [
         "Generates high-quality code",
@@ -1700,51 +1594,37 @@
         {
           "n": "Free",
           "p": "$0/month",
-          "d": "1 user, 100,000 tokens, 100,000 completions, 100,000 generations, Limited features, Limited support"
+          "d": "1 user, 100,000 characters, 100 prompts, Limited features"
         },
         {
           "n": "Starter",
           "p": "$29/month",
-          "d": "1 user, 1,000,000 tokens, 1,000,000 completions, 1,000,000 generations, Standard features, Standard support"
+          "d": "1 user, 1,000,000 characters, 1,000 prompts, Basic features"
         },
         {
           "n": "Pro",
           "p": "$99/month",
-          "d": "5 users, 10,000,000 tokens, 10,000,000 completions, 10,000,000 generations, Advanced features, Priority support"
+          "d": "5 users, 10,000,000 characters, 10,000 prompts, Advanced features"
         },
         {
           "n": "Business",
           "p": "$499/month",
-          "d": "20 users, 100,000,000 tokens, 100,000,000 completions, 100,000,000 generations, Enterprise features, Dedicated support"
+          "d": "20 users, 100,000,000 characters, 100,000 prompts, Premium features"
         },
         {
           "n": "Enterprise",
           "p": "Custom",
-          "d": "Custom users, Custom tokens, Custom completions, Custom generations, Custom features, Custom support"
+          "d": "Custom users, Custom characters, Custom prompts, Dedicated support, Advanced security, Custom features"
         }
       ],
       "free": [
         "100 messages per day",
-        "Limited to 1,000 total messages",
+        "Limited to 1,000 tokens per message",
         "No access to advanced features like code execution and debugging",
-        "No access to custom models",
-        "No support for multi-turn conversations",
-        "No access to analytics and data export",
-        "Claude watermark on output"
+        "Claude watermark on output",
+        "No commercial use allowed"
       ],
-      "limits": {
-        "Context Window": 131072,
-        "Daily Message Cap": 100000,
-        "File Upload Limit": 52428800,
-        "API Rate Limits": {
-          "Burst Limit": 60,
-          "Rate Limit": 6
-        },
-        "Seat Minimums": {
-          "Base Seat": 1,
-          "Additional Seat": 1
-        }
-      },
+      "limits": {},
       "feats": [
         "Code Completion",
         "Code Explanation",
@@ -1752,10 +1632,10 @@
         "Code Debugging",
         "Code Optimization",
         "Code Review",
-        "Code Translation",
         "Code Summarization",
-        "Code Search",
-        "Code Refactoring"
+        "Code Translation",
+        "Code Refactoring",
+        "Code Testing"
       ],
       "pros": [
         "Highly customizable code generation",
@@ -1793,7 +1673,7 @@
         {
           "n": "Free",
           "p": "$0/month",
-          "d": "1,000 API calls per month, 1,000 text completions per month, 1,000 text edits per month, Limited model sizes, Limited support"
+          "d": "Up to 1000 text completions per month, 1 user, Limited features, Community support"
         }
       ],
       "free": [
@@ -1807,16 +1687,16 @@
         "Seat Minimums": "1 seat (billed annually), 5 seats (billed monthly)"
       },
       "feats": [
-        "Automated Code Generation",
-        "AI-Powered Code Completion",
+        "AI-Powered Code Generation",
+        "Automated Unit Testing",
         "Real-Time Code Review",
         "Collaborative Coding Environment",
-        "Customizable Code Templates",
-        "Integrated Debugging Tools",
-        "Support for Multiple Programming Languages",
-        "Code Optimization and Refactoring",
-        "Version Control System Integration",
-        "Real-Time Code Analytics and Insights"
+        "Intelligent Code Completion",
+        "Automated Bug Detection",
+        "Code Refactoring Suggestions",
+        "Personalized Code Recommendations",
+        "Integrated Version Control",
+        "Customizable Coding Templates"
       ],
       "pros": [
         "Generates high-quality code snippets",
@@ -1868,12 +1748,12 @@
         {
           "n": "Business",
           "p": "$60/month",
-          "d": "10 users, 10GB storage, 10GB bandwidth, Unlimited projects, Priority support, Advanced security and compliance"
+          "d": "10 users, 10GB storage, 10GB bandwidth, Unlimited projects, Priority support, Custom domain, Advanced security"
         },
         {
           "n": "Enterprise",
           "p": "Custom",
-          "d": "Custom users, Custom storage, Custom bandwidth, Unlimited projects, Priority support, Advanced security and compliance, Dedicated support engineer, Custom onboarding"
+          "d": "Custom users, Custom storage, Custom bandwidth, Unlimited projects, Priority support, Custom domain, Advanced security, Dedicated support, Onboarding and training"
         }
       ],
       "free": [
@@ -1882,24 +1762,24 @@
       "limits": {
         "Context Window": "2048 tokens",
         "Daily Message Cap": "100 messages per day for free, 20,000 messages per day for paid",
-        "File Upload Limit": "200MB",
+        "File Upload Limit": "20MB",
         "API Rate Limits": "50 requests per minute for free, 500 requests per minute for paid",
         "Seat Minimums": "1 seat for free, 5 seats for paid"
       },
       "feats": [],
       "pros": [
-        "Free tier available with 50,000 reads and 10,000 writes per day",
-        "High performance with 10ms average read latency and 20ms average write latency",
-        "Supports SQL and NoSQL data models",
-        "Automated scaling and high availability",
-        "Integrated security with encryption at rest and in transit"
+        "Free tier available with 50,000 reads and 50,000 writes per day",
+        "Supports multiple data models including document, key-value, and graph",
+        "High performance with low latency and high throughput",
+        "Scalable and secure with enterprise-grade features",
+        "Supports SQL and NoSQL queries"
       ],
       "cons": [
-        "Limited to 5 GB of storage in the free tier",
-        "No support for transactions in the free tier",
-        "Limited to 1 read unit and 1 write unit in the free tier",
-        "No support for SQL stored procedures or functions",
-        "Limited to 100 concurrent connections in the free tier"
+        "Limited support for transactions and concurrency control",
+        "No support for data warehousing and business intelligence workloads",
+        "Limited support for data import and export",
+        "No support for multi-region replication",
+        "Limited support for data governance and compliance features"
       ],
       "reddit": [],
       "uses": [
@@ -1946,14 +1826,11 @@
         }
       ],
       "free": [
-        "5 pages per app",
+        "10 pages per app",
         "100MB storage",
         "100MB bandwidth per month",
-        "100MB file upload limit",
-        "1 user account",
         "Bubble branding on pages",
-        "Limited database fields",
-        "Limited workflows",
+        "Limited to 1 user",
         "No custom domain",
         "No SSL encryption",
         "No API access",
@@ -1963,7 +1840,7 @@
       "limits": {
         "Context Window": "2048 tokens",
         "Daily Message Cap": "20,000 messages",
-        "File Upload Limit": "100MB",
+        "File Upload Limit": "20MB",
         "API Rate Limits": "100 requests per minute",
         "Seat Minimums": "1 seat for Personal plan, 2 seats for Professional plan, 5 seats for Enterprise plan"
       },
@@ -1984,14 +1861,14 @@
         "No coding required for basic functionality",
         "Large community and marketplace for plugins and templates",
         "Real-time updates and collaboration features",
-        "Scalable and secure infrastructure"
+        "Responsive design for mobile and web applications"
       ],
       "cons": [
         "Limited control over underlying code and customization",
-        "Performance issues with complex apps or large user bases",
-        "Limited offline functionality and mobile optimization",
+        "Performance issues with complex or large-scale applications",
+        "Limited support for advanced backend logic and integrations",
         "Hidden costs for additional features and plugins",
-        "Limited support for advanced backend logic and integrations"
+        "Limited scalability and reliability for high-traffic applications"
       ],
       "reddit": [],
       "uses": [
@@ -2039,44 +1916,44 @@
       ],
       "free": [
         "Up to 100 records per table",
+        "Up to 100MB storage",
+        "Up to 1000 views per month",
+        "Softr branding on pages",
         "Limited to 1 user",
-        "100MB storage",
-        "Softr branding",
-        "Limited to 1 page",
-        "Limited to 1 integration"
+        "Limited to 1 page"
       ],
       "limits": {
         "Context Window": "2048 tokens",
         "Daily Message Cap": "100,000 messages",
-        "File Upload Limit": "100MB",
+        "File Upload Limit": "100 MB",
         "API Rate Limits": "100 requests per second",
-        "Seat Minimums": "1 seat for the Free plan, 5 seats for the Pro plan, 10 seats for the Business plan"
+        "Seat Minimums": "1 seat for the Hobby plan, 5 seats for the Pro plan, 10 seats for the Business plan, 20 seats for the Enterprise plan"
       },
       "feats": [
         "Airtable Integration",
-        "Webpage Builder",
         "Customizable Templates",
-        "Drag-and-Drop Interface",
+        "Drag-and-Drop Builder",
         "Real-time Collaboration",
         "Conditional Logic",
         "Customizable Forms",
-        "API Connectivity",
+        "Webhooks and API",
         "Responsive Design",
-        "SEO Optimization"
+        "SEO Optimization",
+        "User Authentication"
       ],
       "pros": [
         "Easy to use no-code platform for building web applications",
         "Seamless integration with Airtable and other data sources",
         "Customizable templates and drag-and-drop interface",
         "Real-time collaboration and commenting features",
-        "Affordable pricing plans with a free version available"
+        "Affordable pricing plans for individuals and teams"
       ],
       "cons": [
         "Limited control over custom CSS and JavaScript",
-        "Hidden limit of 100,000 records per data source in the free plan",
-        "Users have reported issues with slow page loading times",
-        "Limited support for complex data relationships and queries",
-        "Undisclosed limit of 100MB file storage in the free plan"
+        "Hidden limit of 100,000 records per data source",
+        "Additional costs for custom domains and SSL certificates",
+        "Users report slow page loading times and performance issues",
+        "Limited support for complex data relationships and queries"
       ],
       "reddit": [],
       "uses": [
@@ -2099,79 +1976,74 @@
         {
           "n": "Free",
           "p": "$0/month",
-          "d": "Up to 100 tasks, 100MB storage, 1 user, Unlimited workflows, Community support"
+          "d": "Up to 100 tasks, 100MB storage, Unlimited workflows, Community support"
         },
         {
           "n": "Starter",
           "p": "$25/month",
-          "d": "Up to 10,000 tasks, 1GB storage, 5 users, Unlimited workflows, Priority support"
+          "d": "Up to 10,000 tasks, 1GB storage, Unlimited workflows, Priority support"
         },
         {
           "n": "Pro",
           "p": "$100/month",
-          "d": "Up to 100,000 tasks, 10GB storage, 20 users, Unlimited workflows, Priority support, Advanced analytics"
+          "d": "Up to 100,000 tasks, 10GB storage, Unlimited workflows, Priority support, Advanced analytics"
         },
         {
           "n": "Business",
-          "p": "$250/month",
-          "d": "Up to 1,000,000 tasks, 100GB storage, 50 users, Unlimited workflows, Priority support, Advanced analytics, Custom onboarding"
+          "p": "$500/month",
+          "d": "Up to 1,000,000 tasks, 100GB storage, Unlimited workflows, Priority support, Advanced analytics, Custom onboarding"
         },
         {
           "n": "Enterprise",
           "p": "Custom",
-          "d": "Unlimited tasks, Unlimited storage, Unlimited users, Unlimited workflows, Priority support, Advanced analytics, Custom onboarding, Dedicated account manager"
+          "d": "Custom task limits, Custom storage, Unlimited workflows, Priority support, Advanced analytics, Custom onboarding, Dedicated support engineer"
+        },
+        {
+          "n": "Custom",
+          "p": "Custom",
+          "d": "Custom task limits, Custom storage, Unlimited workflows, Priority support, Advanced analytics, Custom onboarding, Dedicated support engineer"
         }
       ],
       "free": [
         "100,000 messages per month",
         "1,000 concurrent workflows",
-        "1,000 tasks per workflow",
-        "1,000 entities per workflow",
+        "1 GB storage",
+        "Durable watermark on workflows",
         "No custom domains",
-        "No custom authentication",
-        "No advanced analytics",
-        "No enterprise support",
-        "No SLA",
-        "No HIPAA compliance",
-        "No PCI-DSS compliance",
-        "No GDPR compliance",
-        "No SOC 2 compliance",
-        "No ISO 27001 compliance",
-        "No ISO 27017 compliance",
-        "No ISO 27018 compliance"
+        "No priority support"
       ],
       "limits": {
         "Context Window": "131k tokens",
         "Daily Message Cap": "100,000 messages",
-        "File Upload Limit": "100MB",
+        "File Upload Limit": "200MB",
         "API Rate Limits": "50 requests/second",
         "Seat Minimums": "1 seat"
       },
       "feats": [
-        "Customizable No-Code Interface",
-        "Real-Time Collaboration",
-        "Automated Data Validation",
-        "Conditional Logic and Rules",
-        "Customizable Tables and Views",
-        "Drag-and-Drop Form Builder",
-        "Integrated File Storage",
-        "Customizable Permissions and Roles",
-        "Automated Data Import and Export",
-        "Mobile Optimization and Offline Access"
+        "Customizable workflows",
+        "Automated data processing",
+        "Real-time collaboration",
+        "Version control and auditing",
+        "Drag-and-drop interface",
+        "Conditional logic and branching",
+        "Integration with Google Sheets and other tools",
+        "Customizable dashboards and reports",
+        "Mobile optimization for on-the-go access",
+        "Robust security and access controls"
       ],
       "pros": [
-        "Customizable and flexible no-code platform",
-        "Seamless integration with various tools and services",
-        "Robust automation capabilities",
-        "User-friendly interface for non-technical users",
-        "Scalable and adaptable to growing businesses"
+        "Highly customizable and flexible",
+        "Supports multiple data storage options",
+        "Real-time data synchronization",
+        "Scalable and performant",
+        "Open-source and community-driven"
       ],
       "cons": [
-        "Limited transparency on pricing for custom plans",
-        "Users report occasional lag and performance issues",
-        "Limited support for complex workflows and conditional logic",
-        "No native mobile app for on-the-go access",
-        "Limited control over branding and customization for client-facing interfaces"
+        "Limited support for complex transactions",
+        "Steep learning curve for developers",
+        "No built-in support for data validation",
+        "Limited support for multi-region deployments",
+        "Requires additional infrastructure for high availability"
       ],
       "reddit": [],
       "uses": [
@@ -2222,10 +2094,10 @@
       ],
       "limits": {
         "Context Window": "2048 tokens",
-        "Daily Message Cap": "1000 messages per day",
+        "Daily Message Cap": "1000 messages",
         "File Upload Limit": "10MB",
         "API Rate Limits": "50 requests per second",
-        "Seat Minimums": "1 seat (billed annually)"
+        "Seat Minimums": "1 seat (billed annually), 5 seats (billed monthly)"
       },
       "feats": [
         "Conversational AI with Emotional Intelligence",
@@ -2240,18 +2112,18 @@
         "Human-like Dialogue Management and Response"
       ],
       "pros": [
-        "Generates human-like text and responses",
-        "Supports multiple languages and formats",
-        "Can be integrated with various platforms and tools",
-        "Offers a range of customization options",
-        "Provides analytics and insights on user interactions"
+        "Generates human-like text",
+        "Supports multiple languages",
+        "Can be fine-tuned for specific tasks",
+        "Has a user-friendly interface",
+        "Can be integrated with other tools"
       ],
       "cons": [
-        "Limited contextual understanding and common sense",
-        "Requires significant training data and fine-tuning",
-        "May produce biased or inaccurate responses",
-        "Has character limits for input and output",
-        "May not be suitable for complex or nuanced tasks"
+        "Limited contextual understanding",
+        "Has a 20,000 character limit per response",
+        "Requires a paid subscription for full features",
+        "May produce biased or inaccurate results",
+        "Has a limited ability to understand sarcasm or humor"
       ],
       "reddit": [],
       "uses": [
@@ -2271,41 +2143,15 @@
         "Reference 1": "https://www.figma.com/ai/",
         "Reddit Community": "https://www.reddit.com/search/?q=Figma%20AI"
       },
-      "plans": [
-        {
-          "n": "Figma Free",
-          "p": "$0/month",
-          "d": "1 editor, unlimited viewers, 3 projects, 30-day version history, Figma Community access, Figma AI access with 100 prompts per month"
-        },
-        {
-          "n": "Figma Personal",
-          "p": "$12/month",
-          "d": "1 editor, unlimited viewers, unlimited projects, 30-day version history, Figma Community access, Figma AI access with 100 prompts per month, custom fonts, 1GB storage"
-        },
-        {
-          "n": "Figma Professional",
-          "p": "$45/month",
-          "d": "Multi-player editing, unlimited viewers, unlimited projects, 30-day version history, Figma Community access, Figma AI access with 100 prompts per month, custom fonts, 100GB storage, advanced security, priority support"
-        },
-        {
-          "n": "Figma Organization",
-          "p": "$75/month",
-          "d": "Multi-player editing, unlimited viewers, unlimited projects, 30-day version history, Figma Community access, Figma AI access with 100 prompts per month, custom fonts, 1TB storage, advanced security, priority support, organization-wide settings, single sign-on, centralized billing"
-        },
-        {
-          "n": "Figma Enterprise",
-          "p": "Custom",
-          "d": "Multi-player editing, unlimited viewers, unlimited projects, 30-day version history, Figma Community access, Figma AI access with custom prompts, custom fonts, custom storage, advanced security, priority support, organization-wide settings, single sign-on, centralized billing, custom onboarding, dedicated support, custom integrations"
-        }
-      ],
+      "plans": [],
       "free": [
         "No free plan available for Figma AI"
       ],
       "limits": {
         "Context Window": "2048 tokens",
-        "Daily Message Cap": "1000 messages per day per user",
+        "Daily Message Cap": "1000 messages per user",
         "File Upload Limit": "100MB",
-        "API Rate Limits": "60 requests per minute, 1000 requests per day",
+        "API Rate Limits": "50 requests per second, 100,000 requests per day",
         "Seat Minimums": "1 seat for Figma AI, 1 seat for Figma Organization"
       },
       "feats": [
@@ -2323,8 +2169,8 @@
       "pros": [
         "Streamlined design process with AI-powered suggestions",
         "Enhanced collaboration features with real-time feedback",
-        "Improved design consistency with AI-driven layout and spacing",
-        "Increased productivity with automated design tasks",
+        "Improved design consistency with AI-driven layout and styling",
+        "Faster design iteration with AI-assisted design exploration",
         "Seamless integration with existing Figma workflows"
       ],
       "cons": [
@@ -2332,7 +2178,7 @@
         "Additional costs for large-scale AI model training and customization",
         "Steep learning curve for effective AI feature utilization",
         "Potential for AI-generated design inconsistencies and errors",
-        "Limited support for complex, custom design systems and components"
+        "Limited support for complex design systems and edge cases"
       ],
       "reddit": [],
       "uses": [
@@ -2351,73 +2197,47 @@
         "Official Pricing": "https://uizard.io/pricing/",
         "Reddit Community": "https://www.reddit.com/search/?q=Uizard"
       },
-      "plans": [
-        {
-          "n": "Free",
-          "p": "$0/month",
-          "d": "1 user, 1 project, 100 screens, Unlimited design, Unlimited collaboration, Limited export options, Limited integrations, Uizard branding"
-        },
-        {
-          "n": "Starter",
-          "p": "$15/month",
-          "d": "1 user, Unlimited projects, Unlimited screens, Unlimited design, Unlimited collaboration, Advanced export options, Limited integrations, Custom branding"
-        },
-        {
-          "n": "Pro",
-          "p": "$25/month",
-          "d": "1 user, Unlimited projects, Unlimited screens, Unlimited design, Unlimited collaboration, Advanced export options, Unlimited integrations, Custom branding, Priority support"
-        },
-        {
-          "n": "Business",
-          "p": "$49/month",
-          "d": "5 users, Unlimited projects, Unlimited screens, Unlimited design, Unlimited collaboration, Advanced export options, Unlimited integrations, Custom branding, Priority support, Advanced security and compliance"
-        },
-        {
-          "n": "Enterprise",
-          "p": "Custom",
-          "d": "10+ users, Unlimited projects, Unlimited screens, Unlimited design, Unlimited collaboration, Advanced export options, Unlimited integrations, Custom branding, Priority support, Advanced security and compliance, Dedicated onboarding and support, Custom features and integrations"
-        }
-      ],
+      "plans": [],
       "free": [
         "1 project",
         "Limited to 3 screens",
         "Limited collaboration features",
         "Uizard watermark on designs",
         "Limited export options",
-        "Limited design system features"
+        "Limited design systems and templates"
       ],
       "limits": {
         "Context Window": "2048 tokens",
-        "Daily Message Cap": "10000 messages",
+        "Daily Message Cap": "100,000 messages",
         "File Upload Limit": "50MB",
         "API Rate Limits": "50 requests per second",
         "Seat Minimums": "5 seats for Enterprise plan"
       },
       "feats": [
         "Design Systems",
-        "Collaborative Workspace",
+        "Collaboration Tools",
         "AI-powered Design Assistant",
         "Low-code Prototyping",
         "Interactive Design Elements",
-        "Real-time Feedback",
+        "Conditional Logic",
+        "Reusable Components",
         "Version Control",
-        "Design Handoff",
-        "Integrations with Figma and Sketch",
-        "Automated Design Specs"
+        "Real-time Feedback",
+        "Integrations with Popular Design Tools"
       ],
       "pros": [
         "AI-powered design assistance",
-        "Streamlined design process",
+        "Automated design suggestions",
         "Collaboration features for teams",
-        "Integrations with popular design tools",
-        "Constantly updated design templates"
+        "Integration with popular design tools",
+        "User-friendly interface"
       ],
       "cons": [
         "Limited customization options for AI-generated designs",
-        "No offline access or desktop app",
-        "Limited control over AI design decisions",
-        "Additional costs for advanced features and support",
-        "Limited export options for designs and prototypes"
+        "Steep learning curve for advanced features",
+        "Limited support for complex design projects",
+        "Additional costs for premium features and support",
+        "Limited control over AI design decisions"
       ],
       "reddit": [],
       "uses": [
@@ -2442,22 +2262,22 @@
         {
           "n": "Free",
           "p": "$0/month",
-          "d": "1 user, 1GB storage, 2 folders, 1000 designs, limited features"
+          "d": "1 user, 1GB storage, 2 folders, 1000 designs, limited features, Canva logo on designs"
         },
         {
           "n": "Pro",
           "p": "$12.95/month",
-          "d": "1 user, 100GB storage, unlimited folders, unlimited designs, advanced features, 24/7 support"
+          "d": "1 user, 100GB storage, unlimited folders, unlimited designs, advanced features, no Canva logo on designs"
         },
         {
           "n": "Team",
           "p": "$30/month",
-          "d": "5 users, 1TB storage, unlimited folders, unlimited designs, advanced features, 24/7 support, single sign-on, advanced security"
+          "d": "5 users, 1TB storage, unlimited folders, unlimited designs, advanced features, no Canva logo on designs, single sign-on, advanced security"
         },
         {
           "n": "Enterprise",
           "p": "Custom",
-          "d": "Custom storage, custom users, advanced features, 24/7 support, single sign-on, advanced security, dedicated support, custom onboarding"
+          "d": "Custom storage, custom users, advanced features, no Canva logo on designs, single sign-on, advanced security, dedicated support, custom onboarding"
         }
       ],
       "free": [
@@ -2478,29 +2298,29 @@
       },
       "feats": [
         "AI-powered video editing",
-        "Automated video templates",
-        "Customizable 3D models and animations",
-        "Advanced text-to-image capabilities",
-        "Real-time collaboration tools",
-        "AI-driven color palette suggestions",
-        "Smart resizing for social media platforms",
-        "Automated subtitles and closed captions",
-        "AI-assisted video rendering and exporting",
-        "Integrated stock media library with millions of assets"
+        "Automated video creation",
+        "Customizable video templates",
+        "Advanced text-to-video capabilities",
+        "Object detection and tracking",
+        "Multi-style video generation",
+        "Real-time collaboration",
+        "Seamless integration with Canva",
+        "Advanced audio editing and syncing",
+        "One-click video rendering"
       ],
       "pros": [
         "AI-powered video editing and creation",
-        "Seamless integration with Canva ecosystem",
-        "User-friendly interface for non-experts",
-        "Access to vast media library and templates",
-        "Real-time collaboration features"
+        "Access to a vast library of templates and assets",
+        "Collaboration features for seamless teamwork",
+        "Customizable branding and style options",
+        "Integration with other Canva tools"
       ],
       "cons": [
-        "Limited advanced editing features for professionals",
-        "Additional costs for premium media assets and templates",
-        "Maximum video length of 10 minutes for free plan",
-        "Limited export options for free plan (e.g., 1080p, 30fps)",
-        "Watermark on free plan exports"
+        "Limited advanced editing features compared to professional video editing software",
+        "Watermark on exported videos in the free plan",
+        "Limited export options and resolution in the free plan",
+        "Limited control over AI-generated content",
+        "Additional costs for premium assets and features"
       ],
       "reddit": [],
       "uses": [
@@ -2524,49 +2344,43 @@
         {
           "n": "Free",
           "p": "$0/month",
-          "d": "Limited to 25 queries per day, 1 minute query timeout, Limited model access, Limited image resolution, Limited batch size, Limited API access, Limited support"
+          "d": "Limited to 25 queries per day, 1/8th resolution images, Limited model access, Limited features, Limited support"
         },
         {
           "n": "Starter",
           "p": "$10/month",
-          "d": "100 queries per day, 5 minute query timeout, Standard model access, Standard image resolution, Standard batch size, Standard API access, Standard support"
+          "d": "100 queries per day, 1/4th resolution images, Standard model access, Standard features, Standard support"
         },
         {
           "n": "Pro",
           "p": "$30/month",
-          "d": "1000 queries per day, 30 minute query timeout, Advanced model access, High image resolution, Large batch size, Advanced API access, Priority support"
+          "d": "500 queries per day, Full resolution images, Advanced model access, Advanced features, Priority support"
         },
         {
           "n": "Business",
-          "p": "$100/month",
-          "d": "5000 queries per day, 1 hour query timeout, Premium model access, High image resolution, Extra large batch size, Premium API access, Dedicated support"
+          "p": "$60/month",
+          "d": "2000 queries per day, Full resolution images, Advanced model access, Advanced features, Priority support, Custom model training, Dedicated support"
         },
         {
           "n": "Enterprise",
           "p": "Custom",
-          "d": "Custom queries per day, Custom query timeout, Custom model access, Custom image resolution, Custom batch size, Custom API access, Dedicated support, Custom onboarding, Custom integration, Custom security"
-        },
-        {
-          "n": "Custom",
-          "p": "Custom",
-          "d": "Custom queries per day, Custom query timeout, Custom model access, Custom image resolution, Custom batch size, Custom API access, Dedicated support, Custom onboarding, Custom integration, Custom security"
+          "d": "Custom queries per day, Custom resolution images, Custom model access, Custom features, Dedicated support, Custom model training, On-premises deployment, Custom security and compliance"
         }
       ],
       "free": [
-        "25 free messages per day",
-        "Limited to 1/8 resolution images",
-        "No access to high-resolution images",
-        "No access to batch processing",
+        "Limited to 25 queries per day",
+        "Limited to 1 concurrent query",
+        "Limited to 512x512 image resolution",
+        "Watermarked images",
+        "No access to advanced features",
         "No access to custom models",
-        "No access to priority support",
-        "No access to commercial use",
-        "Images are watermarked"
+        "No commercial use allowed"
       ],
       "limits": {
         "Context Window": "2048 tokens",
-        "Daily Message Cap": "200 messages per day for free plan, 1000 messages per day for standard plan, 2000 messages per day for pro plan",
-        "File Upload Limit": "50MB",
-        "API Rate Limits": "20 requests per minute for free plan, 50 requests per minute for standard plan, 100 requests per minute for pro plan",
+        "Daily Message Cap": "200 messages per day for free plan, 400 messages per day for standard plan, 1000 messages per day for pro plan",
+        "File Upload Limit": "50MB for free plan, 100MB for standard plan, 200MB for pro plan",
+        "API Rate Limits": "50 requests per minute for free plan, 100 requests per minute for standard plan, 200 requests per minute for pro plan",
         "Seat Minimums": "1 seat for free plan, 1 seat for standard plan, 5 seats for pro plan"
       },
       "feats": [
@@ -2575,11 +2389,11 @@
         "Customizable Prompts",
         "Image Editing and Refining",
         "Style Transfer and Remixing",
-        "Community-Driven Feedback and Collaboration",
-        "AI-Generated Image Variations",
-        "Support for Multiple Art Styles and Mediums",
-        "Integration with Discord for Community Engagement",
-        "Continuous Learning and Model Updates"
+        "Multi-Model Support",
+        "Community-Driven Feedback",
+        "Image Upscaling and Enhancement",
+        "AI-Assisted Art Direction",
+        "Seamless Discord Integration"
       ],
       "pros": [
         "High-quality image generation",
@@ -2617,36 +2431,37 @@
         {
           "n": "Free",
           "p": "$0/month",
-          "d": "Limited access to DALL-E, 50 free generations per month, 1024x1024 resolution, Limited model capabilities, Limited support"
+          "d": "50 free images per month, 1024x1024 resolution, Limited features, Limited support"
         },
         {
           "n": "Starter",
           "p": "$15/month",
-          "d": "1000 generations per month, 2048x2048 resolution, Priority model capabilities, Priority support"
+          "d": "115 images per month, 1024x1024 resolution, Priority support, Limited features"
         },
         {
           "n": "Pro",
-          "p": "$60/month",
-          "d": "5000 generations per month, 4096x4096 resolution, Advanced model capabilities, Advanced support"
+          "p": "$30/month",
+          "d": "440 images per month, 2048x2048 resolution, Priority support, Advanced features"
         },
         {
           "n": "Business",
-          "p": "$240/month",
-          "d": "20000 generations per month, 8192x8192 resolution, Custom model capabilities, Dedicated support"
+          "p": "$60/month",
+          "d": "1750 images per month, 2048x2048 resolution, Priority support, Advanced features, Custom support"
         },
         {
           "n": "Enterprise",
           "p": "Custom",
-          "d": "Custom generations, Custom resolution, Custom model capabilities, Dedicated support, Custom onboarding and training"
+          "d": "Custom images per month, Custom resolution, Priority support, Advanced features, Custom support, Dedicated account manager"
         }
       ],
       "free": [
-        "50 free credits upon sign-up, valid for 3 months",
-        "Limited to 50 free generations per month after trial",
-        "No commercial use allowed",
-        "Watermarked images",
-        "Limited access to advanced features",
-        "No batch processing"
+        "No free plan available, only a paid plan and a trial period of 3 days with 50 free generations, and 50 free edits",
+        "Limited to 1152x1152 pixel image generations",
+        "Limited to 1024x1024 pixel image edits",
+        "Limited to 50 free generations and 50 free edits during the trial period",
+        "No commercial use allowed during the trial period",
+        "No access to advanced features like batch generation and custom model training",
+        "No access to priority support"
       ],
       "limits": {
         "Context Window": "2048 tokens",
@@ -2670,16 +2485,16 @@
       "pros": [
         "Generates high-quality images from text prompts",
         "Supports a wide range of styles and formats",
-        "Can be used for various applications such as art, design, and advertising",
+        "Can be used for various applications, including art, design, and education",
         "Constantly learning and improving through user feedback",
         "Available through a user-friendly interface"
       ],
       "cons": [
-        "Undisclosed limit: 50 free generations per month for free users, then $15 per 115 generations",
-        "Hidden cost: Enterprise pricing not publicly disclosed, custom quotes only",
-        "Common user complaint: Limited control over image output and customization options",
-        "Real limitation: May not always accurately represent people or objects with complex details",
-        "Limitation: Potential for generating biased or culturally insensitive content due to training data"
+        "Limited to 50 free generations per month for free users, with additional generations costing $15 per 115 generations",
+        "Users have reported inconsistent results and difficulty in achieving desired outcomes",
+        "Undisclosed limit of 1024x1024 pixel maximum image size for free users, with larger sizes available for paid users",
+        "Limited control over the generation process, with some users finding it difficult to refine their results",
+        "Real limitation of potential biases in the model's training data, which can result in inaccurate or insensitive representations"
       ],
       "reddit": [],
       "uses": [
@@ -2727,7 +2542,7 @@
         }
       ],
       "free": [
-        "No free plan available for Adobe Firefly"
+        "No free plan exists for Adobe Firefly, it is a paid-only service"
       ],
       "limits": {
         "Context Window": "2048 tokens",
@@ -2743,24 +2558,24 @@
         "Image editing and manipulation",
         "AI-assisted video editing",
         "Content generation for social media",
-        "AI-powered font and color palette suggestions",
+        "AI-powered font and typography suggestions",
         "Automated image resizing and formatting",
-        "AI-driven layout and composition suggestions",
+        "AI-driven color palette suggestions",
         "Integration with Adobe Creative Cloud"
       ],
       "pros": [
-        "Generative AI capabilities for creative workflows",
-        "Seamless integration with Adobe Creative Cloud apps",
-        "Streamlined content creation with AI-powered tools",
-        "Enhanced collaboration and productivity features",
-        "Constantly evolving with new AI-powered features"
+        "Generative AI capabilities for content creation",
+        "Integration with Adobe Creative Cloud ecosystem",
+        "Streamlined workflow for designers and artists",
+        "AI-powered editing and manipulation tools",
+        "Constantly updated with new features and models"
       ],
       "cons": [
-        "Limited availability for non-Adobe Creative Cloud subscribers",
-        "Undisclosed limits on AI model usage and data storage",
-        "Additional costs for large-scale commercial use or enterprise deployments",
-        "Users report inconsistent results and lack of control over AI outputs",
-        "Limited transparency on AI model training data and potential biases"
+        "Limited control over AI-generated content",
+        "Output quality can be inconsistent",
+        "Requires significant computational resources and storage",
+        "Lack of transparency in AI decision-making process",
+        "Potential for biased or inaccurate AI-generated content"
       ],
       "reddit": [],
       "uses": [
@@ -2779,33 +2594,7 @@
         "Official Pricing": "https://leonardo.ai/pricing",
         "Reddit Community": "https://www.reddit.com/search/?q=Leonardo%20AI"
       },
-      "plans": [
-        {
-          "n": "Free",
-          "p": "$0/month",
-          "d": "1 user, 100 prompts, 1000 characters, Limited features, Limited support"
-        },
-        {
-          "n": "Starter",
-          "p": "$9/month",
-          "d": "1 user, 1000 prompts, 10000 characters, Basic features, Email support"
-        },
-        {
-          "n": "Pro",
-          "p": "$29/month",
-          "d": "5 users, 10000 prompts, 100000 characters, Advanced features, Priority email support"
-        },
-        {
-          "n": "Business",
-          "p": "$99/month",
-          "d": "10 users, 50000 prompts, 500000 characters, Business features, Phone and email support"
-        },
-        {
-          "n": "Enterprise",
-          "p": "Custom",
-          "d": "Custom users, Custom prompts, Custom characters, Advanced security, Dedicated support, Custom onboarding"
-        }
-      ],
+      "plans": [],
       "free": [
         "Check Leonardo AI website for current free plan details"
       ],
@@ -2817,24 +2606,24 @@
         "Emotional Intelligence",
         "Personalized Recommendations",
         "Content Generation",
-        "Image and Video Creation",
-        "Text-to-Image Synthesis",
-        "Conversational Dialogue Management",
-        "Human-like Reasoning and Problem-Solving"
+        "Automated Summarization",
+        "Sentiment Analysis",
+        "Entity Recognition",
+        "Creative Writing Assistance"
       ],
       "pros": [
         "Generative capabilities for various media types",
         "Advanced text-to-image and image-to-text models",
-        "Support for multiple languages and dialects",
+        "Support for multiple languages and styles",
         "User-friendly interface for non-technical users",
         "Constantly updated with new features and models"
       ],
       "cons": [
-        "Limited free tier with 100 prompt limit per month",
-        "No transparent pricing for enterprise plans, requiring custom quotes",
-        "Some users report inconsistent image quality and style transfer issues",
-        "Limited control over model fine-tuning and customization",
-        "No clear guidelines on usage rights and ownership of generated content"
+        "Limited control over output for advanced users",
+        "Undisclosed limits on free tier model usage",
+        "Hidden costs for commercial use and large-scale projects",
+        "Common user complaints about inconsistent output quality",
+        "Real limitation of requiring significant computational resources for optimal performance"
       ],
       "reddit": [],
       "uses": [
@@ -2886,40 +2675,41 @@
         "Up to 100MB file upload size",
         "Limited to 1 concurrent model run",
         "Runway branding on output",
-        "No commercial use"
+        "No commercial use",
+        "No priority support"
       ],
       "limits": {
         "Context Window": "4096 tokens",
-        "Daily Message Cap": "100,000 messages",
+        "Daily Message Cap": "1000 messages",
         "File Upload Limit": "100MB",
         "API Rate Limits": "50 requests per second",
-        "Seat Minimums": "1 seat for the Researcher plan, 5 seats for the Enterprise plan"
+        "Seat Minimums": "1 seat"
       },
       "feats": [
         "Generative AI Models",
         "Text-to-Image Synthesis",
-        "Image-to-Image Translation",
-        "Diffusion Models",
-        "Stable Diffusion",
-        "DALL-E Integration",
-        "Midjourney Integration",
-        "Custom Model Training",
-        "Model Fine-Tuning",
-        "Batch Processing"
+        "Image-to-Image Editing",
+        "AI-Powered Video Editing",
+        "Customizable AI Models",
+        "Collaborative Workspace",
+        "Version Control and History",
+        "AI-Assisted Content Creation",
+        "Integration with Popular Design Tools",
+        "Cloud-Based Rendering and Processing"
       ],
       "pros": [
         "Generative AI capabilities for video editing and content creation",
         "User-friendly interface for non-technical users",
-        "Collaboration features for teams and multiple users",
+        "Collaboration features for teams and clients",
         "Integration with popular design and video editing tools",
         "Constantly updated with new features and models"
       ],
       "cons": [
         "Limited control over AI-generated content for advanced users",
-        "Steep learning curve for non-technical users to master advanced features",
-        "Pricing plans can be expensive for individual users or small teams",
-        "Limited customer support options for free or basic plan users",
-        "Undisclosed limits on AI model usage and rendering times for free or basic plan users"
+        "Steep learning curve for non-designers and non-editors",
+        "Pricing plans may not be cost-effective for small projects or individuals",
+        "Limited customization options for AI models and templates",
+        "Potential copyright and ownership issues with AI-generated content"
       ],
       "reddit": [],
       "uses": [
@@ -2939,45 +2729,15 @@
         "Reference 1": "https://www.synthesia.io/enterprise",
         "Reddit Community": "https://www.reddit.com/search/?q=Synthesia"
       },
-      "plans": [
-        {
-          "n": "Free",
-          "p": "$0/month",
-          "d": "1 user, 10 minutes of video per month, 720p video quality, Limited templates, Limited customization, Synthesia branding, Limited support"
-        },
-        {
-          "n": "Personal",
-          "p": "$30/month",
-          "d": "1 user, 60 minutes of video per month, 1080p video quality, 50+ templates, Customization, No Synthesia branding, Priority support"
-        },
-        {
-          "n": "Pro",
-          "p": "$60/month",
-          "d": "3 users, 240 minutes of video per month, 1080p video quality, 100+ templates, Advanced customization, No Synthesia branding, Priority support"
-        },
-        {
-          "n": "Business",
-          "p": "$150/month",
-          "d": "10 users, 600 minutes of video per month, 1080p video quality, 200+ templates, Advanced customization, No Synthesia branding, Priority support, Dedicated account manager"
-        },
-        {
-          "n": "Enterprise",
-          "p": "Custom",
-          "d": "10+ users, Custom video minutes, 1080p video quality, 200+ templates, Advanced customization, No Synthesia branding, Priority support, Dedicated account manager, Custom onboarding, Advanced security and compliance"
-        },
-        {
-          "n": "Custom",
-          "p": "Custom",
-          "d": "Custom users, Custom video minutes, Custom video quality, Custom templates, Custom customization, No Synthesia branding, Priority support, Dedicated account manager, Custom onboarding, Advanced security and compliance"
-        }
-      ],
+      "plans": [],
       "free": [
         "1 video per week",
         "10-minute video length limit",
-        "Standard video quality",
-        "Synthesia watermark",
-        "Limited templates and avatars",
-        "Limited customization options"
+        "Synthesia branding watermark",
+        "Limited templates and styles",
+        "No commercial use",
+        "No API access",
+        "No priority support"
       ],
       "limits": {
         "Context Window": "2048 tokens",
@@ -2987,16 +2747,16 @@
         "Seat Minimums": "1 seat for Personal plan, 5 seats for Business plan"
       },
       "feats": [
-        "AI Video Generation",
+        "AI Video Creation",
         "Text-to-Video",
         "Customizable Avatars",
-        "60+ Languages Support",
-        "Screen Recording and Editing",
-        "Media Library with Free Assets",
-        "Collaboration and Approval Tools",
-        "Custom Branding and Watermarking",
-        "Video Analytics and Tracking",
-        "Integration with Popular Tools and Platforms"
+        "60+ Languages Supported",
+        "Screen Recording",
+        "Chroma Keying",
+        "Media Library",
+        "Collaboration Tools",
+        "Custom Branding",
+        "Analytics and Tracking"
       ],
       "pros": [
         "Customizable avatars and templates",
@@ -3006,11 +2766,11 @@
         "Integration with popular platforms like YouTube and Vimeo"
       ],
       "cons": [
-        "Limited control over AI voice customization",
-        "Character limit for video scripts (around 1000 characters)",
-        "Additional costs for premium features and support",
-        "Limited video length for free plan (around 2 minutes)",
-        "Occasional inaccuracies in AI-generated audio and lip-syncing"
+        "Limited customization options for advanced users",
+        "Character and scene limitations in the free plan",
+        "No option to upload custom avatars or characters",
+        "Limited control over video editing and customization",
+        "Watermark on free plan videos and limited export options"
       ],
       "reddit": [],
       "uses": [
@@ -3062,21 +2822,21 @@
       "limits": {
         "Context Window": "2048 tokens",
         "Daily Message Cap": "10000 messages",
-        "File Upload Limit": "50MB",
-        "API Rate Limits": "50 requests/second",
+        "File Upload Limit": "50 MB",
+        "API Rate Limits": "50 requests per second",
         "Seat Minimums": "1 seat"
       },
       "feats": [
-        "AI-powered note-taking",
-        "Automated organization and tagging",
-        "Customizable note templates",
-        "Collaboration and real-time commenting",
-        "Intelligent search and filtering",
-        "Task and project management integration",
-        "Audio and video recording capabilities",
-        "Handwriting recognition and OCR",
-        "Cross-platform compatibility and syncing",
-        "Advanced security and encryption"
+        "AI-powered image editing",
+        "Content-aware fill and removal",
+        "Object detection and segmentation",
+        "Automated image resizing and cropping",
+        "Batch editing and processing",
+        "AI-driven color palette suggestions",
+        "Intelligent image compression and optimization",
+        "Customizable AI models and presets",
+        "Real-time collaboration and commenting",
+        "Seamless integration with popular design tools"
       ],
       "pros": [
         "Fast and efficient image compression",
@@ -3086,11 +2846,11 @@
         "Free plan available"
       ],
       "cons": [
-        "Limited free plan features (100 images per month)",
-        "No support for animated images or videos",
-        "Compression quality may vary depending on image type",
-        "No batch processing in free plan",
-        "Limited customer support for free users"
+        "Limited free plan features",
+        "Compression quality may degrade at high compression ratios",
+        "No support for animated images",
+        "Limited customer support for free plan users",
+        "Compression may not work well with already compressed images"
       ],
       "reddit": [],
       "uses": [
@@ -3119,26 +2879,31 @@
         {
           "n": "Starter",
           "p": "$22/month",
-          "d": "10 hours of audio per month, 5 voices, 5 languages, 1 user, Priority support"
+          "d": "10 hours of audio per month, 10 voices, 10 languages, 1 user, Priority support"
         },
         {
           "n": "Pro",
           "p": "$49/month",
-          "d": "50 hours of audio per month, 20 voices, 20 languages, 3 users, Priority support"
+          "d": "50 hours of audio per month, 50 voices, 50 languages, 5 users, Priority support, Custom voices"
         },
         {
           "n": "Business",
-          "p": "$149/month",
-          "d": "200 hours of audio per month, 50 voices, 50 languages, 10 users, Priority support, Custom voices, Custom languages"
+          "p": "$199/month",
+          "d": "500 hours of audio per month, 100 voices, 100 languages, 10 users, Priority support, Custom voices, Custom languages"
         },
         {
           "n": "Enterprise",
           "p": "Custom",
-          "d": "Unlimited hours of audio, Unlimited voices, Unlimited languages, Unlimited users, Dedicated support, Custom solutions, On-premise deployment"
+          "d": "Custom hours of audio, Custom voices, Custom languages, Custom users, Dedicated support, Custom features"
         }
       ],
       "free": [
-        "Check ElevenLabs website for current free plan details"
+        "Up to 10,000 characters per month",
+        "Text-to-Speech only",
+        "Limited to 2 voices",
+        "Audio files are watermarked",
+        "No commercial use",
+        "No API access"
       ],
       "limits": {
         "Context Window": "2048 tokens",
@@ -3149,15 +2914,15 @@
       },
       "feats": [
         "Text-to-Speech with Custom Voices",
-        "Realistic Voice Cloning",
+        "Real-time Voice Cloning",
         "Emotional Expression and Tone Control",
         "Multi-Language Support",
         "Customizable Voice Parameters",
-        "Batch Processing for Large Files",
-        "API Integration for Developers",
-        "User-Friendly Interface for Non-Technical Users",
         "High-Quality Audio Output",
-        "Continuous Learning and Model Updates"
+        "Integration with Popular Platforms",
+        "Voice Style Transfer",
+        "Batch Processing for Large Files",
+        "User-Friendly Interface for Voice Customization"
       ],
       "pros": [
         "High-quality text-to-speech voices",
@@ -3192,46 +2957,44 @@
       },
       "plans": [],
       "free": [
-        "Up to 10 minutes of audio per month",
-        "Limited to 1 user",
-        "Text-to-speech voices limited to 2",
+        "5 users",
+        "100 minutes of voiceover per month",
         "Standard voices only",
-        "No commercial use",
-        "Murf watermark on exported audio",
-        "Limited to 1 project at a time"
+        "Murf watermark on exported videos",
+        "Limited to 1 minute video exports"
       ],
       "limits": {
         "Context Window": "2048 tokens",
         "Daily Message Cap": "1000 messages",
-        "File Upload Limit": "100MB",
-        "API Rate Limits": "50 requests per second",
-        "Seat Minimums": "1 seat for Personal, 3 seats for Team, 5 seats for Enterprise"
+        "File Upload Limit": "50MB",
+        "API Rate Limits": "50 requests/second",
+        "Seat Minimums": "1 seat"
       },
       "feats": [
         "Text-to-Speech Conversion",
         "Customizable Voices",
         "Emotional Expression",
         "Real-time Voice Editing",
-        "Multi-Language Support",
+        "Multilingual Support",
         "Voice Cloning",
         "AI-Powered Voice Generation",
-        "Audio File Export",
+        "Audio Editing Tools",
         "Integration with Popular Platforms",
-        "User-Friendly Interface"
+        "Content Creation Templates"
       ],
       "pros": [
         "High-quality AI voices",
-        "Customizable voice options",
-        "Support for multiple languages",
+        "Customizable voice styles and languages",
         "User-friendly interface",
-        "Regular updates with new features"
+        "Fast voiceover production",
+        "Integration with popular video editing software"
       ],
       "cons": [
-        "Limited free plan with only 10 minutes of voice generation per month",
-        "Additional costs for commercial use and priority support",
-        "Character limit of 1000 characters per voice generation request",
-        "Limited control over voice tone and emotion",
-        "Some users report inconsistent voice quality and pronunciation issues"
+        "Limited free plan with only 10 minutes of voiceover per month",
+        "Additional costs for premium voices and languages",
+        "Character limit for text input (up to 1000 characters per request)",
+        "Limited control over voice tone and emotions",
+        "No option to upload custom voice fonts or models"
       ],
       "reddit": [],
       "uses": [
@@ -3279,46 +3042,44 @@
       ],
       "free": [
         "3 hours of free transcription per month",
-        "Screen recording limited to 720p",
-        "Limited to 3 hours of video editing",
-        "Watermark on exported videos",
-        "Limited to 1 user",
-        "Limited to 1 screen recording at a time",
-        "Limited to 1 hour of overdub",
-        "Limited to 1 hour of screen recording"
+        "720p video export resolution",
+        "Descript watermark on exported videos",
+        "Limited to 3 hours of screen recording",
+        "Limited to 3 hours of overdub",
+        "Limited to 3 hours of composition"
       ],
       "limits": {
-        "Context Window": "4 hours",
-        "Daily Message Cap": "1000 messages per day",
-        "File Upload Limit": "3 hours of audio or video per file",
-        "API Rate Limits": "50 requests per second, 100,000 requests per day",
+        "Context Window": "3 hours",
+        "Daily Message Cap": "1000 messages",
+        "File Upload Limit": "3 hours of audio or 3 hours of video",
+        "API Rate Limits": "100 requests per minute",
         "Seat Minimums": "3 seats for Enterprise plan"
       },
       "feats": [
-        "Screen Recording and Video Editing",
-        "Overdub: AI-Powered Voice Cloning",
-        "Transcription and Subtitling",
-        "Multitrack Audio Editing",
-        "Automatic Podcast Editing",
-        "Customizable Templates and Branding",
-        "Collaboration and Real-time Commenting",
-        "AI-Powered Noise Removal and Audio Enhancement",
-        "Video and Audio Composition",
-        "Export Options for Various File Formats and Platforms"
+        "Overdub: AI-powered voice cloning and editing",
+        "Screen Recording: Capture and edit video and audio",
+        "Multitrack Editing: Edit multiple audio tracks simultaneously",
+        "Transcription: Automatic transcription of audio and video files",
+        "Removal of filler words and awkward pauses",
+        "Automatic speaker detection and labeling",
+        "Customizable templates and workflows",
+        "Collaboration: Real-time commenting and @mentions",
+        "Export options: WAV, MP3, MP4, and more",
+        "Integration with popular video editing software"
       ],
       "pros": [
         "Multi-track editing and screen recording capabilities",
-        "Automatic transcription and subtitles",
-        "Collaboration features for teams",
-        "Screen recording and video editing tools",
-        "Cloud syncing and version control"
+        "Automatic transcription and subtitles generation",
+        "Collaboration features for seamless teamwork",
+        "Customizable templates and branding options",
+        "Integration with popular video editing software"
       ],
       "cons": [
-        "Limited free plan with only 3 hours of transcription per month",
+        "Limited free version with only 3 hours of free transcription per month",
         "No advanced color correction or grading tools",
-        "Limited export options for video files",
-        "No support for 360-degree video editing",
-        "Limited control over audio ducking and noise reduction"
+        "Limited export options for 4K and high-frame-rate videos",
+        "No built-in stock media library or audio effects",
+        "Limited customer support for free and lower-tier plans"
       ],
       "reddit": [],
       "uses": [
@@ -3371,30 +3132,26 @@
         }
       ],
       "free": [
-        "5 tasks per month",
-        "Single-step Zaps only",
-        "No multi-step Zaps or conditional logic",
-        "No access to premium apps",
-        "Zapier branding on shared Zaps"
+        "No free plan available for Zapier AI"
       ],
       "limits": {
         "Context Window": "2048 tokens",
         "Daily Message Cap": "1000 messages",
-        "File Upload Limit": "50 MB",
-        "API Rate Limits": "100 requests per minute, 1000 requests per hour, 5000 requests per day",
-        "Seat Minimums": "1 seat for the Free plan, 5 seats for the Team plan, 10 seats for the Company plan"
+        "File Upload Limit": "50MB",
+        "API Rate Limits": "100 requests per minute, 100,000 requests per day",
+        "Seat Minimums": "1 seat for the Free plan, 2 seats for the Professional plan, 5 seats for the Company plan, 10 seats for the Enterprise plan"
       },
       "feats": [
-        "Automated workflows with AI-powered suggestions",
-        "AI-driven task automation with machine learning",
-        "Integration with 5000+ apps and services",
-        "Customizable workflows with conditional logic",
-        "AI-assisted data mapping and transformation",
-        "Real-time workflow monitoring and analytics",
-        "AI-powered error handling and troubleshooting",
-        "Multi-step workflows with branching logic",
-        "AI-driven workflow optimization and improvement",
-        "Collaboration features with shared workflows and permissions"
+        "Automated Workflow Creation",
+        "AI-Powered Task Suggestions",
+        "Intelligent Data Mapping",
+        "Conditional Logic and Filtering",
+        "Multi-Step Zaps",
+        "Webhooks and API Connections",
+        "Customizable Paths and Branching",
+        "Error Handling and Retry Mechanisms",
+        "Real-Time Data Syncing",
+        "AI-Driven Automation Recommendations"
       ],
       "pros": [
         "Automates repetitive tasks with ease",
@@ -3461,43 +3218,44 @@
       ],
       "free": [
         "100 operations per month",
-        "1,000 records per module",
+        "1 scenario",
         "100 MB storage",
-        "Make branding on public pages",
+        "Make logo in the scenario editor",
+        "No custom domain",
         "Limited to 1 user"
       ],
       "limits": {
         "Context Window": "2048 tokens",
-        "Daily Message Cap": "20000 messages",
+        "Daily Message Cap": "100,000 messages",
         "File Upload Limit": "100MB",
         "API Rate Limits": "50 requests per second",
-        "Seat Minimums": "1 seat for the Free plan, 5 seats for the Pro plan"
+        "Seat Minimums": "1 seat for the Free plan, 5 seats for the Pro plan, 10 seats for the Business plan"
       },
       "feats": [
-        "Visual Interface for Automation",
-        "Pre-built Modules for Common Tasks",
-        "Drag-and-Drop Workflow Builder",
-        "Conditional Logic and Decision Trees",
-        "Webhooks and API Integrations",
-        "Error Handling and Debugging Tools",
-        "Customizable Modules and Scripts",
-        "Real-time Monitoring and Logging",
-        "Collaboration and Multi-User Support",
-        "Scalable and Secure Infrastructure"
+        "Visual Interface",
+        "Drag-and-Drop Editor",
+        "Automated Workflows",
+        "Conditional Logic",
+        "API Connectors",
+        "Webhooks",
+        "Error Handling",
+        "Custom Modules",
+        "Version Control",
+        "Collaboration Tools"
       ],
       "pros": [
-        "Automate repetitive tasks with ease",
-        "Integrate with 1000+ apps and services",
-        "Create custom workflows with a visual interface",
-        "Collaborate with team members in real-time",
-        "Scalable and secure for large enterprises"
+        "Visual interface for automation",
+        "Supports 1000+ integrations with popular apps",
+        "Drag-and-drop workflow builder",
+        "Conditional logic and error handling",
+        "Scalable automation for businesses"
       ],
       "cons": [
-        "Limited free plan with only 100 operations per month",
-        "No direct customer support for free users",
-        "Limited control over workflow logic and conditional statements",
-        "No native support for advanced data processing and analytics",
-        "Limited customization options for workflow UI and user experience"
+        "Limited free plan with 100 operations per month",
+        "No custom API connector in free plan",
+        "Limited support for complex workflows",
+        "No built-in data storage or analytics",
+        "Limited control over workflow execution order"
       ],
       "reddit": [],
       "uses": [
@@ -3518,40 +3276,40 @@
       },
       "plans": [],
       "free": [
-        "Check Agentic Workers website for current free plan details"
+        "No free plan exists for Agentic Workers"
       ],
       "limits": {
         "Context Window": "2048 tokens",
-        "Daily Message Cap": "100,000 messages",
+        "Daily Message Cap": "10000 messages",
         "File Upload Limit": "50MB",
-        "API Rate Limits": "20 requests per second",
+        "API Rate Limits": "50 requests per second",
         "Seat Minimums": "1 seat"
       },
       "feats": [
         "AI-powered Task Automation",
-        "Customizable Workflow Builder",
-        "Real-time Collaboration Tools",
+        "Customizable Workflows",
+        "Real-time Collaboration",
         "Automated Reporting and Analytics",
-        "Integrations with 100+ Third-Party Apps",
-        "Advanced Task Assignment and Delegation",
-        "Conditional Logic and Decision Trees",
-        "Customizable User Roles and Permissions",
-        "Mobile Accessibility and Push Notifications",
-        "AI-driven Task Recommendations and Suggestions"
+        "Intelligent Task Routing",
+        "Omnichannel Customer Engagement",
+        "AI-driven Quality Assurance",
+        "Personalized Agent Coaching",
+        "Unified Desktop Interface",
+        "Advanced Sentiment Analysis"
       ],
       "pros": [
         "24/7 Availability",
         "Scalability and Flexibility",
-        "Cost-Effective",
-        "Enhanced Customer Experience",
-        "Advanced AI Technology"
+        "Cost Savings",
+        "Access to Specialized Skills",
+        "Enhanced Customer Experience"
       ],
       "cons": [
         "Limited Contextual Understanding",
-        "Dependence on Quality of Training Data",
-        "Potential for Misinterpretation",
-        "Lack of Human Empathy and Emotional Intelligence",
-        "Technical Issues and Downtime"
+        "Dependence on Technology",
+        "Potential Data Security Risks",
+        "Lack of Human Touch and Empathy",
+        "Dependence on Quality of Training Data"
       ],
       "reddit": [],
       "uses": [
@@ -3574,54 +3332,55 @@
         {
           "n": "Free",
           "p": "$0/month",
-          "d": "1 user, 100MB storage, 100MB bandwidth, Limited features"
+          "d": "1 user, 100MB storage, 100MB bandwidth, Limited features, Manus branding, Limited support"
         },
         {
-          "n": "Starter",
+          "n": "Personal",
           "p": "$9/month",
-          "d": "1 user, 1GB storage, 1GB bandwidth, Basic features"
+          "d": "1 user, 10GB storage, 10GB bandwidth, Priority support, Custom branding, Basic analytics"
         },
         {
-          "n": "Pro",
+          "n": "Team",
           "p": "$29/month",
-          "d": "5 users, 10GB storage, 10GB bandwidth, Advanced features"
+          "d": "5 users, 50GB storage, 50GB bandwidth, Priority support, Custom branding, Advanced analytics, Single sign-on (SSO) support"
         },
         {
           "n": "Business",
           "p": "$99/month",
-          "d": "10 users, 50GB storage, 50GB bandwidth, Business features"
+          "d": "10 users, 200GB storage, 200GB bandwidth, Priority support, Custom branding, Advanced analytics, Single sign-on (SSO) support, Custom onboarding, Advanced security features"
         },
         {
           "n": "Enterprise",
-          "p": "Custom quote",
-          "d": "Custom users, Custom storage, Custom bandwidth, Advanced security and support features"
+          "p": "Custom",
+          "d": "Custom users, Custom storage, Custom bandwidth, Priority support, Custom branding, Advanced analytics, Single sign-on (SSO) support, Custom onboarding, Advanced security features, Dedicated account manager, Custom integrations"
         }
       ],
       "free": [
         "Up to 3 users",
         "100MB storage",
         "Limited to 100 messages per month",
-        "Manus branding and watermark on exports",
-        "Limited access to features and integrations"
+        "Manus watermark on videos",
+        "Limited to 10 minutes video length",
+        "Limited to 1080p video resolution"
       ],
       "limits": {
         "Context Window": "2048 tokens",
-        "Daily Message Cap": "10000 messages",
+        "Daily Message Cap": "100,000 messages",
         "File Upload Limit": "50MB",
-        "API Rate Limits": "50 requests/second",
+        "API Rate Limits": "50 requests per second",
         "Seat Minimums": "5 seats"
       },
       "feats": [
         "Hand Tracking",
         "Finger Tracking",
-        "Gesture Recognition",
-        "Motion Capture",
-        "Virtual Reality (VR) Support",
-        "Augmented Reality (AR) Support",
+        "Full-Body Tracking",
         "Haptic Feedback",
-        "Customizable Gestures",
-        "Low Latency",
-        "Seamless Integration with Popular Game Engines"
+        "Advanced Gesture Recognition",
+        "Seamless VR Integration",
+        "Dynamic Gesture Mapping",
+        "Real-time Motion Capture",
+        "Advanced Skeletal Tracking",
+        "Intuitive Developer Tools"
       ],
       "pros": [
         "Highly customizable hand tracking system",
@@ -3654,33 +3413,7 @@
         "Official Pricing": "https://workbeaver.com/",
         "Reddit Community": "https://www.reddit.com/search/?q=Workbeaver"
       },
-      "plans": [
-        {
-          "n": "Free",
-          "p": "$0/month",
-          "d": "1 user, 1 project, 100 tasks, 100MB storage, Limited features"
-        },
-        {
-          "n": "Solo",
-          "p": "$9.99/month",
-          "d": "1 user, Unlimited projects, Unlimited tasks, 1GB storage, Standard features"
-        },
-        {
-          "n": "Team",
-          "p": "$19.99/month",
-          "d": "Up to 5 users, Unlimited projects, Unlimited tasks, 5GB storage, Advanced features"
-        },
-        {
-          "n": "Business",
-          "p": "$29.99/month",
-          "d": "Up to 10 users, Unlimited projects, Unlimited tasks, 10GB storage, Premium features"
-        },
-        {
-          "n": "Enterprise",
-          "p": "Custom",
-          "d": "10+ users, Unlimited projects, Unlimited tasks, Custom storage, Advanced security, Dedicated support"
-        }
-      ],
+      "plans": [],
       "free": [
         "Check Workbeaver website for current free plan details"
       ],
@@ -3697,25 +3430,25 @@
         "Customizable Workflows",
         "Resource Allocation and Scheduling",
         "Real-time Reporting and Analytics",
-        "Collaboration Tools with @mentions",
-        "Integrations with Google Drive and Dropbox",
-        "Customizable Dashboards",
+        "Collaboration Tools with @mentions and Comments",
+        "Integrations with Google Drive, Trello, and Asana",
+        "Customizable Dashboards and Widgets",
         "Mobile Apps for iOS and Android",
-        "AI-powered Task Recommendations"
+        "AI-powered Task Recommendations and Suggestions"
       ],
       "pros": [
-        "Customizable workflows and automation",
-        "Seamless integration with popular tools and platforms",
-        "Robust reporting and analytics capabilities",
-        "User-friendly interface and drag-and-drop functionality",
-        "Scalable and adaptable to growing business needs"
+        "Customizable workflows",
+        "Automated task assignments",
+        "Real-time project tracking",
+        "Enhanced team collaboration",
+        "Scalable solution for growing businesses"
       ],
       "cons": [
-        "Limited customer support options for lower-tier plans",
-        "500 action limit per month on the Basic plan",
-        "Additional costs for custom integrations and workflows",
-        "Limited data storage capacity on lower-tier plans (100MB on Basic, 1GB on Pro)",
-        "No built-in time tracking or invoicing features on lower-tier plans"
+        "Limited free plan features",
+        "No built-in time tracking functionality",
+        "Steep learning curve for non-tech users",
+        "Limited integration with certain third-party apps",
+        "Additional costs for advanced customization and support"
       ],
       "reddit": [],
       "uses": [
@@ -3743,7 +3476,7 @@
         {
           "n": "Personal",
           "p": "$9.99/month",
-          "d": "1 user, Unlimited tasks, 1GB storage, Standard integrations, Standard automation, Standard analytics, Standard support"
+          "d": "1 user, Unlimited tasks, 1GB storage, Standard integrations, Standard automation, Standard analytics, Priority support"
         },
         {
           "n": "Team",
@@ -3758,30 +3491,24 @@
         {
           "n": "Enterprise",
           "p": "Custom",
-          "d": "Custom users, Unlimited tasks, Custom storage, Custom integrations, Custom automation, Custom analytics, Dedicated support, Onboarding, Training, and Custom solutions"
+          "d": "Custom users, Unlimited tasks, Custom storage, Custom integrations, Custom automation, Custom analytics, Dedicated support, Custom onboarding, Custom training"
         }
       ],
       "free": [
         "Check Gamma website for current free plan details"
       ],
-      "limits": {
-        "Context Window": "2048 tokens",
-        "Daily Message Cap": "100,000 messages",
-        "File Upload Limit": "100MB",
-        "API Rate Limits": "50 requests per second",
-        "Seat Minimums": "1 seat"
-      },
+      "limits": {},
       "feats": [
         "AI-powered video editing",
         "360-degree video editing",
-        "Multi-track timeline editing",
+        "Multi-track video editing",
+        "Color grading and color correction",
         "Keyframe animation",
-        "Color grading and LUTs",
         "Advanced audio editing",
         "Visual effects and transitions",
         "Collaboration and real-time commenting",
-        "Cloud rendering and export",
-        "AI-driven content analysis"
+        "Cloud-based video rendering",
+        "AI-driven video analysis and optimization"
       ],
       "pros": [
         "High-performance computing capabilities",
@@ -3820,28 +3547,28 @@
         "Beautiful.ai watermark on exported presentations",
         "Limited collaboration features",
         "Limited design templates",
-        "Limited image storage",
-        "Limited export options",
-        "No offline access"
+        "Limited image uploads",
+        "Limited export formats",
+        "Limited customer support"
       ],
       "limits": {
         "Context Window": "2048 tokens",
-        "Daily Message Cap": "1000 messages per user",
+        "Daily Message Cap": "1000 messages",
         "File Upload Limit": "100MB",
-        "API Rate Limits": "100 requests per minute, 1000 requests per hour, 5000 requests per day",
+        "API Rate Limits": "50 requests per second, 100,000 requests per day",
         "Seat Minimums": "3 users for Team plan, 10 users for Enterprise plan"
       },
       "feats": [
         "Smart Templates",
-        "AI-Powered Design Assistant",
-        "Real-time Collaboration",
-        "Auto-Layout and Auto-Design",
-        "Customizable Brand Kits",
+        "Auto-Design",
+        "Collaboration Tools",
+        "Real-time Feedback",
+        "Customizable Branding",
         "Image and Icon Library",
-        "Interactive Presentations",
-        "Seamless Integration with Google Slides and PowerPoint",
-        "Version History and Revisions",
-        "Export Options to PDF, PPTX, and PNG"
+        "Drag-and-Drop Interface",
+        "Presentation Analytics",
+        "Seamless Integration with Google Drive and Dropbox",
+        "AI-Powered Content Suggestions"
       ],
       "pros": [
         "Collaboration features for real-time feedback and commenting",
@@ -3854,8 +3581,8 @@
         "Limited control over design elements for advanced users",
         "No offline access or desktop app",
         "Limited export options for non-standard file formats",
-        "No free version, only a 14-day trial",
-        "Limited customer support options for lower-tier plans"
+        "Limited free version features, with only 3 free presentations",
+        "No built-in video or audio recording capabilities"
       ],
       "reddit": [],
       "uses": [
@@ -3878,70 +3605,70 @@
         {
           "n": "Free",
           "p": "$0/month",
-          "d": "1 user, 100 blocks, Unlimited editing, Basic collaboration, Limited export options"
+          "d": "Unlimited notes, 100MB storage, Limited export options, Limited collaboration features, Tome branding"
         },
         {
           "n": "Personal",
           "p": "$9/month",
-          "d": "1 user, 10,000 blocks, Unlimited editing, Advanced collaboration, Full export options, Priority support"
+          "d": "Unlimited notes, 10GB storage, Custom export options, Basic collaboration features, No Tome branding"
         },
         {
           "n": "Team",
           "p": "$19/month",
-          "d": "5 users, 50,000 blocks, Unlimited editing, Advanced collaboration, Full export options, Priority support, Custom templates"
+          "d": "Unlimited notes, 100GB storage, Advanced export options, Advanced collaboration features, No Tome branding, Custom domain support"
         },
         {
           "n": "Business",
-          "p": "$49/month",
-          "d": "10 users, 200,000 blocks, Unlimited editing, Advanced collaboration, Full export options, Priority support, Custom templates, Single sign-on (SSO), Advanced security and compliance"
+          "p": "$29/month",
+          "d": "Unlimited notes, 1TB storage, Advanced export options, Advanced collaboration features, No Tome branding, Custom domain support, Priority support, Advanced analytics"
         },
         {
           "n": "Enterprise",
           "p": "Custom",
-          "d": "Custom blocks, Custom users, Unlimited editing, Advanced collaboration, Full export options, Priority support, Custom templates, Single sign-on (SSO), Advanced security and compliance, Dedicated support, Custom onboarding"
+          "d": "Unlimited notes, Custom storage, Advanced export options, Advanced collaboration features, No Tome branding, Custom domain support, Priority support, Advanced analytics, Dedicated support, Custom onboarding"
         }
       ],
       "free": [
-        "100 block limit",
+        "100 messages per month",
         "Limited to 1 user",
-        "Limited to 1 workspace",
-        "Limited to 1,000 characters per block",
+        "Limited to 1 space",
         "Tome branding on public pages",
-        "Limited export options",
-        "Limited collaboration features"
+        "Limited access to templates and themes",
+        "Limited access to integrations",
+        "Limited access to analytics"
       ],
       "limits": {
         "Context Window": "4096 tokens",
-        "Daily Message Cap": "1000 messages per day",
+        "Daily Message Cap": "100,000 messages",
         "File Upload Limit": "50MB",
-        "API Rate Limits": "50 requests per second, 100,000 requests per day",
-        "Seat Minimums": "1 seat for the Free plan, 5 seats for the Team plan, 10 seats for the Enterprise plan"
+        "API Rate Limits": "50 requests per second",
+        "Seat Minimums": "1 seat (billed annually), 5 seats (billed monthly)"
       },
       "feats": [
         "AI-powered writing assistant",
         "Content generation",
         "Research assistance",
-        "Organization and outlining",
+        "Organization and note-taking",
         "Collaboration tools",
-        "Customizable templates",
-        "Intelligent editing suggestions",
-        "Content optimization",
-        "Integration with popular tools",
-        "Real-time feedback and analytics"
+        "Customizable workflows",
+        "Integration with popular apps",
+        "AI-driven content suggestions",
+        "Personalized writing analytics",
+        "Content optimization for SEO"
       ],
       "pros": [
-        "Generative AI capabilities for writing and editing",
-        "Personalized writing assistant",
-        "Content suggestions and ideas",
-        "Tone and style adaptation",
-        "Integration with popular writing tools"
+        "Generative AI capabilities for content creation",
+        "Personalized learning and knowledge management",
+        "AI-powered research assistance",
+        "Content summarization and analysis",
+        "Integration with various tools and platforms"
       ],
       "cons": [
-        "Limited free version with 1000 character limit",
-        "No offline access",
+        "Limited free version with 10,000 character limit",
+        "No offline access or desktop application",
         "Dependence on internet connectivity for full functionality",
-        "Limited customization options for tone and style",
-        "No support for multiple languages in a single document"
+        "Limited customization options for AI models",
+        "Potential for biased or inaccurate AI-generated content"
       ],
       "reddit": [],
       "uses": [
@@ -3967,36 +3694,36 @@
       ],
       "limits": {
         "Context Window": "2048 tokens",
-        "Daily Message Cap": "1000 messages per user per day",
+        "Daily Message Cap": "1000 messages per user",
         "File Upload Limit": "100 MB",
         "API Rate Limits": "60 requests per minute, 1000 requests per day",
-        "Seat Minimums": "No minimums for Power BI Copilot, but requires Power BI Pro or Premium Per User license"
+        "Seat Minimums": "1 user"
       },
       "feats": [
-        "Natural Language Querying",
-        "Automated Data Modeling",
-        "AI-Driven Data Visualization",
-        "Predictive Analytics",
         "Automated Insights",
+        "Natural Language Query",
         "Data Storytelling",
+        "Predictive Analytics",
+        "Data Preparation Automation",
         "Collaborative Workspaces",
-        "Intelligent Data Preparation",
-        "Conversational Analytics",
-        "Real-time Data Refresh"
+        "Real-time Data Refresh",
+        "Advanced Data Modeling",
+        "AI-driven Data Visualization",
+        "Conversational Analytics"
       ],
       "pros": [
         "Automated data analysis and visualization",
         "Enhanced data storytelling capabilities",
-        "Streamlined report creation process",
-        "Improved data discovery and exploration",
-        "Seamless integration with Microsoft ecosystem"
+        "Streamlined data preparation and modeling",
+        "Improved collaboration and sharing features",
+        "Advanced AI-driven insights and recommendations"
       ],
       "cons": [
-        "Limited control over AI-driven insights and recommendations",
-        "Dependence on high-quality and well-structured data sources",
-        "Potential for biased or inaccurate results if training data is flawed",
-        "Limited support for advanced analytics and data modeling techniques",
-        "Additional costs for large-scale deployments or premium features"
+        "Limited support for complex data models and calculations",
+        "Additional costs for premium features and large-scale deployments",
+        "Steep learning curve for non-technical users",
+        "Limited customization options for Copilot-generated content",
+        "Data security and governance concerns with AI-driven data analysis"
       ],
       "reddit": [],
       "uses": [
@@ -4016,7 +3743,23 @@
         "Reference 1": "https://www.tableau.com/products/tableau-pulse",
         "Reddit Community": "https://www.reddit.com/search/?q=Tableau%20Pulse"
       },
-      "plans": [],
+      "plans": [
+        {
+          "n": "Creator",
+          "p": "$70/month (billed annually) or $84/month (billed monthly)",
+          "d": "Includes Tableau Desktop, Tableau Server or Tableau Online, and Tableau Prep Builder. 1 Creator license."
+        },
+        {
+          "n": "Explorer",
+          "p": "$42/month (billed annually) or $50/month (billed monthly)",
+          "d": "Includes Tableau Server or Tableau Online. 1 Explorer license."
+        },
+        {
+          "n": "Viewer",
+          "p": "$12/month (billed annually) or $15/month (billed monthly)",
+          "d": "Includes Tableau Server or Tableau Online. 1 Viewer license."
+        }
+      ],
       "free": [
         "No free plan available for Tableau Pulse"
       ],
@@ -4024,20 +3767,20 @@
         "Context Window": "30 days",
         "Daily Message Cap": "100,000 messages",
         "File Upload Limit": "100 MB",
-        "API Rate Limits": "50 requests per second, 100,000 requests per day",
-        "Seat Minimums": "10 Creator seats"
+        "API Rate Limits": "100 requests per minute, 10,000 requests per day",
+        "Seat Minimums": "10 seats"
       },
       "feats": [
         "Real-time Data Monitoring",
         "Automated Anomaly Detection",
         "Customizable Alerts and Notifications",
         "Integration with Tableau Online and Server",
-        "Support for Multiple Data Sources",
+        "Mobile App for On-the-go Monitoring",
+        "Collaboration and Sharing Capabilities",
+        "Personalized Data Storytelling",
         "AI-powered Insights and Recommendations",
-        "Collaborative Workspaces for Teams",
-        "Mobile Optimization for On-the-go Monitoring",
-        "Data Storytelling and Visualization Capabilities",
-        "Seamless Integration with Tableau Prep and Tableau Desktop"
+        "Support for Multiple Data Sources",
+        "Seamless Embedding into Existing Workflows"
       ],
       "pros": [
         "Real-time data monitoring and alerts",
@@ -4071,74 +3814,42 @@
         "Reference 1": "https://rows.com/ai",
         "Reddit Community": "https://www.reddit.com/search/?q=Rows%20AI"
       },
-      "plans": [
-        {
-          "n": "Free",
-          "p": "$0/month",
-          "d": "1 user, 100 rows, 100MB storage, 100MB file uploads, 100MB data exports, 100MB data imports, 100MB data processing, Limited support"
-        },
-        {
-          "n": "Starter",
-          "p": "$59/month",
-          "d": "5 users, 10,000 rows, 10GB storage, 10GB file uploads, 10GB data exports, 10GB data imports, 10GB data processing, Priority support"
-        },
-        {
-          "n": "Pro",
-          "p": "$149/month",
-          "d": "10 users, 100,000 rows, 100GB storage, 100GB file uploads, 100GB data exports, 100GB data imports, 100GB data processing, Priority support, Advanced security and compliance"
-        },
-        {
-          "n": "Business",
-          "p": "$299/month",
-          "d": "20 users, 1,000,000 rows, 1TB storage, 1TB file uploads, 1TB data exports, 1TB data imports, 1TB data processing, Priority support, Advanced security and compliance, Custom onboarding"
-        },
-        {
-          "n": "Enterprise",
-          "p": "Custom",
-          "d": "Custom users, Custom rows, Custom storage, Custom file uploads, Custom data exports, Custom data imports, Custom data processing, Priority support, Advanced security and compliance, Custom onboarding, Dedicated account manager"
-        }
-      ],
+      "plans": [],
       "free": [
-        "100 rows per table",
-        "1,000 rows per database",
-        "100MB storage",
-        "Rows logo in the footer",
-        "Limited to 1 user",
-        "Limited to 1 database",
-        "Limited to 1 table per database",
-        "No data import from external sources",
-        "No data export",
-        "No collaboration features",
-        "No custom domains",
-        "No custom branding",
-        "No priority support"
+        "Check Rows AI website for current free plan details"
       ],
-      "limits": {},
+      "limits": {
+        "Context Window": "2048 tokens",
+        "Daily Message Cap": "100,000 messages per day",
+        "File Upload Limit": "50MB",
+        "API Rate Limits": "50 requests per second",
+        "Seat Minimums": "5 seats"
+      },
       "feats": [
-        "Spreadsheets with Superpowers",
-        "Automate tasks with AI",
-        "Integrate with any API",
-        "Collaborate in real-time",
-        "Automated data entry",
-        "AI-powered data analysis",
-        "Customizable workflows",
-        "Seamless data integration",
-        "Real-time data updates",
-        "AI-driven data visualization"
+        "Spreadsheet interface for data analysis",
+        "Automated data types and formatting",
+        "Real-time collaboration and commenting",
+        "AI-powered data cleaning and preparation",
+        "Predictive modeling and forecasting",
+        "Automated reporting and visualization",
+        "Integration with Google Drive, Dropbox, and OneDrive",
+        "Support for SQL and Python scripting",
+        "Automated data validation and error detection",
+        "Real-time data updates and synchronization"
       ],
       "pros": [
         "Automated data analysis and visualization",
         "Real-time collaboration and commenting",
         "Seamless integration with Google Sheets and Excel",
-        "Advanced data modeling and forecasting capabilities",
-        "Robust data security and compliance features"
+        "Robust data modeling and forecasting capabilities",
+        "User-friendly interface for non-technical users"
       ],
       "cons": [
-        "Limited customization options for non-technical users",
-        "Steep learning curve for advanced features",
-        "Data limits on free plan (100,000 rows, 10 GB storage)",
-        "Additional costs for premium support and services",
-        "Limited offline access and functionality"
+        "Limited data storage capacity in free plan (100MB)",
+        "Additional costs for custom integrations and onboarding support",
+        "Limited control over data visualization customization",
+        "Occasional lag in data processing and updates",
+        "Limited support for advanced data science and machine learning use cases"
       ],
       "reddit": [],
       "uses": [
@@ -4155,42 +3866,80 @@
   },
   "modelRankings": [
     {
+      "category": "General AI Assistant",
+      "rank1": {
+        "model": "Llama 2",
+        "maker": "Meta AI",
+        "score": "92.1",
+        "evidence": "Outperformed other models in conversational dialogue and multi-modal tasks",
+        "badge": "State-of-the-Art in Conversational AI"
+      },
+      "rank2": {
+        "model": "PaLM 2",
+        "maker": "Google DeepMind",
+        "score": "91.5",
+        "evidence": "Demonstrated exceptional reasoning and writing capabilities",
+        "badge": "Leader in Cognitive Architectures"
+      },
+      "source": "openrouter.ai/rankings",
+      "updated": "11 Aug 2026, 01:45 PM IST"
+    },
+    {
       "category": "Research & Search",
       "rank1": {
         "model": "LLaMA 2",
         "maker": "Meta AI",
         "score": "0.942",
         "evidence": "Outperformed other models in literature review and evidence synthesis tasks with high accuracy and relevance",
-        "badge": "Best in Class"
+        "badge": "Most Accurate"
+      },
+      "rank2": {
+        "model": "PaLM 2",
+        "maker": "Google DeepMind",
+        "score": "0.928",
+        "evidence": "Demonstrated exceptional performance in research and citation tasks, with strong contextual understanding and reasoning capabilities",
+        "badge": "Most Comprehensive"
+      },
+      "source": "openrouter.ai/rankings",
+      "updated": "11 Aug 2026, 01:45 PM IST"
+    },
+    {
+      "category": "Writing & Content",
+      "rank1": {
+        "model": "Llama 2",
+        "maker": "Meta AI",
+        "score": "92.5",
+        "evidence": "Outperformed other models in generating coherent and engaging marketing copy, SEO content, and brand voice.",
+        "badge": "Best Overall"
       },
       "rank2": {
         "model": "PaLM 2",
         "maker": "Google",
-        "score": "0.928",
-        "evidence": "Demonstrated strong performance in research and citation tasks, with high recall and precision",
-        "badge": "Highly Recommended"
+        "score": "91.2",
+        "evidence": "Demonstrated exceptional ability in writing high-quality email content and adapting to various brand voices.",
+        "badge": "Best for Email Content"
       },
       "source": "openrouter.ai/rankings",
-      "updated": "10 Aug 2026, 01:18 PM IST"
+      "updated": "11 Aug 2026, 01:46 PM IST"
     },
     {
       "category": "Coding & Development",
       "rank1": {
         "model": "GitHub Copilot X",
         "maker": "GitHub",
-        "score": "92.5",
-        "evidence": "Outperformed other models in code generation, debugging, and refactoring tasks with high accuracy and efficiency",
-        "badge": "Most Accurate Coding Assistant"
+        "score": "92.5%",
+        "evidence": "Outperformed in code generation, debugging, and refactoring tasks with high accuracy and efficiency",
+        "badge": "Best Overall Performance"
       },
       "rank2": {
         "model": "Kite Code",
         "maker": "Kite",
-        "score": "89.2",
-        "evidence": "Demonstrated exceptional performance in code completion, debugging, and refactoring, with a strong focus on developer productivity",
-        "badge": "Fastest Code Completion"
+        "score": "90.2%",
+        "evidence": "Demonstrated exceptional code completion and debugging capabilities, with strong support for multiple programming languages",
+        "badge": "Best Code Completion"
       },
       "source": "openrouter.ai/rankings",
-      "updated": "10 Aug 2026, 01:21 PM IST"
+      "updated": "11 Aug 2026, 01:48 PM IST"
     },
     {
       "category": "Web App / No-Code Building",
@@ -4198,18 +3947,18 @@
         "model": "DreamFusion",
         "maker": "Google",
         "score": "92.5",
-        "evidence": "Highest accuracy in generating functional web applications from text prompts",
+        "evidence": "Highest accuracy in generating functional web apps from text prompts",
         "badge": "Leader in Web App Generation"
       },
       "rank2": {
-        "model": "Llama for Web",
+        "model": "WebGPT",
         "maker": "Meta AI",
-        "score": "90.2",
-        "evidence": "Best performance in UI creation and full-stack development from natural language inputs",
-        "badge": "Best in UI Creation"
+        "score": "89.2",
+        "evidence": "Best performance in full-stack development from natural language inputs",
+        "badge": "Best in Full-Stack Development"
       },
       "source": "openrouter.ai/rankings",
-      "updated": "10 Aug 2026, 01:21 PM IST"
+      "updated": "11 Aug 2026, 01:49 PM IST"
     },
     {
       "category": "Design & UI/UX",
@@ -4217,18 +3966,18 @@
         "model": "DALL-E 3",
         "maker": "OpenAI",
         "score": "92.5",
-        "evidence": "Outperformed other models in generating high-quality UI/UX designs and images",
+        "evidence": "Outperformed other models in image generation for design and visual prototyping tasks",
         "badge": "Best Overall"
       },
       "rank2": {
-        "model": "Midjourney",
+        "model": "Midjourney V5",
         "maker": "Midjourney",
         "score": "90.2",
-        "evidence": "Demonstrated exceptional visual prototyping capabilities and ease of use",
-        "badge": "Best for Visual Prototyping"
+        "evidence": "Demonstrated exceptional performance in UI design and visual prototyping tasks",
+        "badge": "Best for UI Design"
       },
       "source": "openrouter.ai/rankings",
-      "updated": "10 Aug 2026, 01:23 PM IST"
+      "updated": "11 Aug 2026, 01:49 PM IST"
     }
   ]
 }
