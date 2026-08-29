@@ -1,7 +1,7 @@
 {
   "chatgpt": {
     "name": "ChatGPT",
-    "ts": "2026-08-28T20:23:18.926295+05:30",
+    "ts": "2026-08-29T15:13:00.712020+05:30",
     "free": [
       "Check ChatGPT website for current free plan details"
     ],
@@ -18,7 +18,7 @@
   },
   "claude": {
     "name": "Claude",
-    "ts": "2026-08-28T20:23:18.926295+05:30",
+    "ts": "2026-08-29T15:13:00.712020+05:30",
     "free": [
       "Check Claude website for current free plan details"
     ],
@@ -35,7 +35,7 @@
   },
   "gemini": {
     "name": "Google Gemini",
-    "ts": "2026-08-28T20:23:18.926295+05:30",
+    "ts": "2026-08-29T15:13:00.712020+05:30",
     "free": [
       "Check Google Gemini website for current free plan details"
     ],
@@ -52,7 +52,7 @@
   },
   "m365": {
     "name": "Microsoft 365 Copilot",
-    "ts": "2026-08-28T20:23:18.926295+05:30",
+    "ts": "2026-08-29T15:13:00.712020+05:30",
     "free": [
       "Check Microsoft 365 Copilot website for current free plan details"
     ],
@@ -69,7 +69,7 @@
   },
   "perplexity": {
     "name": "Perplexity",
-    "ts": "2026-08-28T20:23:18.926295+05:30",
+    "ts": "2026-08-29T15:13:00.712020+05:30",
     "free": [
       "Check Perplexity website for current free plan details"
     ],
@@ -86,7 +86,7 @@
   },
   "notebooklm": {
     "name": "NotebookLM",
-    "ts": "2026-08-28T20:23:18.926295+05:30",
+    "ts": "2026-08-29T15:13:00.712020+05:30",
     "free": [
       "Check NotebookLM website for current free plan details"
     ],
@@ -103,7 +103,7 @@
   },
   "elicit": {
     "name": "Elicit",
-    "ts": "2026-08-28T20:23:18.926295+05:30",
+    "ts": "2026-08-29T15:13:00.712020+05:30",
     "free": [
       "Check Elicit website for current free plan details"
     ],
@@ -120,7 +120,7 @@
   },
   "consensus": {
     "name": "Consensus",
-    "ts": "2026-08-28T20:23:18.926295+05:30",
+    "ts": "2026-08-29T15:13:00.712020+05:30",
     "free": [
       "Check Consensus website for current free plan details"
     ],
@@ -137,7 +137,7 @@
   },
   "grammarly": {
     "name": "Grammarly",
-    "ts": "2026-08-28T20:23:18.926295+05:30",
+    "ts": "2026-08-29T15:13:00.712020+05:30",
     "free": [
       "Check Grammarly website for current free plan details"
     ],
@@ -154,7 +154,7 @@
   },
   "jasper": {
     "name": "Jasper",
-    "ts": "2026-08-28T20:23:18.926295+05:30",
+    "ts": "2026-08-29T15:13:00.712020+05:30",
     "free": [
       "Check Jasper website for current free plan details"
     ],
@@ -171,7 +171,7 @@
   },
   "writesonic": {
     "name": "Writesonic",
-    "ts": "2026-08-28T20:23:18.926295+05:30",
+    "ts": "2026-08-29T15:13:00.712020+05:30",
     "free": [
       "Check Writesonic website for current free plan details"
     ],
@@ -188,7 +188,7 @@
   },
   "copyai": {
     "name": "Copy.ai",
-    "ts": "2026-08-28T20:23:18.926295+05:30",
+    "ts": "2026-08-29T15:13:00.712020+05:30",
     "free": [
       "Check Copy.ai website for current free plan details"
     ],
@@ -205,7 +205,7 @@
   },
   "notionai": {
     "name": "Notion AI",
-    "ts": "2026-08-28T20:23:18.926295+05:30",
+    "ts": "2026-08-29T15:13:00.712020+05:30",
     "free": [
       "Check Notion AI website for current free plan details"
     ],
@@ -222,7 +222,7 @@
   },
   "ghcopilot": {
     "name": "GitHub Copilot",
-    "ts": "2026-08-28T20:23:18.926295+05:30",
+    "ts": "2026-08-29T15:13:00.712020+05:30",
     "free": [
       "Check GitHub Copilot website for current free plan details"
     ],
@@ -239,7 +239,7 @@
   },
   "cursor": {
     "name": "Cursor",
-    "ts": "2026-08-28T20:23:18.926295+05:30",
+    "ts": "2026-08-29T15:13:00.712020+05:30",
     "free": [
       "Check Cursor website for current free plan details"
     ],
@@ -256,7 +256,7 @@
   },
   "codex": {
     "name": "OpenAI Codex",
-    "ts": "2026-08-28T20:23:18.926295+05:30",
+    "ts": "2026-08-29T15:13:00.712020+05:30",
     "free": [
       "Check OpenAI Codex website for current free plan details"
     ],
@@ -273,7 +273,7 @@
   },
   "tabnine": {
     "name": "Tabnine",
-    "ts": "2026-08-28T20:23:18.926295+05:30",
+    "ts": "2026-08-29T15:13:00.712020+05:30",
     "free": [
       "Check Tabnine website for current free plan details"
     ],
@@ -290,7 +290,7 @@
   },
   "replit": {
     "name": "Replit Ghostwriter",
-    "ts": "2026-08-28T20:23:18.926295+05:30",
+    "ts": "2026-08-29T15:13:00.712020+05:30",
     "free": [
       "Check Replit Ghostwriter website for current free plan details"
     ],
@@ -307,7 +307,7 @@
   },
   "codeium": {
     "name": "Codeium",
-    "ts": "2026-08-28T20:23:18.926295+05:30",
+    "ts": "2026-08-29T15:13:00.712020+05:30",
     "free": [
       "Check Codeium website for current free plan details"
     ],
@@ -324,7 +324,7 @@
   },
   "claudecode": {
     "name": "Claude Code",
-    "ts": "2026-08-28T20:23:18.926295+05:30",
+    "ts": "2026-08-29T15:13:00.712020+05:30",
     "free": [
       "Check Claude Code website for current free plan details"
     ],
@@ -341,7 +341,7 @@
   },
   "autogen": {
     "name": "AutoGen",
-    "ts": "2026-08-28T20:23:18.926295+05:30",
+    "ts": "2026-08-29T15:13:00.712020+05:30",
     "free": [
       "Check AutoGen website for current free plan details"
     ],
@@ -358,7 +358,7 @@
   },
   "v0": {
     "name": "v0",
-    "ts": "2026-08-28T20:23:18.926295+05:30",
+    "ts": "2026-08-29T15:13:00.712020+05:30",
     "free": [
       "Check v0 website for current free plan details"
     ],
@@ -375,7 +375,7 @@
   },
   "bubble": {
     "name": "Bubble",
-    "ts": "2026-08-28T20:23:18.926295+05:30",
+    "ts": "2026-08-29T15:13:00.712020+05:30",
     "free": [
       "Check Bubble website for current free plan details"
     ],
@@ -392,7 +392,7 @@
   },
   "softr": {
     "name": "Softr",
-    "ts": "2026-08-28T20:23:18.926295+05:30",
+    "ts": "2026-08-29T15:13:00.712020+05:30",
     "free": [
       "Check Softr website for current free plan details"
     ],
@@ -409,7 +409,7 @@
   },
   "durable": {
     "name": "Durable",
-    "ts": "2026-08-28T20:23:18.926295+05:30",
+    "ts": "2026-08-29T15:13:00.712020+05:30",
     "free": [
       "Check Durable website for current free plan details"
     ],
@@ -426,7 +426,7 @@
   },
   "lovable": {
     "name": "Lovable AI",
-    "ts": "2026-08-28T20:23:18.926295+05:30",
+    "ts": "2026-08-29T15:13:00.712020+05:30",
     "free": [
       "Check Lovable AI website for current free plan details"
     ],
@@ -443,7 +443,7 @@
   },
   "figmaai": {
     "name": "Figma AI",
-    "ts": "2026-08-28T20:23:18.926295+05:30",
+    "ts": "2026-08-29T15:13:00.712020+05:30",
     "free": [
       "Check Figma AI website for current free plan details"
     ],
@@ -460,7 +460,7 @@
   },
   "uizard": {
     "name": "Uizard",
-    "ts": "2026-08-28T20:23:18.926295+05:30",
+    "ts": "2026-08-29T15:13:00.712020+05:30",
     "free": [
       "Check Uizard website for current free plan details"
     ],
@@ -477,7 +477,7 @@
   },
   "canva": {
     "name": "Canva Magic Studio",
-    "ts": "2026-08-28T20:23:18.926295+05:30",
+    "ts": "2026-08-29T15:13:00.712020+05:30",
     "free": [
       "Check Canva Magic Studio website for current free plan details"
     ],
@@ -494,7 +494,7 @@
   },
   "midjourney": {
     "name": "Midjourney",
-    "ts": "2026-08-28T20:23:18.926295+05:30",
+    "ts": "2026-08-29T15:13:00.712020+05:30",
     "free": [
       "Check Midjourney website for current free plan details"
     ],
@@ -511,7 +511,7 @@
   },
   "dalle": {
     "name": "DALL-E",
-    "ts": "2026-08-28T20:23:18.926295+05:30",
+    "ts": "2026-08-29T15:13:00.712020+05:30",
     "free": [
       "Check DALL-E website for current free plan details"
     ],
@@ -528,7 +528,7 @@
   },
   "firefly": {
     "name": "Adobe Firefly",
-    "ts": "2026-08-28T20:23:18.926295+05:30",
+    "ts": "2026-08-29T15:13:00.712020+05:30",
     "free": [
       "Check Adobe Firefly website for current free plan details"
     ],
@@ -545,7 +545,7 @@
   },
   "leonardo": {
     "name": "Leonardo AI",
-    "ts": "2026-08-28T20:23:18.926295+05:30",
+    "ts": "2026-08-29T15:13:00.712020+05:30",
     "free": [
       "Check Leonardo AI website for current free plan details"
     ],
@@ -562,7 +562,7 @@
   },
   "runway": {
     "name": "Runway",
-    "ts": "2026-08-28T20:23:18.926295+05:30",
+    "ts": "2026-08-29T15:13:00.712020+05:30",
     "free": [
       "Check Runway website for current free plan details"
     ],
@@ -579,7 +579,7 @@
   },
   "synthesia": {
     "name": "Synthesia",
-    "ts": "2026-08-28T20:23:18.926295+05:30",
+    "ts": "2026-08-29T15:13:00.712020+05:30",
     "free": [
       "Check Synthesia website for current free plan details"
     ],
@@ -596,7 +596,7 @@
   },
   "pika": {
     "name": "Pika",
-    "ts": "2026-08-28T20:23:18.926295+05:30",
+    "ts": "2026-08-29T15:13:00.712020+05:30",
     "free": [
       "Check Pika website for current free plan details"
     ],
@@ -613,7 +613,7 @@
   },
   "elevenlabs": {
     "name": "ElevenLabs",
-    "ts": "2026-08-28T20:23:18.926295+05:30",
+    "ts": "2026-08-29T15:13:00.712020+05:30",
     "free": [
       "Check ElevenLabs website for current free plan details"
     ],
@@ -630,7 +630,7 @@
   },
   "murf": {
     "name": "Murf",
-    "ts": "2026-08-28T20:23:18.926295+05:30",
+    "ts": "2026-08-29T15:13:00.712020+05:30",
     "free": [
       "Check Murf website for current free plan details"
     ],
@@ -647,7 +647,7 @@
   },
   "descript": {
     "name": "Descript",
-    "ts": "2026-08-28T20:23:18.926295+05:30",
+    "ts": "2026-08-29T15:13:00.712020+05:30",
     "free": [
       "Check Descript website for current free plan details"
     ],
@@ -664,7 +664,7 @@
   },
   "zapier": {
     "name": "Zapier AI",
-    "ts": "2026-08-28T20:23:18.926295+05:30",
+    "ts": "2026-08-29T15:13:00.712020+05:30",
     "free": [
       "Check Zapier AI website for current free plan details"
     ],
@@ -681,7 +681,7 @@
   },
   "make": {
     "name": "Make",
-    "ts": "2026-08-28T20:23:18.926295+05:30",
+    "ts": "2026-08-29T15:13:00.712020+05:30",
     "free": [
       "Check Make website for current free plan details"
     ],
@@ -698,7 +698,7 @@
   },
   "agenticworkers": {
     "name": "Agentic Workers",
-    "ts": "2026-08-28T20:23:18.926295+05:30",
+    "ts": "2026-08-29T15:13:00.712020+05:30",
     "free": [
       "Check Agentic Workers website for current free plan details"
     ],
@@ -715,7 +715,7 @@
   },
   "manus": {
     "name": "Manus",
-    "ts": "2026-08-28T20:23:18.926295+05:30",
+    "ts": "2026-08-29T15:13:00.712020+05:30",
     "free": [
       "Check Manus website for current free plan details"
     ],
@@ -732,7 +732,7 @@
   },
   "workbeaver": {
     "name": "Workbeaver",
-    "ts": "2026-08-28T20:23:18.926295+05:30",
+    "ts": "2026-08-29T15:13:00.712020+05:30",
     "free": [
       "Check Workbeaver website for current free plan details"
     ],
@@ -749,7 +749,7 @@
   },
   "gamma": {
     "name": "Gamma",
-    "ts": "2026-08-28T20:23:18.926295+05:30",
+    "ts": "2026-08-29T15:13:00.712020+05:30",
     "free": [
       "Check Gamma website for current free plan details"
     ],
@@ -766,7 +766,7 @@
   },
   "beautifulai": {
     "name": "Beautiful.ai",
-    "ts": "2026-08-28T20:23:18.926295+05:30",
+    "ts": "2026-08-29T15:13:00.712020+05:30",
     "free": [
       "Check Beautiful.ai website for current free plan details"
     ],
@@ -783,7 +783,7 @@
   },
   "tome": {
     "name": "Tome",
-    "ts": "2026-08-28T20:23:18.926295+05:30",
+    "ts": "2026-08-29T15:13:00.712020+05:30",
     "free": [
       "Check Tome website for current free plan details"
     ],
@@ -800,7 +800,7 @@
   },
   "powerbi": {
     "name": "Power BI Copilot",
-    "ts": "2026-08-28T20:23:18.926295+05:30",
+    "ts": "2026-08-29T15:13:00.712020+05:30",
     "free": [
       "Check Power BI Copilot website for current free plan details"
     ],
@@ -817,7 +817,7 @@
   },
   "tableau": {
     "name": "Tableau Pulse",
-    "ts": "2026-08-28T20:23:18.926295+05:30",
+    "ts": "2026-08-29T15:13:00.712020+05:30",
     "free": [
       "Check Tableau Pulse website for current free plan details"
     ],
@@ -834,7 +834,7 @@
   },
   "rowsai": {
     "name": "Rows AI",
-    "ts": "2026-08-28T20:23:18.926295+05:30",
+    "ts": "2026-08-29T15:13:00.712020+05:30",
     "free": [
       "Check Rows AI website for current free plan details"
     ],
